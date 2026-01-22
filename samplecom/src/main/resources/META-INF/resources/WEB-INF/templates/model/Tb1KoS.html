@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb1KoS.title}">子</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb1KoGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/Tb1OyaGridColumns.js}"></script>
+<script th:src="@{/model/Tb1DinksGridColumns.js}"></script>
+<script th:src="@{/model/Tb4MagoGridColumns.js}"></script>
+<script th:src="@{/model/Tb1OrphanGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb1KoS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="Tb1KoSearchForm" action="Tb1KoSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{Tb1KoS.legend}">legend</legend>
+        <div id="oyaId">
+          <label for="Tb1Ko.oyaId" th:text="#{Tb1Ko.oyaId}">親ID</label><input type="text" id="Tb1Ko.oyaId" name="Tb1Ko.oyaId" maxlength="10" />
+        </div>
+        <div id="koBn">
+          <label for="Tb1Ko.koBn" th:text="#{Tb1Ko.koBn}">子枝番</label><input type="text" id="Tb1Ko.koBn" name="Tb1Ko.koBn" maxlength="10" />
+        </div>
+        <div id="koInfo">
+          <label for="Tb1Ko.koInfo" th:text="#{Tb1Ko.koInfo}">子情報</label><input type="text" id="Tb1Ko.koInfo" name="Tb1Ko.koInfo" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetTb1Ko" th:text="#{common.reset}" class="reset">reset</button>
+      </div>
+      <div class="submits">
+        <button id="SearchTb1Ko" type="submit" class="search" data-gridId="Tb1KoGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="Tb1KoSRegistForm" action="Tb1KoSRegist.ajax" class="regist">
+      <h3 th:text="#{Tb1Ko.h3}">h3</h3>
+      <div id="Tb1KoGrid" data-selectionMode="checkbox" data-frozenColumn="1" data-editable="false" th:data-href="@{/model/Tb1Ko.html}"></div>
+      <div id="Tb1KoPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetTb1KoS" th:text="#{common.reset}" onClick="Base.listReset('Tb1Ko');">reset</button>
+        <a th:href="@{Tb1KoSearch.xlsx(baseMei=#{Tb1KoS.h2})}" id="Tb1KoSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

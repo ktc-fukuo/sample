@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb3TransHis.title}">変遷履歴</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb3TransHisGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/Tb3TransGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb3TransHis.h2}">h2</h2>
+    <form name="Tb3TransHisRegistForm" action="Tb3TransHisRegist.ajax" class="regist">
+      <fieldset class="parent">
+        <legend th:text="#{Tb3Trans.legend}">legend</legend>
+        <div id="transId">
+          <label for="Tb3Trans.transId" th:text="#{Tb3Trans.transId}">変遷ID</label><input type="text" id="Tb3Trans.transId" name="Tb3Trans.transId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="transInfo">
+          <label for="Tb3Trans.transInfo" th:text="#{Tb3Trans.transInfo}">変遷情報</label><input type="text" id="Tb3Trans.transInfo" name="Tb3Trans.transInfo" maxlength="300" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb3Trans.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb3Trans.insertTs" class="meta"></span><input type="hidden" id="Tb3Trans.insertTs" name="Tb3Trans.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb3Trans.insertUserId}" class="meta">作成者</label><span id="Tb3Trans.insertUserId" class="meta"></span><input type="hidden" id="Tb3Trans.insertUserId" name="Tb3Trans.insertUserId" class="meta"/>
+          <span id="Tb3Trans.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb3Trans.insertUserId" data-destDef="Tb3Trans.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb3Trans.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb3Trans.updateTs" class="meta"></span><input type="hidden" id="Tb3Trans.updateTs" name="Tb3Trans.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb3Trans.updateUserId}" class="meta">更新者</label><span id="Tb3Trans.updateUserId" class="meta"></span><input type="hidden" id="Tb3Trans.updateUserId" name="Tb3Trans.updateUserId" class="meta"/>
+          <span id="Tb3Trans.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb3Trans.updateUserId" data-destDef="Tb3Trans.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend th:text="#{Tb3TransHis.legend}">legend</legend>
+        <div id="transId">
+          <label for="Tb3TransHis.transId" th:text="#{Tb3TransHis.transId}">変遷ID</label><input type="text" id="Tb3TransHis.transId" name="Tb3TransHis.transId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="transBn">
+          <label for="Tb3TransHis.transBn" th:text="#{Tb3TransHis.transBn}">変遷枝番</label><input type="text" id="Tb3TransHis.transBn" name="Tb3TransHis.transBn" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="transInfo">
+          <label for="Tb3TransHis.transInfo" th:text="#{Tb3TransHis.transInfo}">変遷情報</label><input type="text" id="Tb3TransHis.transInfo" name="Tb3TransHis.transInfo" maxlength="300" />
+        </div>
+        <div id="riyuTx">
+          <label for="Tb3TransHis.riyuTx" th:text="#{Tb3TransHis.riyuTx}">変更理由</label>
+          <textarea id="Tb3TransHis.riyuTx" name="Tb3TransHis.riyuTx" class=" notblank"></textarea>
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb3TransHis.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb3TransHis.insertTs" class="meta"></span><input type="hidden" id="Tb3TransHis.insertTs" name="Tb3TransHis.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb3TransHis.insertUserId}" class="meta">作成者</label><span id="Tb3TransHis.insertUserId" class="meta"></span><input type="hidden" id="Tb3TransHis.insertUserId" name="Tb3TransHis.insertUserId" class="meta"/>
+          <span id="Tb3TransHis.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb3TransHis.insertUserId" data-destDef="Tb3TransHis.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb3TransHis.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb3TransHis.updateTs" class="meta"></span><input type="hidden" id="Tb3TransHis.updateTs" name="Tb3TransHis.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb3TransHis.updateUserId}" class="meta">更新者</label><span id="Tb3TransHis.updateUserId" class="meta"></span><input type="hidden" id="Tb3TransHis.updateUserId" name="Tb3TransHis.updateUserId" class="meta"/>
+          <span id="Tb3TransHis.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb3TransHis.updateUserId" data-destDef="Tb3TransHis.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshTb3TransHis" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{Tb3TransHisGet.xlsx(baseMei=#{Tb3TransHis.h2})}" id="Tb3TransHisGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteTb3TransHis" type="submit" class="delete" data-action="Tb3TransHisDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistTb3TransHis" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

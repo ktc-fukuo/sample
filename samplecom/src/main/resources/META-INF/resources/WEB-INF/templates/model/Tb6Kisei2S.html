@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb6Kisei2S.title}">寄生</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb6Kisei2GridColumns.js}"></script>
+<script th:src="@{/model/Tb6OrgGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/Tb6OrgDetGridColumns.js}"></script>
+<script th:src="@{/model/Tb6Derive1GridColumns.js}"></script>
+<script th:src="@{/model/Tb6Derive1DetGridColumns.js}"></script>
+<script th:src="@{/model/Tb6Derive2GridColumns.js}"></script>
+<script th:src="@{/model/Tb6Derive2DetGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb6Kisei2S.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="Tb6Kisei2SearchForm" action="Tb6Kisei2Search.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{Tb6Kisei2S.legend}">legend</legend>
+        <div id="kisei2Id">
+          <label for="Tb6Kisei2.kisei2Id" th:text="#{Tb6Kisei2.kisei2Id}">寄生２ID</label><input type="text" id="Tb6Kisei2.kisei2Id" name="Tb6Kisei2.kisei2Id" maxlength="10" />
+        </div>
+        <div id="orgInfo">
+          <label for="Tb6Kisei2.orgInfo" th:text="#{Tb6Kisei2.orgInfo}">起源情報</label><input type="text" id="Tb6Kisei2.orgInfo" name="Tb6Kisei2.orgInfo" maxlength="300" />
+        </div>
+        <div id="orgId">
+          <label for="Tb6Kisei2.orgId" th:text="#{Tb6Kisei2.orgId}">起源ID</label><input type="text" id="Tb6Kisei2.orgId" name="Tb6Kisei2.orgId" maxlength="10" /><a id="Tb6Kisei2.orgId" th:href="@{/model/Tb6OrgS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetTb6Kisei2" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/Tb6Kisei2.html}" target="dialog" id="Tb6Kisei2" class="anew" th:text="#{Tb6Kisei2.add}" tabindex="-1">寄生</a>
+      </div>
+      <div class="submits">
+        <button id="SearchTb6Kisei2" type="submit" class="search" data-gridId="Tb6Kisei2Grid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="Tb6Kisei2SRegistForm" action="Tb6Kisei2SRegist.ajax" class="regist">
+      <h3 th:text="#{Tb6Kisei2.h3}">h3</h3>
+      <div id="Tb6Kisei2Grid" data-selectionMode="checkbox" data-addRow="true" data-frozenColumn="0" th:data-href="@{/model/Tb6Kisei2.html}"></div>
+      <div id="Tb6Kisei2Pager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetTb6Kisei2S" th:text="#{common.reset}" onClick="Base.listReset('Tb6Kisei2');">reset</button>
+        <a th:href="@{Tb6Kisei2Search.xlsx(baseMei=#{Tb6Kisei2S.h2})}" id="Tb6Kisei2Search.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a th:href="@{/model/Tb6Org.html}" id="Tb6Org" target="dialog" th:text="#{Tb6Org.sum}" class="summary" tabindex="-1">起源</a>
+        <a id="Tb6Kisei2Grid.orgId" th:href="@{/model/Tb6OrgS.html}" target="dialog" class="refer" th:text="'起源' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <button type="submit" id="DeleteTb6Kisei2S" data-action="Tb6Kisei2SDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+      </div>
+      <div class="submits">
+        <button id="RegistTb6Kisei2S" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

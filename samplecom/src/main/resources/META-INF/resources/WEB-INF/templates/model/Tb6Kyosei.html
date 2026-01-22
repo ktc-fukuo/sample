@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb6Kyosei.title}">共生</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb6KyoseiGridColumns.js}"></script>
+<script th:src="@{/model/Tb6PrevGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/Tb6PrevDetGridColumns.js}"></script>
+<script th:src="@{/model/Tb6RebornGridColumns.js}"></script>
+<script th:src="@{/model/Tb6RebornDetGridColumns.js}"></script>
+<script th:src="@{/model/Tb6KiseiGridColumns.js}"></script>
+<script th:src="@{/model/Tb6OrgGridColumns.js}"></script>
+<script th:src="@{/model/Tb6OrgDetGridColumns.js}"></script>
+<script th:src="@{/model/Tb6Derive1GridColumns.js}"></script>
+<script th:src="@{/model/Tb6Derive1DetGridColumns.js}"></script>
+<script th:src="@{/model/Tb6Derive2GridColumns.js}"></script>
+<script th:src="@{/model/Tb6Derive2DetGridColumns.js}"></script>
+<script th:src="@{/model/Tb6Kisei2GridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb6Kyosei.h2}">h2</h2>
+    <form name="Tb6KyoseiRegistForm" action="Tb6KyoseiRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{Tb6Kyosei.legend}">legend</legend>
+        <div id="kyoseiId">
+          <label for="Tb6Kyosei.kyoseiId" th:text="#{Tb6Kyosei.kyoseiId}">共生ID</label><input type="text" id="Tb6Kyosei.kyoseiId" name="Tb6Kyosei.kyoseiId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="prevId">
+          <label for="Tb6Kyosei.prevId" th:text="#{Tb6Kyosei.prevId}">前世ID</label><input type="text" id="Tb6Kyosei.prevId" name="Tb6Kyosei.prevId" maxlength="10" class=" refer notblank" /><a id="Tb6Kyosei.prevId" th:href="@{/model/Tb6PrevS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a>
+        </div>
+        <div id="prevInfo">
+          <label for="Tb6Kyosei.prevInfo" th:text="#{Tb6Kyosei.prevInfo}">前世情報</label><input type="text" id="Tb6Kyosei.prevInfo" name="Tb6Kyosei.prevInfo" maxlength="300" />
+        </div>
+        <div id="orgId">
+          <label for="Tb6Kyosei.orgId" th:text="#{Tb6Kyosei.orgId}">起源ID</label><input type="text" id="Tb6Kyosei.orgId" name="Tb6Kyosei.orgId" maxlength="10" class=" refer notblank" /><a id="Tb6Kyosei.orgId" th:href="@{/model/Tb6OrgS.html}" target="dialog" class=" refer" th:text="#{common.refer}" tabindex="-1">...</a>
+        </div>
+        <div id="orgInfo">
+          <label for="Tb6Kyosei.orgInfo" th:text="#{Tb6Kyosei.orgInfo}">起源情報</label><input type="text" id="Tb6Kyosei.orgInfo" name="Tb6Kyosei.orgInfo" maxlength="300" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb6Kyosei.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb6Kyosei.insertTs" class="meta"></span><input type="hidden" id="Tb6Kyosei.insertTs" name="Tb6Kyosei.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb6Kyosei.insertUserId}" class="meta">作成者</label><span id="Tb6Kyosei.insertUserId" class="meta"></span><input type="hidden" id="Tb6Kyosei.insertUserId" name="Tb6Kyosei.insertUserId" class="meta"/>
+          <span id="Tb6Kyosei.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb6Kyosei.insertUserId" data-destDef="Tb6Kyosei.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb6Kyosei.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb6Kyosei.updateTs" class="meta"></span><input type="hidden" id="Tb6Kyosei.updateTs" name="Tb6Kyosei.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb6Kyosei.updateUserId}" class="meta">更新者</label><span id="Tb6Kyosei.updateUserId" class="meta"></span><input type="hidden" id="Tb6Kyosei.updateUserId" name="Tb6Kyosei.updateUserId" class="meta"/>
+          <span id="Tb6Kyosei.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb6Kyosei.updateUserId" data-destDef="Tb6Kyosei.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshTb6Kyosei" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{Tb6KyoseiGet.xlsx(baseMei=#{Tb6Kyosei.h2})}" id="Tb6KyoseiGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteTb6Kyosei" type="submit" class="delete" data-action="Tb6KyoseiDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistTb6Kyosei" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

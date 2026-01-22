@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb3TransHisS.title}">変遷履歴</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb3TransHisGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/Tb3TransGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb3TransHisS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="Tb3TransHisSearchForm" action="Tb3TransHisSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{Tb3TransHisS.legend}">legend</legend>
+        <div id="transId">
+          <label for="Tb3TransHis.transId" th:text="#{Tb3TransHis.transId}">変遷ID</label><input type="text" id="Tb3TransHis.transId" name="Tb3TransHis.transId" maxlength="10" />
+        </div>
+        <div id="transBn">
+          <label for="Tb3TransHis.transBn" th:text="#{Tb3TransHis.transBn}">変遷枝番</label><input type="text" id="Tb3TransHis.transBn" name="Tb3TransHis.transBn" maxlength="10" />
+        </div>
+        <div id="transInfo">
+          <label for="Tb3TransHis.transInfo" th:text="#{Tb3TransHis.transInfo}">変遷情報</label><input type="text" id="Tb3TransHis.transInfo" name="Tb3TransHis.transInfo" maxlength="300" />
+        </div>
+        <div id="riyuTx">
+          <label for="Tb3TransHis.riyuTx" th:text="#{Tb3TransHis.riyuTx}">変更理由</label><input type="text" id="Tb3TransHis.riyuTx" name="Tb3TransHis.riyuTx" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetTb3TransHis" th:text="#{common.reset}" class="reset">reset</button>
+      </div>
+      <div class="submits">
+        <button id="SearchTb3TransHis" type="submit" class="search" data-gridId="Tb3TransHisGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="Tb3TransHisSRegistForm" action="Tb3TransHisSRegist.ajax" class="regist">
+      <h3 th:text="#{Tb3TransHis.h3}">h3</h3>
+      <div id="Tb3TransHisGrid" data-selectionMode="checkbox" data-frozenColumn="1" th:data-href="@{/model/Tb3TransHis.html}"></div>
+      <div id="Tb3TransHisPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetTb3TransHisS" th:text="#{common.reset}" onClick="Base.listReset('Tb3TransHis');">reset</button>
+        <a th:href="@{Tb3TransHisSearch.xlsx(baseMei=#{Tb3TransHisS.h2})}" id="Tb3TransHisSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <button type="submit" id="DeleteTb3TransHisS" data-action="Tb3TransHisSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+      </div>
+      <div class="submits">
+        <button id="RegistTb3TransHisS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

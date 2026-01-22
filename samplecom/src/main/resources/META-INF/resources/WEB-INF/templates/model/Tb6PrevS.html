@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb6PrevS.title}">前世</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb6PrevGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/Tb6PrevDetGridColumns.js}"></script>
+<script th:src="@{/model/Tb6RebornGridColumns.js}"></script>
+<script th:src="@{/model/Tb6RebornDetGridColumns.js}"></script>
+<script th:src="@{/model/Tb6KiseiGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb6PrevS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="Tb6PrevSearchForm" action="Tb6PrevSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{Tb6PrevS.legend}">legend</legend>
+        <div id="prevId">
+          <label for="Tb6Prev.prevId" th:text="#{Tb6Prev.prevId}">前世ID</label><input type="text" id="Tb6Prev.prevId" name="Tb6Prev.prevId" maxlength="10" />
+        </div>
+        <div id="prevInfo">
+          <label for="Tb6Prev.prevInfo" th:text="#{Tb6Prev.prevInfo}">前世情報</label><input type="text" id="Tb6Prev.prevInfo" name="Tb6Prev.prevInfo" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetTb6Prev" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/Tb6Prev.html}" target="dialog" id="Tb6Prev" class="anew" th:text="#{Tb6Prev.add}" tabindex="-1">前世</a>
+      </div>
+      <div class="submits">
+        <button id="SearchTb6Prev" type="submit" class="search" data-gridId="Tb6PrevGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="Tb6PrevSRegistForm" action="Tb6PrevSRegist.ajax" class="regist">
+      <h3 th:text="#{Tb6Prev.h3}">h3</h3>
+      <div id="Tb6PrevGrid" data-selectionMode="checkbox" data-frozenColumn="0" data-editable="false" th:data-href="@{/model/Tb6Prev.html}"></div>
+      <div id="Tb6PrevPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetTb6PrevS" th:text="#{common.reset}" onClick="Base.listReset('Tb6Prev');">reset</button>
+        <a th:href="@{Tb6PrevSearch.xlsx(baseMei=#{Tb6PrevS.h2})}" id="Tb6PrevSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

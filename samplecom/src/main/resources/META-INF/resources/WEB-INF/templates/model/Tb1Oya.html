@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb1Oya.title}">親</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb1OyaGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/Tb1DinksGridColumns.js}"></script>
+<script th:src="@{/model/Tb4MagoGridColumns.js}"></script>
+<script th:src="@{/model/Tb1KoGridColumns.js}"></script>
+<script th:src="@{/model/Tb1OrphanGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb1Oya.h2}">h2</h2>
+    <form name="Tb1OyaRegistForm" action="Tb1OyaRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{Tb1Oya.legend}">legend</legend>
+        <div id="oyaId">
+          <label for="Tb1Oya.oyaId" th:text="#{Tb1Oya.oyaId}">親ID</label><input type="text" id="Tb1Oya.oyaId" name="Tb1Oya.oyaId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="oyaInfo">
+          <label for="Tb1Oya.oyaInfo" th:text="#{Tb1Oya.oyaInfo}">親情報</label><input type="text" id="Tb1Oya.oyaInfo" name="Tb1Oya.oyaInfo" maxlength="300" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb1Oya.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb1Oya.insertTs" class="meta"></span><input type="hidden" id="Tb1Oya.insertTs" name="Tb1Oya.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb1Oya.insertUserId}" class="meta">作成者</label><span id="Tb1Oya.insertUserId" class="meta"></span><input type="hidden" id="Tb1Oya.insertUserId" name="Tb1Oya.insertUserId" class="meta"/>
+          <span id="Tb1Oya.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb1Oya.insertUserId" data-destDef="Tb1Oya.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb1Oya.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb1Oya.updateTs" class="meta"></span><input type="hidden" id="Tb1Oya.updateTs" name="Tb1Oya.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb1Oya.updateUserId}" class="meta">更新者</label><span id="Tb1Oya.updateUserId" class="meta"></span><input type="hidden" id="Tb1Oya.updateUserId" name="Tb1Oya.updateUserId" class="meta"/>
+          <span id="Tb1Oya.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb1Oya.updateUserId" data-destDef="Tb1Oya.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <h3 th:text="#{Tb1Dinks.h3}">h3</h3>
+      <a th:href="@{/model/Tb1Dinks.html}" id="Tb1Dinks" target="dialog" th:text="#{Tb1Dinks.add}" class="addChild" tabindex="-1">子なし</a>
+      <div id="Tb1DinksGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/Tb1Dinks.html}" class="childs"></div>
+      <h3 th:text="#{Tb1Ko.h3}">h3</h3>
+      <a th:href="@{/model/Tb1Ko.html}" id="Tb1Ko" target="dialog" th:text="#{Tb1Ko.add}" class="addChild" tabindex="-1">子</a>
+      <div id="Tb1KoGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/Tb1Ko.html}" class="childs"></div>
+      <h3 th:text="#{Tb1Orphan.h3}">h3</h3>
+      <a th:href="@{/model/Tb1Orphan.html}" id="Tb1Orphan" target="dialog" th:text="#{Tb1Orphan.add}" class="addChild" tabindex="-1">孤児</a>
+      <div id="Tb1OrphanGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/Tb1Orphan.html}" class="childs"></div>
+      <div class="buttons">
+        <button type="button" id="RefreshTb1Oya" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{Tb1OyaGet.xlsx(baseMei=#{Tb1Oya.h2})}" id="Tb1OyaGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteTb1Oya" type="submit" class="delete" data-action="Tb1OyaDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistTb1Oya" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Mb4Cd.title}">CDマスタ</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Mb4CdGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Mb4Cd.h2}">h2</h2>
+    <form name="Mb4CdRegistForm" action="Mb4CdRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{Mb4Cd.legend}">legend</legend>
+        <div id="refCd">
+          <label for="Mb4Cd.refCd" th:text="#{Mb4Cd.refCd}">参照CD</label><input type="text" id="Mb4Cd.refCd" name="Mb4Cd.refCd" maxlength="10" class=" primaryKey notblank" />
+        </div>
+        <div id="refMei">
+          <label for="Mb4Cd.refMei" th:text="#{Mb4Cd.refMei}">参照名</label><input type="text" id="Mb4Cd.refMei" name="Mb4Cd.refMei" maxlength="60" class=" notblank" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Mb4Cd.insertTs}" class="meta">作成タイムスタンプ</label><span id="Mb4Cd.insertTs" class="meta"></span><input type="hidden" id="Mb4Cd.insertTs" name="Mb4Cd.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Mb4Cd.insertUserId}" class="meta">作成者</label><span id="Mb4Cd.insertUserId" class="meta"></span><input type="hidden" id="Mb4Cd.insertUserId" name="Mb4Cd.insertUserId" class="meta"/>
+          <span id="Mb4Cd.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Mb4Cd.insertUserId" data-destDef="Mb4Cd.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Mb4Cd.updateTs}" class="meta">更新タイムスタンプ</label><span id="Mb4Cd.updateTs" class="meta"></span><input type="hidden" id="Mb4Cd.updateTs" name="Mb4Cd.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Mb4Cd.updateUserId}" class="meta">更新者</label><span id="Mb4Cd.updateUserId" class="meta"></span><input type="hidden" id="Mb4Cd.updateUserId" name="Mb4Cd.updateUserId" class="meta"/>
+          <span id="Mb4Cd.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Mb4Cd.updateUserId" data-destDef="Mb4Cd.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshMb4Cd" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{Mb4CdGet.xlsx(baseMei=#{Mb4Cd.h2})}" id="Mb4CdGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteMb4Cd" type="submit" class="delete" data-action="Mb4CdDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistMb4Cd" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

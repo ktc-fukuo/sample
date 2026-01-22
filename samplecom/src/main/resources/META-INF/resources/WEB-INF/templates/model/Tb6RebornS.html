@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb6RebornS.title}">転生</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb6RebornGridColumns.js}"></script>
+<script th:src="@{/model/Tb6PrevGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/Tb6PrevDetGridColumns.js}"></script>
+<script th:src="@{/model/Tb6KiseiGridColumns.js}"></script>
+<script th:src="@{/model/Tb6RebornDetGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb6RebornS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="Tb6RebornSearchForm" action="Tb6RebornSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{Tb6RebornS.legend}">legend</legend>
+        <div id="rebornId">
+          <label for="Tb6Reborn.rebornId" th:text="#{Tb6Reborn.rebornId}">転生ID</label><input type="text" id="Tb6Reborn.rebornId" name="Tb6Reborn.rebornId" maxlength="10" />
+        </div>
+        <div id="prevInfo">
+          <label for="Tb6Reborn.prevInfo" th:text="#{Tb6Reborn.prevInfo}">前世情報</label><input type="text" id="Tb6Reborn.prevInfo" name="Tb6Reborn.prevInfo" maxlength="300" />
+        </div>
+        <div id="prevId">
+          <label for="Tb6Reborn.prevId" th:text="#{Tb6Reborn.prevId}">前世ID</label><input type="text" id="Tb6Reborn.prevId" name="Tb6Reborn.prevId" maxlength="10" /><a id="Tb6Reborn.prevId" th:href="@{/model/Tb6PrevS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetTb6Reborn" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/Tb6Reborn.html}" target="dialog" id="Tb6Reborn" class="anew" th:text="#{Tb6Reborn.add}" tabindex="-1">転生</a>
+      </div>
+      <div class="submits">
+        <button id="SearchTb6Reborn" type="submit" class="search" data-gridId="Tb6RebornGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="Tb6RebornSRegistForm" action="Tb6RebornSRegist.ajax" class="regist">
+      <h3 th:text="#{Tb6Reborn.h3}">h3</h3>
+      <div id="Tb6RebornGrid" data-selectionMode="checkbox" data-frozenColumn="0" data-editable="false" th:data-href="@{/model/Tb6Reborn.html}"></div>
+      <div id="Tb6RebornPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetTb6RebornS" th:text="#{common.reset}" onClick="Base.listReset('Tb6Reborn');">reset</button>
+        <a th:href="@{Tb6RebornSearch.xlsx(baseMei=#{Tb6RebornS.h2})}" id="Tb6RebornSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a id="Tb6RebornGrid.prevId" th:href="@{/model/Tb6PrevS.html}" target="dialog" class="refer" th:text="'前世' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+      </div>
+      <div class="submits">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

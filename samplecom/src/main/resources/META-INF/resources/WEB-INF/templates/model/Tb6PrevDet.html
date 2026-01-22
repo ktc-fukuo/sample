@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Tb6PrevDet.title}">前世明細</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Tb6PrevDetGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/Tb6PrevGridColumns.js}"></script>
+<script th:src="@{/model/Tb6RebornGridColumns.js}"></script>
+<script th:src="@{/model/Tb6RebornDetGridColumns.js}"></script>
+<script th:src="@{/model/Tb6KiseiGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Tb6PrevDet.h2}">h2</h2>
+    <form name="Tb6PrevDetRegistForm" action="Tb6PrevDetRegist.ajax" class="regist">
+      <fieldset class="parent">
+        <legend th:text="#{Tb6Prev.legend}">legend</legend>
+        <div id="prevId">
+          <label for="Tb6Prev.prevId" th:text="#{Tb6Prev.prevId}">前世ID</label><input type="text" id="Tb6Prev.prevId" name="Tb6Prev.prevId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="prevInfo">
+          <label for="Tb6Prev.prevInfo" th:text="#{Tb6Prev.prevInfo}">前世情報</label><input type="text" id="Tb6Prev.prevInfo" name="Tb6Prev.prevInfo" maxlength="300" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb6Prev.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb6Prev.insertTs" class="meta"></span><input type="hidden" id="Tb6Prev.insertTs" name="Tb6Prev.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb6Prev.insertUserId}" class="meta">作成者</label><span id="Tb6Prev.insertUserId" class="meta"></span><input type="hidden" id="Tb6Prev.insertUserId" name="Tb6Prev.insertUserId" class="meta"/>
+          <span id="Tb6Prev.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb6Prev.insertUserId" data-destDef="Tb6Prev.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb6Prev.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb6Prev.updateTs" class="meta"></span><input type="hidden" id="Tb6Prev.updateTs" name="Tb6Prev.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb6Prev.updateUserId}" class="meta">更新者</label><span id="Tb6Prev.updateUserId" class="meta"></span><input type="hidden" id="Tb6Prev.updateUserId" name="Tb6Prev.updateUserId" class="meta"/>
+          <span id="Tb6Prev.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb6Prev.updateUserId" data-destDef="Tb6Prev.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend th:text="#{Tb6PrevDet.legend}">legend</legend>
+        <div id="prevId">
+          <label for="Tb6PrevDet.prevId" th:text="#{Tb6PrevDet.prevId}">前世ID</label><input type="text" id="Tb6PrevDet.prevId" name="Tb6PrevDet.prevId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="prevBn">
+          <label for="Tb6PrevDet.prevBn" th:text="#{Tb6PrevDet.prevBn}">前世枝番</label><input type="text" id="Tb6PrevDet.prevBn" name="Tb6PrevDet.prevBn" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="detInfo">
+          <label for="Tb6PrevDet.detInfo" th:text="#{Tb6PrevDet.detInfo}">明細情報</label><input type="text" id="Tb6PrevDet.detInfo" name="Tb6PrevDet.detInfo" maxlength="300" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{Tb6PrevDet.insertTs}" class="meta">作成タイムスタンプ</label><span id="Tb6PrevDet.insertTs" class="meta"></span><input type="hidden" id="Tb6PrevDet.insertTs" name="Tb6PrevDet.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{Tb6PrevDet.insertUserId}" class="meta">作成者</label><span id="Tb6PrevDet.insertUserId" class="meta"></span><input type="hidden" id="Tb6PrevDet.insertUserId" name="Tb6PrevDet.insertUserId" class="meta"/>
+          <span id="Tb6PrevDet.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb6PrevDet.insertUserId" data-destDef="Tb6PrevDet.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{Tb6PrevDet.updateTs}" class="meta">更新タイムスタンプ</label><span id="Tb6PrevDet.updateTs" class="meta"></span><input type="hidden" id="Tb6PrevDet.updateTs" name="Tb6PrevDet.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{Tb6PrevDet.updateUserId}" class="meta">更新者</label><span id="Tb6PrevDet.updateUserId" class="meta"></span><input type="hidden" id="Tb6PrevDet.updateUserId" name="Tb6PrevDet.updateUserId" class="meta"/>
+          <span id="Tb6PrevDet.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb6PrevDet.updateUserId" data-destDef="Tb6PrevDet.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshTb6PrevDet" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{Tb6PrevDetGet.xlsx(baseMei=#{Tb6PrevDet.h2})}" id="Tb6PrevDetGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteTb6PrevDet" type="submit" class="delete" data-action="Tb6PrevDetDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistTb6PrevDet" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

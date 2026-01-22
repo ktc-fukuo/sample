@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{Mb5Ref2S.title}">マスタ参照２</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/Mb5Ref2GridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{Mb5Ref2S.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="Mb5Ref2SearchForm" action="Mb5Ref2Search.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{Mb5Ref2S.legend}">legend</legend>
+        <div id="ref1Id" class="stint" style="display: none;">
+          <label th:text="#{Mb5Ref1.ref1Id}">参照１ID</label><span id="Mb5Ref1.ref1Id" class="stint"></span><input type="hidden" id="Mb5Ref1.ref1Id" name="Mb5Ref1.ref1Id" class="stint" />
+          <span id="Mb5Ref2.ref1Mei" class="refer" data-json="Mb5Ref1Search.json" data-srcDef="REF1_ID:Mb5Ref2.ref1Id" data-destDef="Mb5Ref2.ref1Mei:REF1_MEI"></span>
+        </div>
+        <div id="ref2Id">
+          <label for="Mb5Ref2.ref2Id" th:text="#{Mb5Ref2.ref2Id}">参照２ID</label><input type="text" id="Mb5Ref2.ref2Id" name="Mb5Ref2.ref2Id" maxlength="10" />
+        </div>
+        <div id="ref2Mei">
+          <label for="Mb5Ref2.ref2Mei" th:text="#{Mb5Ref2.ref2Mei}">参照２名</label><input type="text" id="Mb5Ref2.ref2Mei" name="Mb5Ref2.ref2Mei" maxlength="60" />
+        </div>
+        <div id="deleteF">
+          <fieldset id="Mb5Ref2.deleteFList" data-options="MsyKbnValSearch.json" data-optionParams="KBN_NM:DELETE_F" data-optionValue="KBN_VAL" data-optionLabel="KBN_VAL_MEI">
+            <legend th:text="#{Mb5Ref2.deleteF}">削除フラグ</legend>
+          </fieldset>
+        </div>
+        <div id="tekiyoBi">
+          <label for="Mb5Ref2.tekiyoBi_1" th:text="#{Mb5Ref2.tekiyoBi}">適用日</label><input type="text" id="Mb5Ref2.tekiyoBi_1" name="Mb5Ref2.tekiyoBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="Mb5Ref2.tekiyoBi_2" name="Mb5Ref2.tekiyoBi_2" maxlength="10" class=" datepicker" />
+        </div>
+        <div id="haishiBi">
+          <label for="Mb5Ref2.haishiBi_1" th:text="#{Mb5Ref2.haishiBi}">廃止日</label><input type="text" id="Mb5Ref2.haishiBi_1" name="Mb5Ref2.haishiBi_1" maxlength="10" class=" datepicker" />～<input type="text" id="Mb5Ref2.haishiBi_2" name="Mb5Ref2.haishiBi_2" maxlength="10" class=" datepicker" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetMb5Ref2" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/Mb5Ref2.html}" target="dialog" id="Mb5Ref2" class="anew" th:text="#{Mb5Ref2.add}" tabindex="-1">マスタ参照２</a>
+      </div>
+      <div class="submits">
+        <button id="SearchMb5Ref2" type="submit" class="search" data-gridId="Mb5Ref2Grid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="Mb5Ref2SRegistForm" action="Mb5Ref2SRegist.ajax" class="regist">
+      <h3 th:text="#{Mb5Ref2.h3}">h3</h3>
+      <div id="Mb5Ref2Grid" data-selectionMode="checkbox" data-addRow="true" data-frozenColumn="0" th:data-href="@{/model/Mb5Ref2.html}"></div>
+      <div id="Mb5Ref2Pager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetMb5Ref2S" th:text="#{common.reset}" onClick="Base.listReset('Mb5Ref2');">reset</button>
+        <a th:href="@{Mb5Ref2Search.xlsx(baseMei=#{Mb5Ref2S.h2})}" id="Mb5Ref2Search.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="RegistMb5Ref2S" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
