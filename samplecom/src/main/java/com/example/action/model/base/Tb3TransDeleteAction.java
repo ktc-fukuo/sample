@@ -32,17 +32,6 @@ public class Tb3TransDeleteAction extends BaseAction {
         }
 
         Tb3Trans e = FormValidator.toBean(Tb3Trans.class.getName(), postJson);
-
-        java.util.List<com.example.entity.Tb3TransHis> tb3TransHiss = e.referTb3TransHiss();
-        if (tb3TransHiss != null) {
-            for (com.example.entity.Tb3TransHis tb3TransHis : tb3TransHiss) {
-
-                if (tb3TransHis.delete() != 1) {
-                    throw new OptLockError("error.cant.delete", "変遷履歴");
-                }
-            }
-        }
-
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "変遷");
         }

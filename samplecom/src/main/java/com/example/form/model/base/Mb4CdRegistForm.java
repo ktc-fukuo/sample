@@ -22,33 +22,33 @@ public class Mb4CdRegistForm implements IForm {
     @jakarta.validation.constraints.NotBlank
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([\\-0-9A-Za-z]{1,10})?")
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    private String refCd;
+    private String cdrefCd;
 
     /** @return 参照CD */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public String getRefCd() {
-        return refCd;
+    public String getCdrefCd() {
+        return cdrefCd;
     }
 
     /** @param p 参照CD */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public void setRefCd(final String p) {
-        this.refCd = p;
+    public void setCdrefCd(final String p) {
+        this.cdrefCd = p;
     }
 
-    /** 参照名 */
+    /** CD参照名 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
     @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 60)
-    private String refMei;
+    private String cdrefMei;
 
-    /** @return 参照名 */
-    public String getRefMei() {
-        return refMei;
+    /** @return CD参照名 */
+    public String getCdrefMei() {
+        return cdrefMei;
     }
 
-    /** @param p 参照名 */
-    public void setRefMei(final String p) {
-        this.refMei = p;
+    /** @param p CD参照名 */
+    public void setCdrefMei(final String p) {
+        this.cdrefMei = p;
     }
 
     /** 更新タイムスタンプ */

@@ -66,24 +66,6 @@ public class Tb3TransRegistForm implements IForm {
         this.updateTs = p;
     }
 
-    /** 変遷履歴 */
-    @jakarta.validation.Valid
-    private java.util.List<Tb3TransHisRegistForm> tb3TransHisGrid;
-
-    /**
-     * @return 変遷履歴
-     */
-    public java.util.List<Tb3TransHisRegistForm> getTb3TransHisGrid() {
-        return tb3TransHisGrid;
-    }
-
-    /**
-     * @param p
-     */
-    public void setTb3TransHisGrid(final java.util.List<Tb3TransHisRegistForm> p) {
-        this.tb3TransHisGrid = p;
-    }
-
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {

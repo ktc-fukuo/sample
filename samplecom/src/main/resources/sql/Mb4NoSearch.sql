@@ -1,6 +1,6 @@
 SELECT
-      TRIM(TRAILING ' ' FROM a.`REF_NO`) AS `REF_NO`
-    , a.`REF_MEI`
+      TRIM(TRAILING ' ' FROM a.`NOREF_NO`) AS `NOREF_NO`
+    , a.`NOREF_MEI`
     , a.`INSERT_TS` AS `INSERT_TS`
     , a.`INSERT_USER_ID`
     , (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`
@@ -11,9 +11,9 @@ FROM
     MB4_NO a 
 WHERE
     1 = 1 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`REF_NO`)) = UPPER (:ref_no_full) 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`REF_NO`)) LIKE UPPER (CONCAT ('%', :ref_no, '%')) 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`REF_MEI`)) LIKE UPPER (CONCAT ('%', :ref_mei, '%')) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a.`NOREF_NO`)) = UPPER (:noref_no_full) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a.`NOREF_NO`)) LIKE UPPER (CONCAT ('%', :noref_no, '%')) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a.`NOREF_MEI`)) LIKE UPPER (CONCAT ('%', :noref_mei, '%')) 
     AND a.`INSERT_TS` = :insert_ts 
     AND a.`INSERT_TS` >= :insert_ts_1 
     AND a.`INSERT_TS` <= :insert_ts_2 
@@ -23,4 +23,4 @@ WHERE
     AND a.`UPDATE_TS` <= :update_ts_2 
     AND a.`UPDATE_USER_ID` = :update_user_id 
 ORDER BY
-    a.`REF_NO`
+    a.`NOREF_NO`

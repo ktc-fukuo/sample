@@ -22,33 +22,33 @@ public class Mb4NoRegistForm implements IForm {
     @jakarta.validation.constraints.NotBlank
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{1,10})?")
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    private String refNo;
+    private String norefNo;
 
     /** @return 参照NO */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public String getRefNo() {
-        return refNo;
+    public String getNorefNo() {
+        return norefNo;
     }
 
     /** @param p 参照NO */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public void setRefNo(final String p) {
-        this.refNo = p;
+    public void setNorefNo(final String p) {
+        this.norefNo = p;
     }
 
-    /** 参照名 */
+    /** NO参照名 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
     @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 60)
-    private String refMei;
+    private String norefMei;
 
-    /** @return 参照名 */
-    public String getRefMei() {
-        return refMei;
+    /** @return NO参照名 */
+    public String getNorefMei() {
+        return norefMei;
     }
 
-    /** @param p 参照名 */
-    public void setRefMei(final String p) {
-        this.refMei = p;
+    /** @param p NO参照名 */
+    public void setNorefMei(final String p) {
+        this.norefMei = p;
     }
 
     /** 更新タイムスタンプ */

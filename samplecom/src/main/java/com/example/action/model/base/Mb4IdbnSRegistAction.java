@@ -40,10 +40,10 @@ public class Mb4IdbnSRegistAction extends BaseAction {
 
                 // 主キーが不足していたらINSERT
                 boolean isNew = false;
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getRefId())) {
+                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getIdbnId())) {
                     isNew = true;
                 }
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getRefBn())) {
+                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getIdbnBn())) {
                     isNew = true;
                 }
                 // 楽観ロック値がなくてもINSERT

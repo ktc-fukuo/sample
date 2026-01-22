@@ -41,10 +41,6 @@ public class Tb3TransHisGetAction extends BaseAction {
             isAllKey = false;
         }
 
-        // 親モデルの取得
-        com.example.entity.Tb3Trans tb3Trans = com.example.entity.Tb3Trans.get(transId);
-        map.put("Tb3Trans", tb3Trans);
-
         // 主キーが不足していたら終了
         if (!isAllKey) {
             return map;

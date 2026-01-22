@@ -21,33 +21,33 @@ public class Mb4IdRegistForm implements IForm {
     /** 参照ID */
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    private String refId;
+    private String idrefId;
 
     /** @return 参照ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public String getRefId() {
-        return refId;
+    public String getIdrefId() {
+        return idrefId;
     }
 
     /** @param p 参照ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public void setRefId(final String p) {
-        this.refId = p;
+    public void setIdrefId(final String p) {
+        this.idrefId = p;
     }
 
-    /** 参照名 */
+    /** ID参照名 */
     @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Regist.class)
     @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 60)
-    private String refMei;
+    private String idrefMei;
 
-    /** @return 参照名 */
-    public String getRefMei() {
-        return refMei;
+    /** @return ID参照名 */
+    public String getIdrefMei() {
+        return idrefMei;
     }
 
-    /** @param p 参照名 */
-    public void setRefMei(final String p) {
-        this.refMei = p;
+    /** @param p ID参照名 */
+    public void setIdrefMei(final String p) {
+        this.idrefMei = p;
     }
 
     /** 更新タイムスタンプ */
@@ -65,24 +65,6 @@ public class Mb4IdRegistForm implements IForm {
     @jp.co.golorp.emarf.validation.OptLock
     public void setUpdateTs(final String p) {
         this.updateTs = p;
-    }
-
-    /** ID連番マスタ */
-    @jakarta.validation.Valid
-    private java.util.List<Mb4IdbnRegistForm> mb4IdbnGrid;
-
-    /**
-     * @return ID連番マスタ
-     */
-    public java.util.List<Mb4IdbnRegistForm> getMb4IdbnGrid() {
-        return mb4IdbnGrid;
-    }
-
-    /**
-     * @param p
-     */
-    public void setMb4IdbnGrid(final java.util.List<Mb4IdbnRegistForm> p) {
-        this.mb4IdbnGrid = p;
     }
 
     /** 関連チェック */

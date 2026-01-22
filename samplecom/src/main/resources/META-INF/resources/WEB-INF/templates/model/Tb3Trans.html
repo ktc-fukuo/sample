@@ -10,7 +10,6 @@
 </script>
 <script th:src="@{/model/Tb3TransGridColumns.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
-<script th:src="@{/model/Tb3TransHisGridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -39,16 +38,13 @@
           <span id="Tb3Trans.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Tb3Trans.updateUserId" data-destDef="Tb3Trans.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
-      <h3 th:text="#{Tb3TransHis.h3}">h3</h3>
-      <a th:href="@{/model/Tb3TransHis.html}" id="Tb3TransHis" target="dialog" th:text="#{Tb3TransHis.add}" class="addChild" tabindex="-1">変遷履歴</a>
-      <div id="Tb3TransHisGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/Tb3TransHis.html}" class="childs"></div>
       <div class="buttons">
         <button type="button" id="RefreshTb3Trans" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
         <a th:href="@{Tb3TransGet.xlsx(baseMei=#{Tb3Trans.h2})}" id="Tb3TransGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
       </div>
       <div class="submits">
         <button id="DeleteTb3Trans" type="submit" class="delete" data-action="Tb3TransDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
-        <button id="RegistTb3Trans" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+        <button id="RegistTb3Trans" type="submit" class="regist" th:text="#{common.regist}" onclick="if (!Base.historyReason(this)) { return false; }">登録</button>
       </div>
     </form>
   </div>

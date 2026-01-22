@@ -28,7 +28,7 @@ public class Mb4CdRegistAction extends BaseAction {
 
         // 主キーが不足していたらINSERT
         boolean isNew = false;
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getRefCd())) {
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getCdrefCd())) {
             isNew = true;
         }
         // 楽観ロック値がなくてもINSERT

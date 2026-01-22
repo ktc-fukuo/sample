@@ -52,86 +52,72 @@ public class Tb4SaikiRegistForm implements IForm {
 
     /** 参照ID */
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
-    private String refId;
+    private String idrefId;
 
     /** @return 参照ID */
-    public String getRefId() {
-        return refId;
+    public String getIdrefId() {
+        return idrefId;
     }
 
     /** @param p 参照ID */
-    public void setRefId(final String p) {
-        this.refId = p;
+    public void setIdrefId(final String p) {
+        this.idrefId = p;
     }
 
     /** 参照CD */
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([\\-0-9A-Za-z]{1,10})?")
-    private String refCd;
+    private String cdrefCd;
 
     /** @return 参照CD */
-    public String getRefCd() {
-        return refCd;
+    public String getCdrefCd() {
+        return cdrefCd;
     }
 
     /** @param p 参照CD */
-    public void setRefCd(final String p) {
-        this.refCd = p;
+    public void setCdrefCd(final String p) {
+        this.cdrefCd = p;
     }
 
     /** 参照NO */
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{1,10})?")
-    private String refNo;
+    private String norefNo;
 
     /** @return 参照NO */
-    public String getRefNo() {
-        return refNo;
+    public String getNorefNo() {
+        return norefNo;
     }
 
     /** @param p 参照NO */
-    public void setRefNo(final String p) {
-        this.refNo = p;
+    public void setNorefNo(final String p) {
+        this.norefNo = p;
     }
 
-    /** 参照連番 */
+    /** ID連番ID */
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
-    private String refBn;
+    private String idbnId;
 
-    /** @return 参照連番 */
-    public String getRefBn() {
-        return refBn;
+    /** @return ID連番ID */
+    public String getIdbnId() {
+        return idbnId;
     }
 
-    /** @param p 参照連番 */
-    public void setRefBn(final String p) {
-        this.refBn = p;
+    /** @param p ID連番ID */
+    public void setIdbnId(final String p) {
+        this.idbnId = p;
     }
 
-    /** 別参照ID */
+    /** ID連番 */
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
-    private String exRefId;
+    private String idbnBn;
 
-    /** @return 別参照ID */
-    public String getExRefId() {
-        return exRefId;
+    /** @return ID連番 */
+    public String getIdbnBn() {
+        return idbnBn;
     }
 
-    /** @param p 別参照ID */
-    public void setExRefId(final String p) {
-        this.exRefId = p;
-    }
-
-    /** 別参照連番 */
-    @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
-    private String exRefBn;
-
-    /** @return 別参照連番 */
-    public String getExRefBn() {
-        return exRefBn;
-    }
-
-    /** @param p 別参照連番 */
-    public void setExRefBn(final String p) {
-        this.exRefBn = p;
+    /** @param p ID連番 */
+    public void setIdbnBn(final String p) {
+        this.idbnBn = p;
     }
 
     /** 親再帰ID */
@@ -171,24 +157,25 @@ public class Tb4SaikiRegistForm implements IForm {
         LOG.trace("validate() not overridden in subclasses.");
 
         // 参照ID のマスタチェック TODO できればAssertTrueにしたい
-        Map<String, Object> refIdParams = new java.util.HashMap<String, Object>();
-        refIdParams.put("refId", this.getRefId());
-        baseProcess.masterCheck(errors, "Mb4IdSearch", "refId", refIdParams, jp.co.golorp.emarf.util.Messages.get("Tb4Saiki.refId"));
+        Map<String, Object> idrefIdParams = new java.util.HashMap<String, Object>();
+        idrefIdParams.put("idrefId", this.getIdrefId());
+        baseProcess.masterCheck(errors, "Mb4IdSearch", "idrefId", idrefIdParams, jp.co.golorp.emarf.util.Messages.get("Tb4Saiki.idrefId"));
 
         // 参照CD のマスタチェック TODO できればAssertTrueにしたい
-        Map<String, Object> refCdParams = new java.util.HashMap<String, Object>();
-        refCdParams.put("refCdFull", this.getRefCd());
-        baseProcess.masterCheck(errors, "Mb4CdSearch", "refCd", refCdParams, jp.co.golorp.emarf.util.Messages.get("Tb4Saiki.refCd"));
+        Map<String, Object> cdrefCdParams = new java.util.HashMap<String, Object>();
+        cdrefCdParams.put("cdrefCdFull", this.getCdrefCd());
+        baseProcess.masterCheck(errors, "Mb4CdSearch", "cdrefCd", cdrefCdParams, jp.co.golorp.emarf.util.Messages.get("Tb4Saiki.cdrefCd"));
 
         // 参照NO のマスタチェック TODO できればAssertTrueにしたい
-        Map<String, Object> refNoParams = new java.util.HashMap<String, Object>();
-        refNoParams.put("refNoFull", this.getRefNo());
-        baseProcess.masterCheck(errors, "Mb4NoSearch", "refNo", refNoParams, jp.co.golorp.emarf.util.Messages.get("Tb4Saiki.refNo"));
+        Map<String, Object> norefNoParams = new java.util.HashMap<String, Object>();
+        norefNoParams.put("norefNoFull", this.getNorefNo());
+        baseProcess.masterCheck(errors, "Mb4NoSearch", "norefNo", norefNoParams, jp.co.golorp.emarf.util.Messages.get("Tb4Saiki.norefNo"));
 
-        // 別参照ID のマスタチェック TODO できればAssertTrueにしたい
-        Map<String, Object> exRefIdParams = new java.util.HashMap<String, Object>();
-        exRefIdParams.put("exRefId", this.getExRefId());
-        baseProcess.masterCheck(errors, "Mb4IdSearch", "exRefId", exRefIdParams, jp.co.golorp.emarf.util.Messages.get("Tb4Saiki.exRefId"));
+        // ID連番 のマスタチェック TODO できればAssertTrueにしたい
+        Map<String, Object> mb4IdbnParams = new java.util.HashMap<String, Object>();
+        mb4IdbnParams.put("idbnId", this.getIdbnId());
+        mb4IdbnParams.put("idbnBn", this.getIdbnBn());
+        baseProcess.masterCheck(errors, "Mb4IdbnSearch", "idbnBn", mb4IdbnParams, jp.co.golorp.emarf.util.Messages.get("Tb4Saiki.idbnBn"));
 
         // 親再帰ID のマスタチェック TODO できればAssertTrueにしたい
         Map<String, Object> oyaSaikiIdParams = new java.util.HashMap<String, Object>();

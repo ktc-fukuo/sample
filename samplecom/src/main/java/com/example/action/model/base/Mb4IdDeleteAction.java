@@ -23,26 +23,15 @@ public class Mb4IdDeleteAction extends BaseAction {
     public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
 
         // 主キーが不足していたらエラー
-        Object refId = postJson.get("refId");
-        if (refId == null) {
-            refId = postJson.get("Mb4Id.refId");
+        Object idrefId = postJson.get("idrefId");
+        if (idrefId == null) {
+            idrefId = postJson.get("Mb4Id.idrefId");
         }
-        if (refId == null) {
+        if (idrefId == null) {
             throw new OptLockError("error.cant.delete", "IDマスタ");
         }
 
         Mb4Id e = FormValidator.toBean(Mb4Id.class.getName(), postJson);
-
-        java.util.List<com.example.entity.Mb4Idbn> mb4Idbns = e.referMb4Idbns();
-        if (mb4Idbns != null) {
-            for (com.example.entity.Mb4Idbn mb4Idbn : mb4Idbns) {
-
-                if (mb4Idbn.delete() != 1) {
-                    throw new OptLockError("error.cant.delete", "ID連番マスタ");
-                }
-            }
-        }
-
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "IDマスタ");
         }

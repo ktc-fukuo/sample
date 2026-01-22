@@ -11,9 +11,9 @@
 <script th:src="@{/model/Tb4SaikiGridColumns.js}"></script>
 <script th:src="@{/model/Mb4IdGridColumns.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
-<script th:src="@{/model/Mb4IdbnGridColumns.js}"></script>
 <script th:src="@{/model/Mb4CdGridColumns.js}"></script>
 <script th:src="@{/model/Mb4NoGridColumns.js}"></script>
+<script th:src="@{/model/Mb4IdbnGridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -30,23 +30,20 @@
         <div id="saikiMei">
           <label for="Tb4Saiki.saikiMei" th:text="#{Tb4Saiki.saikiMei}">再帰名</label><input type="text" id="Tb4Saiki.saikiMei" name="Tb4Saiki.saikiMei" maxlength="60" />
         </div>
-        <div id="refId">
-          <label for="Tb4Saiki.refId" th:text="#{Tb4Saiki.refId}">参照ID</label><input type="text" id="Tb4Saiki.refId" name="Tb4Saiki.refId" maxlength="10" data-json="Mb4IdSearch.json" data-srcDef="REF_ID:Tb4Saiki.refId" data-destDef="Tb4Saiki.refMei:REF_MEI" /><a id="Tb4Saiki.refId" th:href="@{/model/Mb4IdS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a><span id="Tb4Saiki.refMei" data-json="Mb4IdSearch.json" data-srcDef="REF_ID:Tb4Saiki.refId" data-destDef="Tb4Saiki.refMei:REF_MEI"></span>
+        <div id="idrefId">
+          <label for="Tb4Saiki.idrefId" th:text="#{Tb4Saiki.idrefId}">参照ID</label><input type="text" id="Tb4Saiki.idrefId" name="Tb4Saiki.idrefId" maxlength="10" data-json="Mb4IdSearch.json" data-srcDef="IDREF_ID:Tb4Saiki.idrefId" data-destDef="Tb4Saiki.idrefMei:IDREF_MEI" /><a id="Tb4Saiki.idrefId" th:href="@{/model/Mb4IdS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a><span id="Tb4Saiki.idrefMei" data-json="Mb4IdSearch.json" data-srcDef="IDREF_ID:Tb4Saiki.idrefId" data-destDef="Tb4Saiki.idrefMei:IDREF_MEI"></span>
         </div>
-        <div id="refCd">
-          <label for="Tb4Saiki.refCd" th:text="#{Tb4Saiki.refCd}">参照CD</label><input type="text" id="Tb4Saiki.refCd" name="Tb4Saiki.refCd" maxlength="10" data-json="Mb4CdSearch.json" data-srcDef="REF_CD:Tb4Saiki.refCd" data-destDef="Tb4Saiki.refMei:REF_MEI" /><a id="Tb4Saiki.refCd" th:href="@{/model/Mb4CdS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a><span id="Tb4Saiki.refMei" data-json="Mb4CdSearch.json" data-srcDef="REF_CD:Tb4Saiki.refCd" data-destDef="Tb4Saiki.refMei:REF_MEI"></span>
+        <div id="cdrefCd">
+          <label for="Tb4Saiki.cdrefCd" th:text="#{Tb4Saiki.cdrefCd}">参照CD</label><input type="text" id="Tb4Saiki.cdrefCd" name="Tb4Saiki.cdrefCd" maxlength="10" data-json="Mb4CdSearch.json" data-srcDef="CDREF_CD:Tb4Saiki.cdrefCd" data-destDef="Tb4Saiki.cdrefMei:CDREF_MEI" /><a id="Tb4Saiki.cdrefCd" th:href="@{/model/Mb4CdS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a><span id="Tb4Saiki.cdrefMei" data-json="Mb4CdSearch.json" data-srcDef="CDREF_CD:Tb4Saiki.cdrefCd" data-destDef="Tb4Saiki.cdrefMei:CDREF_MEI"></span>
         </div>
-        <div id="refNo">
-          <label for="Tb4Saiki.refNo" th:text="#{Tb4Saiki.refNo}">参照NO</label><input type="text" id="Tb4Saiki.refNo" name="Tb4Saiki.refNo" maxlength="10" data-json="Mb4NoSearch.json" data-srcDef="REF_NO:Tb4Saiki.refNo" data-destDef="Tb4Saiki.refMei:REF_MEI" /><a id="Tb4Saiki.refNo" th:href="@{/model/Mb4NoS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a><span id="Tb4Saiki.refMei" data-json="Mb4NoSearch.json" data-srcDef="REF_NO:Tb4Saiki.refNo" data-destDef="Tb4Saiki.refMei:REF_MEI"></span>
+        <div id="norefNo">
+          <label for="Tb4Saiki.norefNo" th:text="#{Tb4Saiki.norefNo}">参照NO</label><input type="text" id="Tb4Saiki.norefNo" name="Tb4Saiki.norefNo" maxlength="10" data-json="Mb4NoSearch.json" data-srcDef="NOREF_NO:Tb4Saiki.norefNo" data-destDef="Tb4Saiki.norefMei:NOREF_MEI" /><a id="Tb4Saiki.norefNo" th:href="@{/model/Mb4NoS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a><span id="Tb4Saiki.norefMei" data-json="Mb4NoSearch.json" data-srcDef="NOREF_NO:Tb4Saiki.norefNo" data-destDef="Tb4Saiki.norefMei:NOREF_MEI"></span>
         </div>
-        <div id="refBn">
-          <label for="Tb4Saiki.refBn" th:text="#{Tb4Saiki.refBn}">参照連番</label><input type="text" id="Tb4Saiki.refBn" name="Tb4Saiki.refBn" maxlength="10" />
+        <div id="idbnId">
+          <label for="Tb4Saiki.idbnId" th:text="#{Tb4Saiki.idbnId}">ID連番ID</label><input type="text" id="Tb4Saiki.idbnId" name="Tb4Saiki.idbnId" maxlength="10" />
         </div>
-        <div id="exRefId">
-          <label for="Tb4Saiki.exRefId" th:text="#{Tb4Saiki.exRefId}">別参照ID</label><input type="text" id="Tb4Saiki.exRefId" name="Tb4Saiki.exRefId" maxlength="10" data-json="Mb4IdSearch.json" data-srcDef="REF_ID:Tb4Saiki.exRefId" data-destDef="Tb4Saiki.exRefMei:REF_MEI" /><a id="Tb4Saiki.exRefId" th:href="@{/model/Mb4IdS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a><span id="Tb4Saiki.exRefMei" data-json="Mb4IdSearch.json" data-srcDef="REF_ID:Tb4Saiki.exRefId" data-destDef="Tb4Saiki.exRefMei:REF_MEI"></span>
-        </div>
-        <div id="exRefBn">
-          <label for="Tb4Saiki.exRefBn" th:text="#{Tb4Saiki.exRefBn}">別参照連番</label><input type="text" id="Tb4Saiki.exRefBn" name="Tb4Saiki.exRefBn" maxlength="10" />
+        <div id="idbnBn">
+          <label for="Tb4Saiki.idbnBn" th:text="#{Tb4Saiki.idbnBn}">ID連番</label><input type="text" id="Tb4Saiki.idbnBn" name="Tb4Saiki.idbnBn" maxlength="10" /><a id="Tb4Saiki.idbnBn" th:href="@{/model/Mb4IdbnS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a><span id="Tb4Saiki.idbnNo"></span>
         </div>
         <div id="oyaSaikiId">
           <label for="Tb4Saiki.oyaSaikiId" th:text="#{Tb4Saiki.oyaSaikiId}">親再帰ID</label><input type="text" id="Tb4Saiki.oyaSaikiId" name="Tb4Saiki.oyaSaikiId" maxlength="10" data-json="Tb4SaikiSearch.json" data-srcDef="SAIKI_ID:Tb4Saiki.oyaSaikiId" data-destDef="Tb4Saiki.oyaSaikiMei:SAIKI_MEI" /><a id="Tb4Saiki.oyaSaikiId" th:href="@{/model/Tb4SaikiS.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a><span id="Tb4Saiki.oyaSaikiMei" data-json="Tb4SaikiSearch.json" data-srcDef="SAIKI_ID:Tb4Saiki.oyaSaikiId" data-destDef="Tb4Saiki.oyaSaikiMei:SAIKI_MEI"></span>
@@ -68,10 +65,10 @@
       <div class="buttons">
         <button type="button" class="reset" id="ResetTb4SaikiS" th:text="#{common.reset}" onClick="Base.listReset('Tb4Saiki');">reset</button>
         <a th:href="@{Tb4SaikiSearch.xlsx(baseMei=#{Tb4SaikiS.h2})}" id="Tb4SaikiSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <a id="Tb4SaikiGrid.refId" th:href="@{/model/Mb4IdS.html}" target="dialog" class="refer" th:text="'IDマスタ' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
-        <a id="Tb4SaikiGrid.refCd" th:href="@{/model/Mb4CdS.html}" target="dialog" class="refer" th:text="'CDマスタ' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
-        <a id="Tb4SaikiGrid.refNo" th:href="@{/model/Mb4NoS.html}" target="dialog" class="refer" th:text="'NOマスタ' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
-        <a id="Tb4SaikiGrid.exRefId" th:href="@{/model/Mb4IdS.html}" target="dialog" class="refer" th:text="'IDマスタ' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <a id="Tb4SaikiGrid.idrefId" th:href="@{/model/Mb4IdS.html}" target="dialog" class="refer" th:text="'IDマスタ' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <a id="Tb4SaikiGrid.cdrefCd" th:href="@{/model/Mb4CdS.html}" target="dialog" class="refer" th:text="'CDマスタ' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <a id="Tb4SaikiGrid.norefNo" th:href="@{/model/Mb4NoS.html}" target="dialog" class="refer" th:text="'NOマスタ' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <a id="Tb4SaikiGrid.idbnBn" th:href="@{/model/Mb4IdbnS.html}" target="dialog" class="refer" th:text="'ID連番マスタ' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
         <a id="Tb4SaikiGrid.oyaSaikiId" th:href="@{/model/Tb4SaikiS.html}" target="dialog" class="refer" th:text="'再帰' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
         <button type="submit" id="DeleteTb4SaikiS" data-action="Tb4SaikiSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
       </div>

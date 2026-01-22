@@ -37,7 +37,7 @@ public class Mb4NoSDeleteAction extends BaseAction {
                 }
 
                 // 主キーが不足していたらエラー
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(row.get("REF_NO"))) {
+                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(row.get("NOREF_NO"))) {
                     throw new OptLockError("error.cant.delete", "NOマスタ");
                 }
 

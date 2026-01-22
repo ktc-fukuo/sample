@@ -21,35 +21,35 @@ public class Mb4IdbnRegistForm implements IForm {
     /** 参照ID */
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    private String refId;
+    private String idbnId;
 
     /** @return 参照ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public String getRefId() {
-        return refId;
+    public String getIdbnId() {
+        return idbnId;
     }
 
     /** @param p 参照ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public void setRefId(final String p) {
-        this.refId = p;
+    public void setIdbnId(final String p) {
+        this.idbnId = p;
     }
 
     /** 参照連番 */
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "-?([0-9]{0,10}\\.?[0-9]{0,0}?)?")
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    private String refBn;
+    private String idbnBn;
 
     /** @return 参照連番 */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public String getRefBn() {
-        return refBn;
+    public String getIdbnBn() {
+        return idbnBn;
     }
 
     /** @param p 参照連番 */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public void setRefBn(final String p) {
-        this.refBn = p;
+    public void setIdbnBn(final String p) {
+        this.idbnBn = p;
     }
 
     /** ID連番NO */
@@ -88,10 +88,5 @@ public class Mb4IdbnRegistForm implements IForm {
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
         LOG.trace("validate() not overridden in subclasses.");
-
-        // 参照ID のマスタチェック TODO できればAssertTrueにしたい
-        Map<String, Object> refIdParams = new java.util.HashMap<String, Object>();
-        refIdParams.put("refId", this.getRefId());
-        baseProcess.masterCheck(errors, "Mb4IdSearch", "refId", refIdParams, jp.co.golorp.emarf.util.Messages.get("Mb4Idbn.refId"));
     }
 }

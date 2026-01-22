@@ -25,11 +25,11 @@ public class Mb4IdGetAction extends BaseAction {
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object refId = postJson.get("refId");
-        if (refId == null) {
-            refId = postJson.get("Mb4Id.refId");
+        Object idrefId = postJson.get("idrefId");
+        if (idrefId == null) {
+            idrefId = postJson.get("Mb4Id.idrefId");
         }
-        if (refId == null) {
+        if (idrefId == null) {
             isAllKey = false;
         }
 
@@ -39,9 +39,7 @@ public class Mb4IdGetAction extends BaseAction {
         }
 
         try {
-            Mb4Id mb4Id = Mb4Id.get(refId);
-            // 子
-            mb4Id.referMb4Idbns();
+            Mb4Id mb4Id = Mb4Id.get(idrefId);
             map.put("Mb4Id", mb4Id);
         } catch (NoDataError e) {
             if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {

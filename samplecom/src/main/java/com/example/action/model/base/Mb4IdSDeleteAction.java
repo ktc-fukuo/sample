@@ -37,22 +37,11 @@ public class Mb4IdSDeleteAction extends BaseAction {
                 }
 
                 // 主キーが不足していたらエラー
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(row.get("REF_ID"))) {
+                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(row.get("IDREF_ID"))) {
                     throw new OptLockError("error.cant.delete", "IDマスタ");
                 }
 
                 Mb4Id e = FormValidator.toBean(Mb4Id.class.getName(), row);
-
-                java.util.List<com.example.entity.Mb4Idbn> mb4Idbns = e.referMb4Idbns();
-                if (mb4Idbns != null) {
-                    for (com.example.entity.Mb4Idbn mb4Idbn : mb4Idbns) {
-
-                        if (mb4Idbn.delete() != 1) {
-                            throw new OptLockError("error.cant.delete", "ID連番マスタ");
-                        }
-                    }
-                }
-
                 if (e.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "IDマスタ");
                 }

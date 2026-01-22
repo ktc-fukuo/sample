@@ -25,25 +25,21 @@ public class Mb4IdbnGetAction extends BaseAction {
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object refId = postJson.get("refId");
-        if (refId == null) {
-            refId = postJson.get("Mb4Idbn.refId");
+        Object idbnId = postJson.get("idbnId");
+        if (idbnId == null) {
+            idbnId = postJson.get("Mb4Idbn.idbnId");
         }
-        if (refId == null) {
+        if (idbnId == null) {
             isAllKey = false;
         }
 
-        Object refBn = postJson.get("refBn");
-        if (refBn == null) {
-            refBn = postJson.get("Mb4Idbn.refBn");
+        Object idbnBn = postJson.get("idbnBn");
+        if (idbnBn == null) {
+            idbnBn = postJson.get("Mb4Idbn.idbnBn");
         }
-        if (refBn == null) {
+        if (idbnBn == null) {
             isAllKey = false;
         }
-
-        // 親モデルの取得
-        com.example.entity.Mb4Id mb4Id = com.example.entity.Mb4Id.get(refId);
-        map.put("Mb4Id", mb4Id);
 
         // 主キーが不足していたら終了
         if (!isAllKey) {
@@ -51,7 +47,7 @@ public class Mb4IdbnGetAction extends BaseAction {
         }
 
         try {
-            Mb4Idbn mb4Idbn = Mb4Idbn.get(refId, refBn);
+            Mb4Idbn mb4Idbn = Mb4Idbn.get(idbnId, idbnBn);
             map.put("Mb4Idbn", mb4Idbn);
         } catch (NoDataError e) {
             if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {

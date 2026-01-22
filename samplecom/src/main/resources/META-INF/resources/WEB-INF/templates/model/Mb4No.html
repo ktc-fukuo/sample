@@ -17,11 +17,11 @@
     <form name="Mb4NoRegistForm" action="Mb4NoRegist.ajax" class="regist">
       <fieldset>
         <legend th:text="#{Mb4No.legend}">legend</legend>
-        <div id="refNo">
-          <label for="Mb4No.refNo" th:text="#{Mb4No.refNo}">参照NO</label><input type="text" id="Mb4No.refNo" name="Mb4No.refNo" maxlength="10" class=" primaryKey notblank" />
+        <div id="norefNo">
+          <label for="Mb4No.norefNo" th:text="#{Mb4No.norefNo}">参照NO</label><input type="text" id="Mb4No.norefNo" name="Mb4No.norefNo" maxlength="10" class=" primaryKey notblank" />
         </div>
-        <div id="refMei">
-          <label for="Mb4No.refMei" th:text="#{Mb4No.refMei}">参照名</label><input type="text" id="Mb4No.refMei" name="Mb4No.refMei" maxlength="60" class=" notblank" />
+        <div id="norefMei">
+          <label for="Mb4No.norefMei" th:text="#{Mb4No.norefMei}">NO参照名</label><input type="text" id="Mb4No.norefMei" name="Mb4No.norefMei" maxlength="60" class=" notblank" />
         </div>
         <div id="insertTs">
           <label th:text="#{Mb4No.insertTs}" class="meta">作成タイムスタンプ</label><span id="Mb4No.insertTs" class="meta"></span><input type="hidden" id="Mb4No.insertTs" name="Mb4No.insertTs" class="meta"/>

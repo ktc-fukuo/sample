@@ -10,7 +10,6 @@
 </script>
 <script th:src="@{/model/Tb3TransHisGridColumns.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
-<script th:src="@{/model/Tb3TransGridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -44,15 +43,12 @@
     <!-- 一覧フォーム -->
     <form name="Tb3TransHisSRegistForm" action="Tb3TransHisSRegist.ajax" class="regist">
       <h3 th:text="#{Tb3TransHis.h3}">h3</h3>
-      <div id="Tb3TransHisGrid" data-selectionMode="checkbox" data-frozenColumn="1" th:data-href="@{/model/Tb3TransHis.html}"></div>
+      <div id="Tb3TransHisGrid" data-selectionMode="checkbox" data-frozenColumn="1" data-editable="false" th:data-href="@{/model/Tb3TransHis.html}"></div>
       <div id="Tb3TransHisPager"></div>
       <div class="buttons">
-        <button type="button" class="reset" id="ResetTb3TransHisS" th:text="#{common.reset}" onClick="Base.listReset('Tb3TransHis');">reset</button>
         <a th:href="@{Tb3TransHisSearch.xlsx(baseMei=#{Tb3TransHisS.h2})}" id="Tb3TransHisSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
-        <button type="submit" id="DeleteTb3TransHisS" data-action="Tb3TransHisSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
       </div>
       <div class="submits">
-        <button id="RegistTb3TransHisS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
       </div>
     </form>
   </div>

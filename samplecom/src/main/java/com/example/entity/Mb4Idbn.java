@@ -36,62 +36,43 @@ public class Mb4Idbn implements IEntity {
 
     /** 参照ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    private Integer refId;
+    private Integer idbnId;
 
     /** @return 参照ID */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "REF_ID", index = 2)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "IDBN_ID", index = 2)
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public Integer getRefId() {
-        return this.refId;
+    public Integer getIdbnId() {
+        return this.idbnId;
     }
 
     /** @param o 参照ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public void setRefId(final Object o) {
+    public void setIdbnId(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.refId = Integer.valueOf(o.toString());
+            this.idbnId = Integer.valueOf(o.toString());
         } else {
-            this.refId = null;
-        }
-    }
-
-    /** 参照ID参照 */
-    @jp.co.golorp.emarf.validation.ReferMei
-    private String refMei;
-
-    /** @return 参照ID参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "REF_MEI", index = 3)
-    public String getRefMei() {
-        return this.refMei;
-    }
-
-    /** @param o 参照ID参照 */
-    public void setRefMei(final Object o) {
-        if (o != null) {
-            this.refMei = o.toString();
-        } else {
-            this.refMei = null;
+            this.idbnId = null;
         }
     }
 
     /** 参照連番 */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    private Integer refBn;
+    private Integer idbnBn;
 
     /** @return 参照連番 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "REF_BN", index = 4)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "IDBN_BN", index = 3)
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public Integer getRefBn() {
-        return this.refBn;
+    public Integer getIdbnBn() {
+        return this.idbnBn;
     }
 
     /** @param o 参照連番 */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public void setRefBn(final Object o) {
+    public void setIdbnBn(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.refBn = Integer.valueOf(o.toString());
+            this.idbnBn = Integer.valueOf(o.toString());
         } else {
-            this.refBn = null;
+            this.idbnBn = null;
         }
     }
 
@@ -99,7 +80,7 @@ public class Mb4Idbn implements IEntity {
     private String idbnNo;
 
     /** @return ID連番NO */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "IDBN_NO", index = 5)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "IDBN_NO", index = 4)
     public String getIdbnNo() {
         return this.idbnNo;
     }
@@ -120,7 +101,7 @@ public class Mb4Idbn implements IEntity {
     private java.time.LocalDateTime insertTs;
 
     /** @return 作成タイムスタンプ */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 6)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 5)
     public java.time.LocalDateTime getInsertTs() {
         return this.insertTs;
     }
@@ -144,7 +125,7 @@ public class Mb4Idbn implements IEntity {
     private Integer insertUserId;
 
     /** @return 作成者 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 7)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 6)
     public Integer getInsertUserId() {
         return this.insertUserId;
     }
@@ -163,7 +144,7 @@ public class Mb4Idbn implements IEntity {
     private String insertUserSei;
 
     /** @return 作成者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 8)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 7)
     public String getInsertUserSei() {
         return this.insertUserSei;
     }
@@ -185,7 +166,7 @@ public class Mb4Idbn implements IEntity {
     private java.time.LocalDateTime updateTs;
 
     /** @return 更新タイムスタンプ */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 9)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 8)
     @jp.co.golorp.emarf.validation.OptLock
     public java.time.LocalDateTime getUpdateTs() {
         return this.updateTs;
@@ -211,7 +192,7 @@ public class Mb4Idbn implements IEntity {
     private Integer updateUserId;
 
     /** @return 更新者 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 10)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 9)
     public Integer getUpdateUserId() {
         return this.updateUserId;
     }
@@ -230,7 +211,7 @@ public class Mb4Idbn implements IEntity {
     private String updateUserSei;
 
     /** @return 更新者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 11)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 10)
     public String getUpdateUserSei() {
         return this.updateUserSei;
     }
@@ -252,12 +233,12 @@ public class Mb4Idbn implements IEntity {
      */
     public static Mb4Idbn get(final Object param1, final Object param2) {
         List<String> whereList = new ArrayList<String>();
-        whereList.add("`REF_ID` = :ref_id");
-        whereList.add("`REF_BN` = :ref_bn");
+        whereList.add("`IDBN_ID` = :idbn_id");
+        whereList.add("`IDBN_BN` = :idbn_bn");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      a.`REF_ID` \n";
-        sql += "    , a.`REF_BN` \n";
+        sql += "      a.`IDBN_ID` \n";
+        sql += "    , a.`IDBN_BN` \n";
         sql += "    , TRIM(TRAILING ' ' FROM a.`IDBN_NO`) AS IDBN_NO \n";
         sql += "    , a.`INSERT_TS` AS INSERT_TS \n";
         sql += "    , a.`INSERT_USER_ID` \n";
@@ -268,8 +249,8 @@ public class Mb4Idbn implements IEntity {
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("ref_id", param1);
-        map.put("ref_bn", param2);
+        map.put("idbn_id", param1);
+        map.put("idbn_bn", param2);
         return Queries.get(sql, map, Mb4Idbn.class);
     }
 
@@ -292,8 +273,8 @@ public class Mb4Idbn implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         List<String> nameList = new ArrayList<String>();
-        nameList.add("`REF_ID` -- :ref_id");
-        nameList.add("`REF_BN` -- :ref_bn");
+        nameList.add("`IDBN_ID` -- :idbn_id");
+        nameList.add("`IDBN_BN` -- :idbn_bn");
         nameList.add("`IDBN_NO` -- :idbn_no");
         nameList.add("`INSERT_TS` -- :insert_ts");
         nameList.add("`INSERT_USER_ID` -- :insert_user_id");
@@ -305,8 +286,8 @@ public class Mb4Idbn implements IEntity {
     /** @return insert用のvalue句 */
     private String values() {
         List<String> valueList = new ArrayList<String>();
-        valueList.add(":ref_id");
-        valueList.add(":ref_bn");
+        valueList.add(":idbn_id");
+        valueList.add(":idbn_bn");
         valueList.add(":idbn_no");
         valueList.add(":insert_ts");
         valueList.add(":insert_user_id");
@@ -317,18 +298,18 @@ public class Mb4Idbn implements IEntity {
 
     /** 参照連番の採番処理 */
     private void numbering() {
-        if (this.refBn != null) {
+        if (this.idbnBn != null) {
             return;
         }
-        String sql = "SELECT CASE WHEN MAX(e.`REF_BN`) IS NULL THEN 0 ELSE MAX(e.`REF_BN`) * 1 END + 1 AS `REF_BN` FROM MB4_IDBN e";
+        String sql = "SELECT CASE WHEN MAX(e.`IDBN_BN`) IS NULL THEN 0 ELSE MAX(e.`IDBN_BN`) * 1 END + 1 AS `IDBN_BN` FROM MB4_IDBN e";
         Map<String, Object> map = new HashMap<String, Object>();
         List<String> whereList = new ArrayList<String>();
-        whereList.add("e.`REF_ID` = :ref_id");
+        whereList.add("e.`IDBN_ID` = :idbn_id");
         sql += " WHERE " + String.join(" AND ", whereList);
-        map.put("ref_id", this.refId);
+        map.put("idbn_id", this.idbnId);
         jp.co.golorp.emarf.util.MapList mapList = Queries.select(sql, map, null, null);
-        Object o = mapList.get(0).get("REF_BN");
-        this.setRefBn(o);
+        Object o = mapList.get(0).get("IDBN_BN");
+        this.setIdbnBn(o);
     }
 
     /**
@@ -347,8 +328,8 @@ public class Mb4Idbn implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         List<String> setList = new ArrayList<String>();
-        setList.add("`REF_ID` = :ref_id");
-        setList.add("`REF_BN` = :ref_bn");
+        setList.add("`IDBN_ID` = :idbn_id");
+        setList.add("`IDBN_BN` = :idbn_bn");
         setList.add("`IDBN_NO` = :idbn_no");
         setList.add("`UPDATE_TS` = :update_ts");
         setList.add("`UPDATE_USER_ID` = :update_user_id");
@@ -369,8 +350,8 @@ public class Mb4Idbn implements IEntity {
     /** @return where句 */
     private String getWhere() {
         List<String> whereList = new ArrayList<String>();
-        whereList.add("`REF_ID` = :ref_id");
-        whereList.add("`REF_BN` = :ref_bn");
+        whereList.add("`IDBN_ID` = :idbn_id");
+        whereList.add("`IDBN_BN` = :idbn_bn");
         whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);
     }
@@ -382,8 +363,8 @@ public class Mb4Idbn implements IEntity {
      */
     private Map<String, Object> toMap(final LocalDateTime now, final String execId) {
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("ref_id", this.refId);
-        map.put("ref_bn", this.refBn);
+        map.put("idbn_id", this.idbnId);
+        map.put("idbn_bn", this.idbnBn);
         map.put("idbn_no", this.idbnNo);
         map.put("insert_ts", now);
         map.put("insert_user_id", execId);

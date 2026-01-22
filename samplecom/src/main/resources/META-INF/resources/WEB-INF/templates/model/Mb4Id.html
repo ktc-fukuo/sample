@@ -10,7 +10,6 @@
 </script>
 <script th:src="@{/model/Mb4IdGridColumns.js}"></script>
 <script th:src="@{/model/MhrUserGridColumns.js}"></script>
-<script th:src="@{/model/Mb4IdbnGridColumns.js}"></script>
 </head>
 <body>
   <div layout:fragment="article">
@@ -18,11 +17,11 @@
     <form name="Mb4IdRegistForm" action="Mb4IdRegist.ajax" class="regist">
       <fieldset>
         <legend th:text="#{Mb4Id.legend}">legend</legend>
-        <div id="refId">
-          <label for="Mb4Id.refId" th:text="#{Mb4Id.refId}">参照ID</label><input type="text" id="Mb4Id.refId" name="Mb4Id.refId" maxlength="10" class=" primaryKey numbering notblank" />
+        <div id="idrefId">
+          <label for="Mb4Id.idrefId" th:text="#{Mb4Id.idrefId}">参照ID</label><input type="text" id="Mb4Id.idrefId" name="Mb4Id.idrefId" maxlength="10" class=" primaryKey numbering notblank" />
         </div>
-        <div id="refMei">
-          <label for="Mb4Id.refMei" th:text="#{Mb4Id.refMei}">参照名</label><input type="text" id="Mb4Id.refMei" name="Mb4Id.refMei" maxlength="60" class=" notblank" />
+        <div id="idrefMei">
+          <label for="Mb4Id.idrefMei" th:text="#{Mb4Id.idrefMei}">ID参照名</label><input type="text" id="Mb4Id.idrefMei" name="Mb4Id.idrefMei" maxlength="60" class=" notblank" />
         </div>
         <div id="insertTs">
           <label th:text="#{Mb4Id.insertTs}" class="meta">作成タイムスタンプ</label><span id="Mb4Id.insertTs" class="meta"></span><input type="hidden" id="Mb4Id.insertTs" name="Mb4Id.insertTs" class="meta"/>
@@ -39,10 +38,6 @@
           <span id="Mb4Id.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:Mb4Id.updateUserId" data-destDef="Mb4Id.updateUserSei:USER_SEI"></span>
         </div>
       </fieldset>
-      <h3 th:text="#{Mb4Idbn.h3}">h3</h3>
-      <a th:href="@{/model/Mb4Idbn.html}" id="Mb4Idbn" target="dialog" th:text="#{Mb4Idbn.add}" class="addChild" tabindex="-1">ID連番マスタ</a>
-      <div id="Mb4IdbnGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/Mb4Idbn.html}" class="childs"></div>
-        <a id="Mb4IdbnGrid.refId" th:href="@{/model/Mb4IdS.html}" target="dialog" class="refer" th:text="'IDマスタ' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
       <div class="buttons">
         <button type="button" id="RefreshMb4Id" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
         <a th:href="@{Mb4IdGet.xlsx(baseMei=#{Mb4Id.h2})}" id="Mb4IdGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>

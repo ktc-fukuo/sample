@@ -36,40 +36,40 @@ public class Mb4Cd implements IEntity {
 
     /** 参照CD */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    private String refCd;
+    private String cdrefCd;
 
     /** @return 参照CD */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "REF_CD", index = 2)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "CDREF_CD", index = 2)
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public String getRefCd() {
-        return this.refCd;
+    public String getCdrefCd() {
+        return this.cdrefCd;
     }
 
     /** @param o 参照CD */
     @jp.co.golorp.emarf.validation.PrimaryKeys
-    public void setRefCd(final Object o) {
+    public void setCdrefCd(final Object o) {
         if (o != null) {
-            this.refCd = o.toString();
+            this.cdrefCd = o.toString();
         } else {
-            this.refCd = null;
+            this.cdrefCd = null;
         }
     }
 
-    /** 参照名 */
-    private String refMei;
+    /** CD参照名 */
+    private String cdrefMei;
 
-    /** @return 参照名 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "REF_MEI", index = 3)
-    public String getRefMei() {
-        return this.refMei;
+    /** @return CD参照名 */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "CDREF_MEI", index = 3)
+    public String getCdrefMei() {
+        return this.cdrefMei;
     }
 
-    /** @param o 参照名 */
-    public void setRefMei(final Object o) {
+    /** @param o CD参照名 */
+    public void setCdrefMei(final Object o) {
         if (o != null) {
-            this.refMei = o.toString();
+            this.cdrefMei = o.toString();
         } else {
-            this.refMei = null;
+            this.cdrefMei = null;
         }
     }
 
@@ -211,11 +211,11 @@ public class Mb4Cd implements IEntity {
      */
     public static Mb4Cd get(final Object param1) {
         List<String> whereList = new ArrayList<String>();
-        whereList.add("TRIM(TRAILING ' ' FROM `REF_CD`) = TRIM(TRAILING ' ' FROM :ref_cd)");
+        whereList.add("TRIM(TRAILING ' ' FROM `CDREF_CD`) = TRIM(TRAILING ' ' FROM :cdref_cd)");
         String sql = "";
         sql += "SELECT \n";
-        sql += "      TRIM(TRAILING ' ' FROM a.`REF_CD`) AS REF_CD \n";
-        sql += "    , a.`REF_MEI` \n";
+        sql += "      TRIM(TRAILING ' ' FROM a.`CDREF_CD`) AS CDREF_CD \n";
+        sql += "    , a.`CDREF_MEI` \n";
         sql += "    , a.`INSERT_TS` AS INSERT_TS \n";
         sql += "    , a.`INSERT_USER_ID` \n";
         sql += "    , a.`UPDATE_TS` AS UPDATE_TS \n";
@@ -225,7 +225,7 @@ public class Mb4Cd implements IEntity {
         sql += "WHERE \n";
         sql += String.join(" AND \n", whereList);
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("ref_cd", param1);
+        map.put("cdref_cd", param1);
         return Queries.get(sql, map, Mb4Cd.class);
     }
 
@@ -245,8 +245,8 @@ public class Mb4Cd implements IEntity {
     /** @return insert用のname句 */
     private String names() {
         List<String> nameList = new ArrayList<String>();
-        nameList.add("`REF_CD` -- :ref_cd");
-        nameList.add("`REF_MEI` -- :ref_mei");
+        nameList.add("`CDREF_CD` -- :cdref_cd");
+        nameList.add("`CDREF_MEI` -- :cdref_mei");
         nameList.add("`INSERT_TS` -- :insert_ts");
         nameList.add("`INSERT_USER_ID` -- :insert_user_id");
         nameList.add("`UPDATE_TS` -- :update_ts");
@@ -257,8 +257,8 @@ public class Mb4Cd implements IEntity {
     /** @return insert用のvalue句 */
     private String values() {
         List<String> valueList = new ArrayList<String>();
-        valueList.add(":ref_cd");
-        valueList.add(":ref_mei");
+        valueList.add(":cdref_cd");
+        valueList.add(":cdref_mei");
         valueList.add(":insert_ts");
         valueList.add(":insert_user_id");
         valueList.add(":update_ts");
@@ -282,8 +282,8 @@ public class Mb4Cd implements IEntity {
     /** @return update用のset句 */
     private String getSet() {
         List<String> setList = new ArrayList<String>();
-        setList.add("`REF_CD` = :ref_cd");
-        setList.add("`REF_MEI` = :ref_mei");
+        setList.add("`CDREF_CD` = :cdref_cd");
+        setList.add("`CDREF_MEI` = :cdref_mei");
         setList.add("`UPDATE_TS` = :update_ts");
         setList.add("`UPDATE_USER_ID` = :update_user_id");
         return String.join("\r\n    , ", setList);
@@ -303,7 +303,7 @@ public class Mb4Cd implements IEntity {
     /** @return where句 */
     private String getWhere() {
         List<String> whereList = new ArrayList<String>();
-        whereList.add("TRIM(TRAILING ' ' FROM `REF_CD`) = TRIM(TRAILING ' ' FROM :ref_cd)");
+        whereList.add("TRIM(TRAILING ' ' FROM `CDREF_CD`) = TRIM(TRAILING ' ' FROM :cdref_cd)");
         whereList.add("`update_ts` = '" + this.updateTs + "'");
         return String.join(" AND ", whereList);
     }
@@ -315,8 +315,8 @@ public class Mb4Cd implements IEntity {
      */
     private Map<String, Object> toMap(final LocalDateTime now, final String execId) {
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("ref_cd", this.refCd);
-        map.put("ref_mei", this.refMei);
+        map.put("cdref_cd", this.cdrefCd);
+        map.put("cdref_mei", this.cdrefMei);
         map.put("insert_ts", now);
         map.put("insert_user_id", execId);
         map.put("update_ts", now);

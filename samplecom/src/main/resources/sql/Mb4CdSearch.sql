@@ -1,6 +1,6 @@
 SELECT
-      TRIM(TRAILING ' ' FROM a.`REF_CD`) AS `REF_CD`
-    , a.`REF_MEI`
+      TRIM(TRAILING ' ' FROM a.`CDREF_CD`) AS `CDREF_CD`
+    , a.`CDREF_MEI`
     , a.`INSERT_TS` AS `INSERT_TS`
     , a.`INSERT_USER_ID`
     , (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`
@@ -11,9 +11,9 @@ FROM
     MB4_CD a 
 WHERE
     1 = 1 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`REF_CD`)) = UPPER (:ref_cd_full) 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`REF_CD`)) LIKE UPPER (CONCAT ('%', :ref_cd, '%')) 
-    AND UPPER (TRIM(TRAILING ' ' FROM a.`REF_MEI`)) LIKE UPPER (CONCAT ('%', :ref_mei, '%')) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a.`CDREF_CD`)) = UPPER (:cdref_cd_full) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a.`CDREF_CD`)) LIKE UPPER (CONCAT ('%', :cdref_cd, '%')) 
+    AND UPPER (TRIM(TRAILING ' ' FROM a.`CDREF_MEI`)) LIKE UPPER (CONCAT ('%', :cdref_mei, '%')) 
     AND a.`INSERT_TS` = :insert_ts 
     AND a.`INSERT_TS` >= :insert_ts_1 
     AND a.`INSERT_TS` <= :insert_ts_2 
@@ -23,4 +23,4 @@ WHERE
     AND a.`UPDATE_TS` <= :update_ts_2 
     AND a.`UPDATE_USER_ID` = :update_user_id 
 ORDER BY
-    a.`REF_CD`
+    a.`CDREF_CD`

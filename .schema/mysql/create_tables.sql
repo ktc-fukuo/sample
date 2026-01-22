@@ -1,52 +1,52 @@
 -- Project Name : emarf
--- Date/Time    : 2026/01/22 20:46:51
+-- Date/Time    : 2026/01/22 22:09:19
 -- Author       : t_fuk
 -- RDBMS Type   : MySQL
 -- Application  : A5:SQL Mk-2
 
 -- CDマスタ
 create table MB4_CD (
-  REF_CD CHAR(10) comment '参照CD'
-  , REF_MEI VARCHAR(60) not null comment '参照名'
+  CDREF_CD CHAR(10) comment '参照CD'
+  , CDREF_MEI VARCHAR(60) not null comment 'CD参照名'
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint MB4_CD_PKC primary key (REF_CD)
+  , constraint MB4_CD_PKC primary key (CDREF_CD)
 ) comment 'CDマスタ' ;
 
 -- IDマスタ
 create table MB4_ID (
-  REF_ID INT comment '参照ID'
-  , REF_MEI VARCHAR(60) not null comment '参照名'
+  IDREF_ID INT comment '参照ID'
+  , IDREF_MEI VARCHAR(60) not null comment 'ID参照名'
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint MB4_ID_PKC primary key (REF_ID)
+  , constraint MB4_ID_PKC primary key (IDREF_ID)
 ) comment 'IDマスタ' ;
 
 -- ID連番マスタ
 create table MB4_IDBN (
-  REF_ID INT comment '参照ID'
-  , REF_BN INT comment '参照連番'
+  IDBN_ID INT comment '参照ID'
+  , IDBN_BN INT comment '参照連番'
   , IDBN_NO CHAR(10) not null comment 'ID連番NO'
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint MB4_IDBN_PKC primary key (REF_ID,REF_BN)
+  , constraint MB4_IDBN_PKC primary key (IDBN_ID,IDBN_BN)
 ) comment 'ID連番マスタ' ;
 
 -- NOマスタ
 create table MB4_NO (
-  REF_NO CHAR(10) comment '参照NO'
-  , REF_MEI VARCHAR(60) not null comment '参照名'
+  NOREF_NO CHAR(10) comment '参照NO'
+  , NOREF_MEI VARCHAR(60) not null comment 'NO参照名'
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint MB4_NO_PKC primary key (REF_NO)
+  , constraint MB4_NO_PKC primary key (NOREF_NO)
 ) comment 'NOマスタ' ;
 
 -- マスタ参照１
@@ -416,12 +416,11 @@ create table TB4_MAGO (
 create table TB4_SAIKI (
   SAIKI_ID INT comment '再帰ID'
   , SAIKI_MEI VARCHAR(60) not null comment '再帰名'
-  , REF_ID INT comment '参照ID'
-  , REF_CD CHAR(10) comment '参照CD'
-  , REF_NO CHAR(10) comment '参照NO'
-  , REF_BN INT comment '参照連番'
-  , EX_REF_ID INT comment '別参照ID'
-  , EX_REF_BN INT comment '別参照連番'
+  , IDREF_ID INT comment '参照ID'
+  , CDREF_CD CHAR(10) comment '参照CD'
+  , NOREF_NO CHAR(10) comment '参照NO'
+  , IDBN_ID INT comment 'ID連番ID'
+  , IDBN_BN INT comment 'ID連番'
   , OYA_SAIKI_ID INT comment '親再帰ID'
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
   , INSERT_USER_ID INT not null comment '作成者'

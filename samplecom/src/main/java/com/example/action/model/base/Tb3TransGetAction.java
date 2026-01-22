@@ -40,8 +40,6 @@ public class Tb3TransGetAction extends BaseAction {
 
         try {
             Tb3Trans tb3Trans = Tb3Trans.get(transId);
-            // 子
-            tb3Trans.referTb3TransHiss();
             map.put("Tb3Trans", tb3Trans);
         } catch (NoDataError e) {
             if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {

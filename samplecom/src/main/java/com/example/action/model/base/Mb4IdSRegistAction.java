@@ -40,7 +40,7 @@ public class Mb4IdSRegistAction extends BaseAction {
 
                 // 主キーが不足していたらINSERT
                 boolean isNew = false;
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getRefId())) {
+                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getIdrefId())) {
                     isNew = true;
                 }
                 // 楽観ロック値がなくてもINSERT

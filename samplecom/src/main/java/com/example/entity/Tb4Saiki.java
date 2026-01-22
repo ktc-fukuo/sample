@@ -74,186 +74,149 @@ public class Tb4Saiki implements IEntity {
     }
 
     /** 参照ID */
-    private Integer refId;
+    private Integer idrefId;
 
     /** @return 参照ID */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "REF_ID", index = 4)
-    public Integer getRefId() {
-        return this.refId;
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "IDREF_ID", index = 4)
+    public Integer getIdrefId() {
+        return this.idrefId;
     }
 
     /** @param o 参照ID */
-    public void setRefId(final Object o) {
+    public void setIdrefId(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.refId = Integer.valueOf(o.toString());
+            this.idrefId = Integer.valueOf(o.toString());
         } else {
-            this.refId = null;
+            this.idrefId = null;
         }
     }
 
     /** 参照ID参照 */
     @jp.co.golorp.emarf.validation.ReferMei
-    private String refMei;
+    private String idrefMei;
 
     /** @return 参照ID参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "REF_MEI", index = 5)
-    public String getRefMei() {
-        return this.refMei;
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "IDREF_MEI", index = 5)
+    public String getIdrefMei() {
+        return this.idrefMei;
     }
 
     /** @param o 参照ID参照 */
-    public void setRefMei(final Object o) {
+    public void setIdrefMei(final Object o) {
         if (o != null) {
-            this.refMei = o.toString();
+            this.idrefMei = o.toString();
         } else {
-            this.refMei = null;
+            this.idrefMei = null;
         }
     }
 
     /** 参照CD */
-    private String refCd;
+    private String cdrefCd;
 
     /** @return 参照CD */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "REF_CD", index = 6)
-    public String getRefCd() {
-        return this.refCd;
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "CDREF_CD", index = 6)
+    public String getCdrefCd() {
+        return this.cdrefCd;
     }
 
     /** @param o 参照CD */
-    public void setRefCd(final Object o) {
+    public void setCdrefCd(final Object o) {
         if (o != null) {
-            this.refCd = o.toString();
+            this.cdrefCd = o.toString();
         } else {
-            this.refCd = null;
+            this.cdrefCd = null;
         }
     }
 
     /** 参照CD参照 */
     @jp.co.golorp.emarf.validation.ReferMei
-    private String refMei;
+    private String cdrefMei;
 
     /** @return 参照CD参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "REF_MEI", index = 7)
-    public String getRefMei() {
-        return this.refMei;
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "CDREF_MEI", index = 7)
+    public String getCdrefMei() {
+        return this.cdrefMei;
     }
 
     /** @param o 参照CD参照 */
-    public void setRefMei(final Object o) {
+    public void setCdrefMei(final Object o) {
         if (o != null) {
-            this.refMei = o.toString();
+            this.cdrefMei = o.toString();
         } else {
-            this.refMei = null;
+            this.cdrefMei = null;
         }
     }
 
     /** 参照NO */
-    private String refNo;
+    private String norefNo;
 
     /** @return 参照NO */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "REF_NO", index = 8)
-    public String getRefNo() {
-        return this.refNo;
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "NOREF_NO", index = 8)
+    public String getNorefNo() {
+        return this.norefNo;
     }
 
     /** @param o 参照NO */
-    public void setRefNo(final Object o) {
+    public void setNorefNo(final Object o) {
         if (o != null) {
-            this.refNo = o.toString();
+            this.norefNo = o.toString();
         } else {
-            this.refNo = null;
+            this.norefNo = null;
         }
     }
 
     /** 参照NO参照 */
     @jp.co.golorp.emarf.validation.ReferMei
-    private String refMei;
+    private String norefMei;
 
     /** @return 参照NO参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "REF_MEI", index = 9)
-    public String getRefMei() {
-        return this.refMei;
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "NOREF_MEI", index = 9)
+    public String getNorefMei() {
+        return this.norefMei;
     }
 
     /** @param o 参照NO参照 */
-    public void setRefMei(final Object o) {
+    public void setNorefMei(final Object o) {
         if (o != null) {
-            this.refMei = o.toString();
+            this.norefMei = o.toString();
         } else {
-            this.refMei = null;
+            this.norefMei = null;
         }
     }
 
-    /** 参照連番 */
-    private Integer refBn;
+    /** ID連番ID */
+    private Integer idbnId;
 
-    /** @return 参照連番 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "REF_BN", index = 10)
-    public Integer getRefBn() {
-        return this.refBn;
+    /** @return ID連番ID */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "IDBN_ID", index = 10)
+    public Integer getIdbnId() {
+        return this.idbnId;
     }
 
-    /** @param o 参照連番 */
-    public void setRefBn(final Object o) {
+    /** @param o ID連番ID */
+    public void setIdbnId(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.refBn = Integer.valueOf(o.toString());
+            this.idbnId = Integer.valueOf(o.toString());
         } else {
-            this.refBn = null;
+            this.idbnId = null;
         }
     }
 
-    /** 別参照ID */
-    private Integer exRefId;
+    /** ID連番 */
+    private Integer idbnBn;
 
-    /** @return 別参照ID */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "EX_REF_ID", index = 11)
-    public Integer getExRefId() {
-        return this.exRefId;
+    /** @return ID連番 */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "IDBN_BN", index = 11)
+    public Integer getIdbnBn() {
+        return this.idbnBn;
     }
 
-    /** @param o 別参照ID */
-    public void setExRefId(final Object o) {
+    /** @param o ID連番 */
+    public void setIdbnBn(final Object o) {
         if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.exRefId = Integer.valueOf(o.toString());
+            this.idbnBn = Integer.valueOf(o.toString());
         } else {
-            this.exRefId = null;
-        }
-    }
-
-    /** 別参照ID参照 */
-    @jp.co.golorp.emarf.validation.ReferMei
-    private String exRefMei;
-
-    /** @return 別参照ID参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "EX_REF_MEI", index = 12)
-    public String getExRefMei() {
-        return this.exRefMei;
-    }
-
-    /** @param o 別参照ID参照 */
-    public void setExRefMei(final Object o) {
-        if (o != null) {
-            this.exRefMei = o.toString();
-        } else {
-            this.exRefMei = null;
-        }
-    }
-
-    /** 別参照連番 */
-    private Integer exRefBn;
-
-    /** @return 別参照連番 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "EX_REF_BN", index = 13)
-    public Integer getExRefBn() {
-        return this.exRefBn;
-    }
-
-    /** @param o 別参照連番 */
-    public void setExRefBn(final Object o) {
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.exRefBn = Integer.valueOf(o.toString());
-        } else {
-            this.exRefBn = null;
+            this.idbnBn = null;
         }
     }
 
@@ -261,7 +224,7 @@ public class Tb4Saiki implements IEntity {
     private Integer oyaSaikiId;
 
     /** @return 親再帰ID */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "OYA_SAIKI_ID", index = 14)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "OYA_SAIKI_ID", index = 12)
     public Integer getOyaSaikiId() {
         return this.oyaSaikiId;
     }
@@ -280,7 +243,7 @@ public class Tb4Saiki implements IEntity {
     private String oyaSaikiMei;
 
     /** @return 親再帰ID参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "OYA_SAIKI_MEI", index = 15)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "OYA_SAIKI_MEI", index = 13)
     public String getOyaSaikiMei() {
         return this.oyaSaikiMei;
     }
@@ -301,7 +264,7 @@ public class Tb4Saiki implements IEntity {
     private java.time.LocalDateTime insertTs;
 
     /** @return 作成タイムスタンプ */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 16)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_TS", index = 14)
     public java.time.LocalDateTime getInsertTs() {
         return this.insertTs;
     }
@@ -325,7 +288,7 @@ public class Tb4Saiki implements IEntity {
     private Integer insertUserId;
 
     /** @return 作成者 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 17)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_ID", index = 15)
     public Integer getInsertUserId() {
         return this.insertUserId;
     }
@@ -344,7 +307,7 @@ public class Tb4Saiki implements IEntity {
     private String insertUserSei;
 
     /** @return 作成者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 18)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "INSERT_USER_SEI", index = 16)
     public String getInsertUserSei() {
         return this.insertUserSei;
     }
@@ -366,7 +329,7 @@ public class Tb4Saiki implements IEntity {
     private java.time.LocalDateTime updateTs;
 
     /** @return 更新タイムスタンプ */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 19)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_TS", index = 17)
     @jp.co.golorp.emarf.validation.OptLock
     public java.time.LocalDateTime getUpdateTs() {
         return this.updateTs;
@@ -392,7 +355,7 @@ public class Tb4Saiki implements IEntity {
     private Integer updateUserId;
 
     /** @return 更新者 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 20)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_ID", index = 18)
     public Integer getUpdateUserId() {
         return this.updateUserId;
     }
@@ -411,7 +374,7 @@ public class Tb4Saiki implements IEntity {
     private String updateUserSei;
 
     /** @return 更新者参照 */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 21)
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "UPDATE_USER_SEI", index = 19)
     public String getUpdateUserSei() {
         return this.updateUserSei;
     }
@@ -437,12 +400,11 @@ public class Tb4Saiki implements IEntity {
         sql += "SELECT \n";
         sql += "      a.`SAIKI_ID` \n";
         sql += "    , a.`SAIKI_MEI` \n";
-        sql += "    , a.`REF_ID` \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`REF_CD`) AS REF_CD \n";
-        sql += "    , TRIM(TRAILING ' ' FROM a.`REF_NO`) AS REF_NO \n";
-        sql += "    , a.`REF_BN` \n";
-        sql += "    , a.`EX_REF_ID` \n";
-        sql += "    , a.`EX_REF_BN` \n";
+        sql += "    , a.`IDREF_ID` \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.`CDREF_CD`) AS CDREF_CD \n";
+        sql += "    , TRIM(TRAILING ' ' FROM a.`NOREF_NO`) AS NOREF_NO \n";
+        sql += "    , a.`IDBN_ID` \n";
+        sql += "    , a.`IDBN_BN` \n";
         sql += "    , a.`OYA_SAIKI_ID` \n";
         sql += "    , a.`INSERT_TS` AS INSERT_TS \n";
         sql += "    , a.`INSERT_USER_ID` \n";
@@ -478,12 +440,11 @@ public class Tb4Saiki implements IEntity {
         List<String> nameList = new ArrayList<String>();
         nameList.add("`SAIKI_ID` -- :saiki_id");
         nameList.add("`SAIKI_MEI` -- :saiki_mei");
-        nameList.add("`REF_ID` -- :ref_id");
-        nameList.add("`REF_CD` -- :ref_cd");
-        nameList.add("`REF_NO` -- :ref_no");
-        nameList.add("`REF_BN` -- :ref_bn");
-        nameList.add("`EX_REF_ID` -- :ex_ref_id");
-        nameList.add("`EX_REF_BN` -- :ex_ref_bn");
+        nameList.add("`IDREF_ID` -- :idref_id");
+        nameList.add("`CDREF_CD` -- :cdref_cd");
+        nameList.add("`NOREF_NO` -- :noref_no");
+        nameList.add("`IDBN_ID` -- :idbn_id");
+        nameList.add("`IDBN_BN` -- :idbn_bn");
         nameList.add("`OYA_SAIKI_ID` -- :oya_saiki_id");
         nameList.add("`INSERT_TS` -- :insert_ts");
         nameList.add("`INSERT_USER_ID` -- :insert_user_id");
@@ -497,12 +458,11 @@ public class Tb4Saiki implements IEntity {
         List<String> valueList = new ArrayList<String>();
         valueList.add(":saiki_id");
         valueList.add(":saiki_mei");
-        valueList.add(":ref_id");
-        valueList.add(":ref_cd");
-        valueList.add(":ref_no");
-        valueList.add(":ref_bn");
-        valueList.add(":ex_ref_id");
-        valueList.add(":ex_ref_bn");
+        valueList.add(":idref_id");
+        valueList.add(":cdref_cd");
+        valueList.add(":noref_no");
+        valueList.add(":idbn_id");
+        valueList.add(":idbn_bn");
         valueList.add(":oya_saiki_id");
         valueList.add(":insert_ts");
         valueList.add(":insert_user_id");
@@ -541,12 +501,11 @@ public class Tb4Saiki implements IEntity {
         List<String> setList = new ArrayList<String>();
         setList.add("`SAIKI_ID` = :saiki_id");
         setList.add("`SAIKI_MEI` = :saiki_mei");
-        setList.add("`REF_ID` = :ref_id");
-        setList.add("`REF_CD` = :ref_cd");
-        setList.add("`REF_NO` = :ref_no");
-        setList.add("`REF_BN` = :ref_bn");
-        setList.add("`EX_REF_ID` = :ex_ref_id");
-        setList.add("`EX_REF_BN` = :ex_ref_bn");
+        setList.add("`IDREF_ID` = :idref_id");
+        setList.add("`CDREF_CD` = :cdref_cd");
+        setList.add("`NOREF_NO` = :noref_no");
+        setList.add("`IDBN_ID` = :idbn_id");
+        setList.add("`IDBN_BN` = :idbn_bn");
         setList.add("`OYA_SAIKI_ID` = :oya_saiki_id");
         setList.add("`UPDATE_TS` = :update_ts");
         setList.add("`UPDATE_USER_ID` = :update_user_id");
@@ -581,12 +540,11 @@ public class Tb4Saiki implements IEntity {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("saiki_id", this.saikiId);
         map.put("saiki_mei", this.saikiMei);
-        map.put("ref_id", this.refId);
-        map.put("ref_cd", this.refCd);
-        map.put("ref_no", this.refNo);
-        map.put("ref_bn", this.refBn);
-        map.put("ex_ref_id", this.exRefId);
-        map.put("ex_ref_bn", this.exRefBn);
+        map.put("idref_id", this.idrefId);
+        map.put("cdref_cd", this.cdrefCd);
+        map.put("noref_no", this.norefNo);
+        map.put("idbn_id", this.idbnId);
+        map.put("idbn_bn", this.idbnBn);
         map.put("oya_saiki_id", this.oyaSaikiId);
         map.put("insert_ts", now);
         map.put("insert_user_id", execId);

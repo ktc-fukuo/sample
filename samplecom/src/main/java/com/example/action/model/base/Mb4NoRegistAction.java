@@ -28,7 +28,7 @@ public class Mb4NoRegistAction extends BaseAction {
 
         // 主キーが不足していたらINSERT
         boolean isNew = false;
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getRefNo())) {
+        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(e.getNorefNo())) {
             isNew = true;
         }
         // 楽観ロック値がなくてもINSERT

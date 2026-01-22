@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.example.entity.Tb4Ko;
+import com.example.entity.Tb1Ko;
 
 import jp.co.golorp.emarf.exception.AppError;
 import jp.co.golorp.emarf.job.BaseJob;
@@ -42,7 +42,7 @@ public class B0001Job extends BaseJob {
     public void running(final LocalDateTime now, final String jobId, final String[] args) {
 
         // 追加
-        Tb4Ko tKo = new Tb4Ko();
+        Tb1Ko tKo = new Tb1Ko();
         tKo.setOyaId(1);
         tKo.setKoBn(1);
         tKo.setKoInfo("子追加");
@@ -51,7 +51,7 @@ public class B0001Job extends BaseJob {
         }
 
         // 照会
-        tKo = Tb4Ko.get(1, 1);
+        tKo = Tb1Ko.get(1, 1);
         tKo.getTb4Magos();
         LOG.debug(tKo.toString());
 

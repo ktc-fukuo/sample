@@ -37,10 +37,10 @@ public class Mb4IdbnSDeleteAction extends BaseAction {
                 }
 
                 // 主キーが不足していたらエラー
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(row.get("REF_ID"))) {
+                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(row.get("IDBN_ID"))) {
                     throw new OptLockError("error.cant.delete", "ID連番マスタ");
                 }
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(row.get("REF_BN"))) {
+                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(row.get("IDBN_BN"))) {
                     throw new OptLockError("error.cant.delete", "ID連番マスタ");
                 }
 

@@ -204,6 +204,22 @@ public class Tb3Trans implements IEntity {
         }
     }
 
+    /** riyuTx */
+    private String riyuTx;
+
+    /** @return riyuTx */
+    @com.fasterxml.jackson.annotation.JsonProperty(value = "riyu_tx", index = 10)
+    public String getRiyuTx() {
+        return this.riyuTx;
+    }
+
+    /** @param o riyuTx */
+    public void setRiyuTx(final Object o) {
+        if (o != null) {
+            this.riyuTx = o.toString();
+        }
+    }
+
     /**
      * 変遷照会
      * @param param1 変遷ID
@@ -241,14 +257,15 @@ public class Tb3Trans implements IEntity {
         numbering();
 
         // 変遷履歴の登録
-        if (this.tb3TransHiss != null) {
-            for (Tb3TransHis tb3TransHis : this.tb3TransHiss) {
-                if (tb3TransHis != null) {
-                    tb3TransHis.setTransId(this.getTransId());
-                }
-                tb3TransHis.insert(now, execId);
-            }
-        }
+        Tb3TransHis tb3TransHis = new Tb3TransHis();
+        tb3TransHis.setTransId(this.transId);
+        tb3TransHis.setTransInfo(this.transInfo);
+        tb3TransHis.setInsertTs(this.insertTs);
+        tb3TransHis.setInsertUserId(this.insertUserId);
+        tb3TransHis.setUpdateTs(this.updateTs);
+        tb3TransHis.setUpdateUserId(this.updateUserId);
+        tb3TransHis.setRiyuTx(this.riyuTx);
+        tb3TransHis.insert(now, execId);
 
         // 変遷の登録
         String sql = "INSERT INTO TB3_TRANS(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
@@ -300,19 +317,15 @@ public class Tb3Trans implements IEntity {
     public int update(final LocalDateTime now, final String execId) {
 
         // 変遷履歴の登録
-        if (this.tb3TransHiss != null) {
-            for (Tb3TransHis tb3TransHis : this.tb3TransHiss) {
-                if (tb3TransHis == null) {
-                    continue;
-                }
-                tb3TransHis.setTransId(this.transId);
-                try {
-                    tb3TransHis.insert(now, execId);
-                } catch (Exception e) {
-                    tb3TransHis.update(now, execId);
-                }
-            }
-        }
+        Tb3TransHis tb3TransHis = new Tb3TransHis();
+        tb3TransHis.setTransId(this.transId);
+        tb3TransHis.setTransInfo(this.transInfo);
+        tb3TransHis.setInsertTs(this.insertTs);
+        tb3TransHis.setInsertUserId(this.insertUserId);
+        tb3TransHis.setUpdateTs(this.updateTs);
+        tb3TransHis.setUpdateUserId(this.updateUserId);
+        tb3TransHis.setRiyuTx(this.riyuTx);
+        tb3TransHis.insert(now, execId);
 
         // 変遷の登録
         String sql = "UPDATE TB3_TRANS\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
@@ -334,15 +347,6 @@ public class Tb3Trans implements IEntity {
      * @return 削除件数
      */
     public int delete() {
-
-        // 変遷履歴の削除
-        if (this.tb3TransHiss != null) {
-            for (Tb3TransHis tb3TransHis : this.tb3TransHiss) {
-                if (tb3TransHis.delete() != 1) {
-                    throw new jp.co.golorp.emarf.exception.OptLockError("error.cant.delete", "変遷履歴");
-                }
-            }
-        }
 
         // 変遷の削除
         String sql = "DELETE FROM TB3_TRANS WHERE " + getWhere();
@@ -371,67 +375,5 @@ public class Tb3Trans implements IEntity {
         map.put("update_ts", now);
         map.put("update_user_id", execId);
         return map;
-    }
-
-    /*
-     * 子モデル：変遷履歴
-     */
-
-    /** 変遷履歴のリスト */
-    private List<Tb3TransHis> tb3TransHiss;
-
-    /** @return 変遷履歴のリスト */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "Tb3TransHiss", index = 10)
-    public List<Tb3TransHis> getTb3TransHiss() {
-        return this.tb3TransHiss;
-    }
-
-    /** @param list 変遷履歴のリスト */
-    public void setTb3TransHiss(final List<Tb3TransHis> list) {
-        this.tb3TransHiss = list;
-    }
-
-    /** @param tb3TransHis */
-    public void addTb3TransHiss(final Tb3TransHis tb3TransHis) {
-        if (this.tb3TransHiss == null) {
-            this.tb3TransHiss = new ArrayList<Tb3TransHis>();
-        }
-        this.tb3TransHiss.add(tb3TransHis);
-    }
-
-    /** @return 変遷履歴のリスト */
-    public List<Tb3TransHis> referTb3TransHiss() {
-        this.tb3TransHiss = Tb3Trans.referTb3TransHiss(this.transId);
-        return this.tb3TransHiss;
-    }
-
-    /**
-     * @param param1 transId
-     * @return List<Tb3TransHis>
-     */
-    public static List<Tb3TransHis> referTb3TransHiss(final Integer param1) {
-        List<String> whereList = new ArrayList<String>();
-        whereList.add("TRANS_ID = :trans_id");
-        String sql = "SELECT ";
-        sql += "`TRANS_ID`";
-        sql += ", `TRANS_BN`";
-        sql += ", `TRANS_INFO`";
-        sql += ", `RIYU_TX`";
-        sql += ", `INSERT_TS` AS INSERT_TS";
-        sql += ", `INSERT_USER_ID`";
-        sql += ", (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`";
-        sql += ", `UPDATE_TS` AS UPDATE_TS";
-        sql += ", `UPDATE_USER_ID`";
-        sql += ", (SELECT r1.`USER_SEI` FROM MHR_USER r1 WHERE r1.`USER_ID` = a.`UPDATE_USER_ID`) AS `UPDATE_USER_SEI`";
-        sql += " FROM TB3_TRANS_HIS a WHERE " + String.join(" AND ", whereList);
-        sql += " ORDER BY ";
-        sql += "TRANS_ID, TRANS_BN";
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("trans_id", param1);
-        List<Tb3TransHis> list = Queries.select(sql, map, Tb3TransHis.class, null, null);
-        if (list != null) {
-            return list;
-        }
-        return new ArrayList<Tb3TransHis>();
     }
 }

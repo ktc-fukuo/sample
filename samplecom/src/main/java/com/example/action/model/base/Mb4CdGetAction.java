@@ -25,11 +25,11 @@ public class Mb4CdGetAction extends BaseAction {
         // 主キーのチェック
         boolean isAllKey = true;
 
-        Object refCd = postJson.get("refCd");
-        if (refCd == null) {
-            refCd = postJson.get("Mb4Cd.refCd");
+        Object cdrefCd = postJson.get("cdrefCd");
+        if (cdrefCd == null) {
+            cdrefCd = postJson.get("Mb4Cd.cdrefCd");
         }
-        if (refCd == null) {
+        if (cdrefCd == null) {
             isAllKey = false;
         }
 
@@ -39,7 +39,7 @@ public class Mb4CdGetAction extends BaseAction {
         }
 
         try {
-            Mb4Cd mb4Cd = Mb4Cd.get(refCd);
+            Mb4Cd mb4Cd = Mb4Cd.get(cdrefCd);
             map.put("Mb4Cd", mb4Cd);
         } catch (NoDataError e) {
             if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {

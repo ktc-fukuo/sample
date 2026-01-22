@@ -37,7 +37,7 @@ public class Mb4CdSDeleteAction extends BaseAction {
                 }
 
                 // 主キーが不足していたらエラー
-                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(row.get("REF_CD"))) {
+                if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(row.get("CDREF_CD"))) {
                     throw new OptLockError("error.cant.delete", "CDマスタ");
                 }
 

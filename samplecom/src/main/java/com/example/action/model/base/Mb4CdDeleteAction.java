@@ -23,11 +23,11 @@ public class Mb4CdDeleteAction extends BaseAction {
     public Map<String, Object> running(final LocalDateTime now, final String execId, final Map<String, Object> postJson) {
 
         // 主キーが不足していたらエラー
-        Object refCd = postJson.get("refCd");
-        if (refCd == null) {
-            refCd = postJson.get("Mb4Cd.refCd");
+        Object cdrefCd = postJson.get("cdrefCd");
+        if (cdrefCd == null) {
+            cdrefCd = postJson.get("Mb4Cd.cdrefCd");
         }
-        if (refCd == null) {
+        if (cdrefCd == null) {
             throw new OptLockError("error.cant.delete", "CDマスタ");
         }
 
