@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{M04IdbnS.title}">ID連番マスタ</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/M04IdbnGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{M04IdbnS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="M04IdbnSearchForm" action="M04IdbnSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{M04IdbnS.legend}">legend</legend>
+        <div id="idbnId">
+          <label for="M04Idbn.idbnId" th:text="#{M04Idbn.idbnId}">参照ID</label><input type="text" id="M04Idbn.idbnId" name="M04Idbn.idbnId" maxlength="10" />
+        </div>
+        <div id="idbnBn">
+          <label for="M04Idbn.idbnBn" th:text="#{M04Idbn.idbnBn}">参照連番</label><input type="text" id="M04Idbn.idbnBn" name="M04Idbn.idbnBn" maxlength="10" />
+        </div>
+        <div id="idbnNo">
+          <label for="M04Idbn.idbnNo" th:text="#{M04Idbn.idbnNo}">ID連番NO</label><input type="text" id="M04Idbn.idbnNo" name="M04Idbn.idbnNo" maxlength="10" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetM04Idbn" th:text="#{common.reset}" class="reset">reset</button>
+      </div>
+      <div class="submits">
+        <button id="SearchM04Idbn" type="submit" class="search" data-gridId="M04IdbnGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="M04IdbnSRegistForm" action="M04IdbnSRegist.ajax" class="regist">
+      <h3 th:text="#{M04Idbn.h3}">h3</h3>
+      <div id="M04IdbnGrid" data-selectionMode="checkbox" data-frozenColumn="1" th:data-href="@{/model/M04Idbn.html}"></div>
+      <div id="M04IdbnPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetM04IdbnS" th:text="#{common.reset}" onClick="Base.listReset('M04Idbn');">reset</button>
+        <a th:href="@{M04IdbnSearch.xlsx(baseMei=#{M04IdbnS.h2})}" id="M04IdbnSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <button type="submit" id="DeleteM04IdbnS" data-action="M04IdbnSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+      </div>
+      <div class="submits">
+        <button id="RegistM04IdbnS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

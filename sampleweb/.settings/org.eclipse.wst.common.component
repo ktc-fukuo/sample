@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
         
-    <wb-module deploy-name="examweb">
+    <wb-module deploy-name="sampleweb">
                 
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
                 
@@ -22,9 +22,9 @@
             <dependency-type>uses</dependency-type>
         </dependent-module>
                 
-        <property name="context-root" value="examweb"/>
+        <property name="context-root" value="sampleweb"/>
                 
-        <property name="java-output-path" value="/examweb/target/classes"/>
+        <property name="java-output-path" value="/sampleweb/target/classes"/>
             
     </wb-module>
     

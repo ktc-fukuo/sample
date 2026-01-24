@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T01Orphan.title}">孤児</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T01OrphanGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/T01OyaGridColumns.js}"></script>
+<script th:src="@{/model/T01DinksGridColumns.js}"></script>
+<script th:src="@{/model/T01KoGridColumns.js}"></script>
+<script th:src="@{/model/T01MagoGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T01Orphan.h2}">h2</h2>
+    <form name="T01OrphanRegistForm" action="T01OrphanRegist.ajax" class="regist">
+      <fieldset class="parent">
+        <legend th:text="#{T01Oya.legend}">legend</legend>
+        <div id="oyaId">
+          <label for="T01Oya.oyaId" th:text="#{T01Oya.oyaId}">親ID</label><input type="text" id="T01Oya.oyaId" name="T01Oya.oyaId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="oyaInfo">
+          <label for="T01Oya.oyaInfo" th:text="#{T01Oya.oyaInfo}">親情報</label><input type="text" id="T01Oya.oyaInfo" name="T01Oya.oyaInfo" maxlength="300" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{T01Oya.insertTs}" class="meta">作成タイムスタンプ</label><span id="T01Oya.insertTs" class="meta"></span><input type="hidden" id="T01Oya.insertTs" name="T01Oya.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{T01Oya.insertUserId}" class="meta">作成者</label><span id="T01Oya.insertUserId" class="meta"></span><input type="hidden" id="T01Oya.insertUserId" name="T01Oya.insertUserId" class="meta"/>
+          <span id="T01Oya.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T01Oya.insertUserId" data-destDef="T01Oya.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{T01Oya.updateTs}" class="meta">更新タイムスタンプ</label><span id="T01Oya.updateTs" class="meta"></span><input type="hidden" id="T01Oya.updateTs" name="T01Oya.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{T01Oya.updateUserId}" class="meta">更新者</label><span id="T01Oya.updateUserId" class="meta"></span><input type="hidden" id="T01Oya.updateUserId" name="T01Oya.updateUserId" class="meta"/>
+          <span id="T01Oya.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T01Oya.updateUserId" data-destDef="T01Oya.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend th:text="#{T01Orphan.legend}">legend</legend>
+        <div id="oyaId">
+          <label for="T01Orphan.oyaId" th:text="#{T01Orphan.oyaId}">親ID</label><input type="text" id="T01Orphan.oyaId" name="T01Orphan.oyaId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="koBn">
+          <label for="T01Orphan.koBn" th:text="#{T01Orphan.koBn}">子枝番</label><input type="text" id="T01Orphan.koBn" name="T01Orphan.koBn" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="orphanInfo">
+          <label for="T01Orphan.orphanInfo" th:text="#{T01Orphan.orphanInfo}">孤児情報</label><input type="text" id="T01Orphan.orphanInfo" name="T01Orphan.orphanInfo" maxlength="300" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{T01Orphan.insertTs}" class="meta">作成タイムスタンプ</label><span id="T01Orphan.insertTs" class="meta"></span><input type="hidden" id="T01Orphan.insertTs" name="T01Orphan.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{T01Orphan.insertUserId}" class="meta">作成者</label><span id="T01Orphan.insertUserId" class="meta"></span><input type="hidden" id="T01Orphan.insertUserId" name="T01Orphan.insertUserId" class="meta"/>
+          <span id="T01Orphan.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T01Orphan.insertUserId" data-destDef="T01Orphan.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{T01Orphan.updateTs}" class="meta">更新タイムスタンプ</label><span id="T01Orphan.updateTs" class="meta"></span><input type="hidden" id="T01Orphan.updateTs" name="T01Orphan.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{T01Orphan.updateUserId}" class="meta">更新者</label><span id="T01Orphan.updateUserId" class="meta"></span><input type="hidden" id="T01Orphan.updateUserId" name="T01Orphan.updateUserId" class="meta"/>
+          <span id="T01Orphan.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T01Orphan.updateUserId" data-destDef="T01Orphan.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend th:text="#{T01Dinks.legend}">legend</legend>
+        <div id="dinksInfo">
+          <label for="T01Dinks.dinksInfo" th:text="#{T01Dinks.dinksInfo}">子なし情報</label><input type="text" id="T01Dinks.dinksInfo" name="T01Dinks.dinksInfo" maxlength="300" />
+        </div>
+        <input type="hidden" name="T01Dinks.updateTs" />
+      </fieldset>
+      <fieldset>
+        <legend th:text="#{T01Ko.legend}">legend</legend>
+        <div id="koInfo">
+          <label for="T01Ko.koInfo" th:text="#{T01Ko.koInfo}">子情報</label><input type="text" id="T01Ko.koInfo" name="T01Ko.koInfo" maxlength="300" />
+        </div>
+        <input type="hidden" name="T01Ko.updateTs" />
+      </fieldset>
+      <h3 th:text="#{T01Mago.h3}">h3</h3>
+      <a th:href="@{/model/T01Mago.html}" id="T01Mago" target="dialog" th:text="#{T01Mago.add}" class="addChild" tabindex="-1">孫</a>
+      <div id="T01MagoGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="2" th:data-href="@{/model/T01Mago.html}" class="childs"></div>
+      <div class="buttons">
+        <button type="button" id="RefreshT01Orphan" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{T01OrphanGet.xlsx(baseMei=#{T01Orphan.h2})}" id="T01OrphanGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteT01Orphan" type="submit" class="delete" data-action="T01OrphanDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistT01Orphan" type="submit" class="regist" th:text="#{common.regist}">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

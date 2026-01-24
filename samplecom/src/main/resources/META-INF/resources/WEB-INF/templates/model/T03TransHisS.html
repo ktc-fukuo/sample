@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T03TransHisS.title}">変遷履歴</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T03TransHisGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T03TransHisS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="T03TransHisSearchForm" action="T03TransHisSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{T03TransHisS.legend}">legend</legend>
+        <div id="transId">
+          <label for="T03TransHis.transId" th:text="#{T03TransHis.transId}">変遷ID</label><input type="text" id="T03TransHis.transId" name="T03TransHis.transId" maxlength="10" />
+        </div>
+        <div id="transBn">
+          <label for="T03TransHis.transBn" th:text="#{T03TransHis.transBn}">変遷枝番</label><input type="text" id="T03TransHis.transBn" name="T03TransHis.transBn" maxlength="10" />
+        </div>
+        <div id="transInfo">
+          <label for="T03TransHis.transInfo" th:text="#{T03TransHis.transInfo}">変遷情報</label><input type="text" id="T03TransHis.transInfo" name="T03TransHis.transInfo" maxlength="300" />
+        </div>
+        <div id="riyuTx">
+          <label for="T03TransHis.riyuTx" th:text="#{T03TransHis.riyuTx}">変更理由</label><input type="text" id="T03TransHis.riyuTx" name="T03TransHis.riyuTx" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetT03TransHis" th:text="#{common.reset}" class="reset">reset</button>
+      </div>
+      <div class="submits">
+        <button id="SearchT03TransHis" type="submit" class="search" data-gridId="T03TransHisGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="T03TransHisSRegistForm" action="T03TransHisSRegist.ajax" class="regist">
+      <h3 th:text="#{T03TransHis.h3}">h3</h3>
+      <div id="T03TransHisGrid" data-selectionMode="checkbox" data-frozenColumn="1" data-editable="false" th:data-href="@{/model/T03TransHis.html}"></div>
+      <div id="T03TransHisPager"></div>
+      <div class="buttons">
+        <a th:href="@{T03TransHisSearch.xlsx(baseMei=#{T03TransHisS.h2})}" id="T03TransHisSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T07PrevS.title}">前世</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T07PrevGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/T07PrevDetGridColumns.js}"></script>
+<script th:src="@{/model/T07RebornGridColumns.js}"></script>
+<script th:src="@{/model/T07RebornDetGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T07PrevS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="T07PrevSearchForm" action="T07PrevSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{T07PrevS.legend}">legend</legend>
+        <div id="prevId">
+          <label for="T07Prev.prevId" th:text="#{T07Prev.prevId}">前世ID</label><input type="text" id="T07Prev.prevId" name="T07Prev.prevId" maxlength="10" />
+        </div>
+        <div id="prevInfo">
+          <label for="T07Prev.prevInfo" th:text="#{T07Prev.prevInfo}">前世情報</label><input type="text" id="T07Prev.prevInfo" name="T07Prev.prevInfo" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetT07Prev" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/T07Prev.html}" target="dialog" id="T07Prev" class="anew" th:text="#{T07Prev.add}" tabindex="-1">前世</a>
+      </div>
+      <div class="submits">
+        <button id="SearchT07Prev" type="submit" class="search" data-gridId="T07PrevGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="T07PrevSRegistForm" action="T07PrevSRegist.ajax" class="regist">
+      <h3 th:text="#{T07Prev.h3}">h3</h3>
+      <div id="T07PrevGrid" data-selectionMode="checkbox" data-frozenColumn="0" data-editable="false" th:data-href="@{/model/T07Prev.html}"></div>
+      <div id="T07PrevPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetT07PrevS" th:text="#{common.reset}" onClick="Base.listReset('T07Prev');">reset</button>
+        <a th:href="@{T07PrevSearch.xlsx(baseMei=#{T07PrevS.h2})}" id="T07PrevSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

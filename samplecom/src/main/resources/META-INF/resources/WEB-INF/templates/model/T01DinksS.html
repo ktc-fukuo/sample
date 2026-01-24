@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T01DinksS.title}">子なし</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T01DinksGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/T01OyaGridColumns.js}"></script>
+<script th:src="@{/model/T01KoGridColumns.js}"></script>
+<script th:src="@{/model/T01MagoGridColumns.js}"></script>
+<script th:src="@{/model/T01OrphanGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T01DinksS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="T01DinksSearchForm" action="T01DinksSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{T01DinksS.legend}">legend</legend>
+        <div id="oyaId">
+          <label for="T01Dinks.oyaId" th:text="#{T01Dinks.oyaId}">親ID</label><input type="text" id="T01Dinks.oyaId" name="T01Dinks.oyaId" maxlength="10" />
+        </div>
+        <div id="koBn">
+          <label for="T01Dinks.koBn" th:text="#{T01Dinks.koBn}">子枝番</label><input type="text" id="T01Dinks.koBn" name="T01Dinks.koBn" maxlength="10" />
+        </div>
+        <div id="dinksInfo">
+          <label for="T01Dinks.dinksInfo" th:text="#{T01Dinks.dinksInfo}">子なし情報</label><input type="text" id="T01Dinks.dinksInfo" name="T01Dinks.dinksInfo" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetT01Dinks" th:text="#{common.reset}" class="reset">reset</button>
+      </div>
+      <div class="submits">
+        <button id="SearchT01Dinks" type="submit" class="search" data-gridId="T01DinksGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="T01DinksSRegistForm" action="T01DinksSRegist.ajax" class="regist">
+      <h3 th:text="#{T01Dinks.h3}">h3</h3>
+      <div id="T01DinksGrid" data-selectionMode="checkbox" data-frozenColumn="1" th:data-href="@{/model/T01Dinks.html}"></div>
+      <div id="T01DinksPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetT01DinksS" th:text="#{common.reset}" onClick="Base.listReset('T01Dinks');">reset</button>
+        <a th:href="@{T01DinksSearch.xlsx(baseMei=#{T01DinksS.h2})}" id="T01DinksSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <button type="submit" id="DeleteT01DinksS" data-action="T01DinksSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+      </div>
+      <div class="submits">
+        <button id="RegistT01DinksS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

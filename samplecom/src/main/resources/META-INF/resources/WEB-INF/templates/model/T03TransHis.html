@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T03TransHis.title}">変遷履歴</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T03TransHisGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T03TransHis.h2}">h2</h2>
+    <form name="T03TransHisRegistForm" action="T03TransHisRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{T03TransHis.legend}">legend</legend>
+        <div id="transId">
+          <label th:text="#{T03TransHis.transId}">変遷ID</label><span id="T03TransHis.transId" class="history"></span><input type="hidden" id="T03TransHis.transId" name="T03TransHis.transId" class="history" />
+        </div>
+        <div id="transBn">
+          <label th:text="#{T03TransHis.transBn}">変遷枝番</label><span id="T03TransHis.transBn" class="history"></span><input type="hidden" id="T03TransHis.transBn" name="T03TransHis.transBn" class="history" />
+        </div>
+        <div id="transInfo">
+          <label th:text="#{T03TransHis.transInfo}">変遷情報</label><span id="T03TransHis.transInfo" class="history"></span><input type="hidden" id="T03TransHis.transInfo" name="T03TransHis.transInfo" class="history" />
+        </div>
+        <div id="riyuTx">
+          <label th:text="#{T03TransHis.riyuTx}">変更理由</label><span id="T03TransHis.riyuTx" class="history"></span><input type="hidden" id="T03TransHis.riyuTx" name="T03TransHis.riyuTx" class="history" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{T03TransHis.insertTs}" class="meta">作成タイムスタンプ</label><span id="T03TransHis.insertTs" class="meta"></span><input type="hidden" id="T03TransHis.insertTs" name="T03TransHis.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{T03TransHis.insertUserId}" class="meta">作成者</label><span id="T03TransHis.insertUserId" class="meta"></span><input type="hidden" id="T03TransHis.insertUserId" name="T03TransHis.insertUserId" class="meta"/>
+          <span id="T03TransHis.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T03TransHis.insertUserId" data-destDef="T03TransHis.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{T03TransHis.updateTs}" class="meta">更新タイムスタンプ</label><span id="T03TransHis.updateTs" class="meta"></span><input type="hidden" id="T03TransHis.updateTs" name="T03TransHis.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{T03TransHis.updateUserId}" class="meta">更新者</label><span id="T03TransHis.updateUserId" class="meta"></span><input type="hidden" id="T03TransHis.updateUserId" name="T03TransHis.updateUserId" class="meta"/>
+          <span id="T03TransHis.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T03TransHis.updateUserId" data-destDef="T03TransHis.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <a th:href="@{T03TransHisGet.xlsx(baseMei=#{T03TransHis.h2})}" id="T03TransHisGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

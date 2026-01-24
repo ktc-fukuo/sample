@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{V13Henkan.title}">VIEW</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/V13HenkanGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{V13Henkan.h2}">h2</h2>
+    <form name="V13HenkanRegistForm" action="V13HenkanRegist.ajax" class="regist">
+      <fieldset class="view">
+        <legend th:text="#{V13Henkan.legend}">legend</legend>
+        <div id="srcId">
+          <label for="V13Henkan.srcId" th:text="#{V13Henkan.srcId}">変換元ID</label><input type="text" id="V13Henkan.srcId" name="V13Henkan.srcId" maxlength="10" class=" notblank" />
+        </div>
+        <div id="destInfo">
+          <label for="V13Henkan.destInfo" th:text="#{V13Henkan.destInfo}">変換元情報</label><input type="text" id="V13Henkan.destInfo" name="V13Henkan.destInfo" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <a th:href="@{V13HenkanGet.xlsx(baseMei=#{V13Henkan.h2})}" id="V13HenkanGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

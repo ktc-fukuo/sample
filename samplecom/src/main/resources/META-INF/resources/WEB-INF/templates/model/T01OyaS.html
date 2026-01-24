@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T01OyaS.title}">親</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T01OyaGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/T01DinksGridColumns.js}"></script>
+<script th:src="@{/model/T01KoGridColumns.js}"></script>
+<script th:src="@{/model/T01MagoGridColumns.js}"></script>
+<script th:src="@{/model/T01OrphanGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T01OyaS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="T01OyaSearchForm" action="T01OyaSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{T01OyaS.legend}">legend</legend>
+        <div id="oyaId">
+          <label for="T01Oya.oyaId" th:text="#{T01Oya.oyaId}">親ID</label><input type="text" id="T01Oya.oyaId" name="T01Oya.oyaId" maxlength="10" />
+        </div>
+        <div id="oyaInfo">
+          <label for="T01Oya.oyaInfo" th:text="#{T01Oya.oyaInfo}">親情報</label><input type="text" id="T01Oya.oyaInfo" name="T01Oya.oyaInfo" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetT01Oya" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/T01Oya.html}" target="dialog" id="T01Oya" class="anew" th:text="#{T01Oya.add}" tabindex="-1">親</a>
+      </div>
+      <div class="submits">
+        <button id="SearchT01Oya" type="submit" class="search" data-gridId="T01OyaGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="T01OyaSRegistForm" action="T01OyaSRegist.ajax" class="regist">
+      <h3 th:text="#{T01Oya.h3}">h3</h3>
+      <div id="T01OyaGrid" data-selectionMode="checkbox" data-frozenColumn="0" data-editable="false" th:data-href="@{/model/T01Oya.html}"></div>
+      <div id="T01OyaPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetT01OyaS" th:text="#{common.reset}" onClick="Base.listReset('T01Oya');">reset</button>
+        <a th:href="@{T01OyaSearch.xlsx(baseMei=#{T01OyaS.h2})}" id="T01OyaSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

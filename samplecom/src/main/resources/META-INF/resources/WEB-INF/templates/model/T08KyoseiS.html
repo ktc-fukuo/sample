@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T08KyoseiS.title}">共生</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T08KyoseiGridColumns.js}"></script>
+<script th:src="@{/model/T08Kisei1GridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+<script th:src="@{/model/T08Kisei2GridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T08KyoseiS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="T08KyoseiSearchForm" action="T08KyoseiSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{T08KyoseiS.legend}">legend</legend>
+        <div id="kyoseiId">
+          <label for="T08Kyosei.kyoseiId" th:text="#{T08Kyosei.kyoseiId}">共生ID</label><input type="text" id="T08Kyosei.kyoseiId" name="T08Kyosei.kyoseiId" maxlength="10" />
+        </div>
+        <div id="kisei1Id">
+          <label for="T08Kyosei.kisei1Id" th:text="#{T08Kyosei.kisei1Id}">寄生１ID</label><input type="text" id="T08Kyosei.kisei1Id" name="T08Kyosei.kisei1Id" maxlength="10" /><a id="T08Kyosei.kisei1Id" th:href="@{/model/T08Kisei1S.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a>
+        </div>
+        <div id="kisei1Info">
+          <label for="T08Kyosei.kisei1Info" th:text="#{T08Kyosei.kisei1Info}">寄生１情報</label><input type="text" id="T08Kyosei.kisei1Info" name="T08Kyosei.kisei1Info" maxlength="300" />
+        </div>
+        <div id="kisei2Id">
+          <label for="T08Kyosei.kisei2Id" th:text="#{T08Kyosei.kisei2Id}">寄生２ID</label><input type="text" id="T08Kyosei.kisei2Id" name="T08Kyosei.kisei2Id" maxlength="10" /><a id="T08Kyosei.kisei2Id" th:href="@{/model/T08Kisei2S.html}" target="dialog" th:text="#{common.refer}" tabindex="-1">...</a>
+        </div>
+        <div id="kisei2Info">
+          <label for="T08Kyosei.kisei2Info" th:text="#{T08Kyosei.kisei2Info}">寄生２情報</label><input type="text" id="T08Kyosei.kisei2Info" name="T08Kyosei.kisei2Info" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetT08Kyosei" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/T08Kyosei.html}" target="dialog" id="T08Kyosei" class="anew" th:text="#{T08Kyosei.add}" tabindex="-1">共生</a>
+      </div>
+      <div class="submits">
+        <button id="SearchT08Kyosei" type="submit" class="search" data-gridId="T08KyoseiGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="T08KyoseiSRegistForm" action="T08KyoseiSRegist.ajax" class="regist">
+      <h3 th:text="#{T08Kyosei.h3}">h3</h3>
+      <div id="T08KyoseiGrid" data-selectionMode="checkbox" data-addRow="true" data-frozenColumn="0" th:data-href="@{/model/T08Kyosei.html}"></div>
+      <div id="T08KyoseiPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetT08KyoseiS" th:text="#{common.reset}" onClick="Base.listReset('T08Kyosei');">reset</button>
+        <a th:href="@{T08KyoseiSearch.xlsx(baseMei=#{T08KyoseiS.h2})}" id="T08KyoseiSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <a id="T08KyoseiGrid.kisei1Id" th:href="@{/model/T08Kisei1S.html}" target="dialog" class="refer" th:text="'寄生１' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <a id="T08KyoseiGrid.kisei2Id" th:href="@{/model/T08Kisei2S.html}" target="dialog" class="refer" th:text="'寄生２' + #{common.refer}" tabindex="-1" style="display: none;">...</a>
+        <button type="submit" id="DeleteT08KyoseiS" data-action="T08KyoseiSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+      </div>
+      <div class="submits">
+        <button id="RegistT08KyoseiS" type="submit" class="regist" th:text="#{common.regist}">submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

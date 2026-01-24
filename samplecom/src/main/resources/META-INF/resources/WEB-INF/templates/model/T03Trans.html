@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T03Trans.title}">変遷</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T03TransGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T03Trans.h2}">h2</h2>
+    <form name="T03TransRegistForm" action="T03TransRegist.ajax" class="regist">
+      <fieldset>
+        <legend th:text="#{T03Trans.legend}">legend</legend>
+        <div id="transId">
+          <label for="T03Trans.transId" th:text="#{T03Trans.transId}">変遷ID</label><input type="text" id="T03Trans.transId" name="T03Trans.transId" maxlength="10" class=" primaryKey numbering notblank" />
+        </div>
+        <div id="transInfo">
+          <label for="T03Trans.transInfo" th:text="#{T03Trans.transInfo}">変遷情報</label><input type="text" id="T03Trans.transInfo" name="T03Trans.transInfo" maxlength="300" />
+        </div>
+        <div id="insertTs">
+          <label th:text="#{T03Trans.insertTs}" class="meta">作成タイムスタンプ</label><span id="T03Trans.insertTs" class="meta"></span><input type="hidden" id="T03Trans.insertTs" name="T03Trans.insertTs" class="meta"/>
+        </div>
+        <div id="insertUserId">
+          <label th:text="#{T03Trans.insertUserId}" class="meta">作成者</label><span id="T03Trans.insertUserId" class="meta"></span><input type="hidden" id="T03Trans.insertUserId" name="T03Trans.insertUserId" class="meta"/>
+          <span id="T03Trans.insertUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T03Trans.insertUserId" data-destDef="T03Trans.insertUserSei:USER_SEI"></span>
+        </div>
+        <div id="updateTs">
+          <label th:text="#{T03Trans.updateTs}" class="meta">更新タイムスタンプ</label><span id="T03Trans.updateTs" class="meta"></span><input type="hidden" id="T03Trans.updateTs" name="T03Trans.updateTs" class="meta"/>
+        </div>
+        <div id="updateUserId">
+          <label th:text="#{T03Trans.updateUserId}" class="meta">更新者</label><span id="T03Trans.updateUserId" class="meta"></span><input type="hidden" id="T03Trans.updateUserId" name="T03Trans.updateUserId" class="meta"/>
+          <span id="T03Trans.updateUserSei" class="refer meta" data-json="MhrUserSearch.json" data-srcDef="USER_ID:T03Trans.updateUserId" data-destDef="T03Trans.updateUserSei:USER_SEI"></span>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" id="RefreshT03Trans" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
+        <a th:href="@{T03TransGet.xlsx(baseMei=#{T03Trans.h2})}" id="T03TransGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+      </div>
+      <div class="submits">
+        <button id="DeleteT03Trans" type="submit" class="delete" data-action="T03TransDelete.ajax" th:text="#{common.delete}" tabindex="-1">削除</button>
+        <button id="RegistT03Trans" type="submit" class="regist" th:text="#{common.regist}" onclick="if (!Base.historyReason(this)) { return false; }">登録</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

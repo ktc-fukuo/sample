@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{common/base}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{T03TransS.title}">変遷</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+
+</script>
+<script th:src="@{/model/T03TransGridColumns.js}"></script>
+<script th:src="@{/model/MhrUserGridColumns.js}"></script>
+</head>
+<body>
+  <div layout:fragment="article">
+    <h2 th:text="#{T03TransS.h2}">h2</h2>
+    <!-- 検索フォーム -->
+    <form name="T03TransSearchForm" action="T03TransSearch.ajax" class="search">
+      <input type="hidden" name="rows" value="10" />
+      <input type="hidden" name="page" value="0" />
+      <fieldset>
+        <legend th:text="#{T03TransS.legend}">legend</legend>
+        <div id="transId">
+          <label for="T03Trans.transId" th:text="#{T03Trans.transId}">変遷ID</label><input type="text" id="T03Trans.transId" name="T03Trans.transId" maxlength="10" />
+        </div>
+        <div id="transInfo">
+          <label for="T03Trans.transInfo" th:text="#{T03Trans.transInfo}">変遷情報</label><input type="text" id="T03Trans.transInfo" name="T03Trans.transInfo" maxlength="300" />
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="reset" id="ResetT03Trans" th:text="#{common.reset}" class="reset">reset</button>
+        <a th:href="@{/model/T03Trans.html}" target="dialog" id="T03Trans" class="anew" th:text="#{T03Trans.add}" tabindex="-1">変遷</a>
+      </div>
+      <div class="submits">
+        <button id="SearchT03Trans" type="submit" class="search" data-gridId="T03TransGrid" th:text="#{common.search}">submit</button>
+      </div>
+    </form>
+    <!-- 一覧フォーム -->
+    <form name="T03TransSRegistForm" action="T03TransSRegist.ajax" class="regist">
+      <h3 th:text="#{T03Trans.h3}">h3</h3>
+      <div id="T03TransGrid" data-selectionMode="checkbox" data-addRow="true" data-frozenColumn="0" th:data-href="@{/model/T03Trans.html}"></div>
+      <div id="T03TransPager"></div>
+      <div class="buttons">
+        <button type="button" class="reset" id="ResetT03TransS" th:text="#{common.reset}" onClick="Base.listReset('T03Trans');">reset</button>
+        <a th:href="@{T03TransSearch.xlsx(baseMei=#{T03TransS.h2})}" id="T03TransSearch.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>
+        <button type="submit" id="DeleteT03TransS" data-action="T03TransSDelete.ajax" class="delete selectRows" th:text="#{common.delete}" tabindex="-1">削除</button>
+      </div>
+      <div class="submits">
+        <button id="RegistT03TransS" type="submit" class="regist" th:text="#{common.regist}" onclick="if (!Base.historyReason(this)) { return false; }">submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

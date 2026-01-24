@@ -3,7 +3,7 @@
 JNDIName        java:/comp/env/jdbc/mysql
 # コネクションプールの場合
 driverClassName com.mysql.cj.jdbc.Driver
-url             jdbc:mysql://localhost/emarf?characterEncoding=utf8&serverTimezone=JST
+url             jdbc:mysql://localhost/emarf?characterEncoding=utf8&serverTimezone=Asia/Tokyo
 username        emarf
 password        emarf
 initialSize     30

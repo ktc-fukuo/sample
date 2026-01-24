@@ -1,0 +1,13 @@
+/**
+ * 長兄グリッド定義
+ */
+
+let T02EldestGridColumns = [];
+
+$(function() {
+    T02EldestGridColumns = [
+        Column.text('BRO_ID', Messages['T02EldestGrid.broId'], 90, 'primaryKey numbering', null),
+        Column.text('ELDEST_INFO', Messages['T02EldestGrid.eldestInfo'], 300, '', null),
+        Column.cell('UPDATE_TS', Messages['T02EldestGrid.updateTs'], 207, 'metaInfo optLock', Slick.Formatters.Extends.Timestamp),
+    ];
+});
