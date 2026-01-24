@@ -17,6 +17,7 @@ FROM
 WHERE
     1 = 1 
     AND IFNULL (a.TEKIYO_BI, sysdate()) <= sysdate() 
+    AND DATE_ADD(IFNULL (a.HAISHI_BI, sysdate()), INTERVAL 1 DAY) > sysdate() 
     AND a.`USER_ID` = :user_id 
     AND UPPER (TRIM(TRAILING ' ' FROM a.`USER_SEI`)) LIKE UPPER (CONCAT ('%', :user_sei, '%')) 
     AND UPPER (TRIM(TRAILING ' ' FROM a.`USER_MEI`)) LIKE UPPER (CONCAT ('%', :user_mei, '%')) 

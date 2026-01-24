@@ -15,6 +15,7 @@ FROM
 WHERE
     1 = 1 
     AND IFNULL (a.TEKIYO_BI, sysdate()) <= sysdate() 
+    AND DATE_ADD(IFNULL (a.HAISHI_BI, sysdate()), INTERVAL 1 DAY) > sysdate() 
     AND a.`SHOKUI_ID` = :shokui_id 
     AND UPPER (TRIM(TRAILING ' ' FROM a.`SHOKUI_MEI`)) LIKE UPPER (CONCAT ('%', :shokui_mei, '%')) 
     AND a.`SHOKUI_ON` = :shokui_on 

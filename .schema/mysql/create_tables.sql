@@ -1,33 +1,33 @@
 -- Project Name : emarf
--- Date/Time    : 2026/01/22 22:09:19
+-- Date/Time    : 2026/01/24 8:40:28
 -- Author       : t_fuk
 -- RDBMS Type   : MySQL
 -- Application  : A5:SQL Mk-2
 
 -- CDマスタ
-create table MB4_CD (
+create table M04_CD (
   CDREF_CD CHAR(10) comment '参照CD'
   , CDREF_MEI VARCHAR(60) not null comment 'CD参照名'
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint MB4_CD_PKC primary key (CDREF_CD)
+  , constraint M04_CD_PKC primary key (CDREF_CD)
 ) comment 'CDマスタ' ;
 
 -- IDマスタ
-create table MB4_ID (
+create table M04_ID (
   IDREF_ID INT comment '参照ID'
   , IDREF_MEI VARCHAR(60) not null comment 'ID参照名'
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint MB4_ID_PKC primary key (IDREF_ID)
+  , constraint M04_ID_PKC primary key (IDREF_ID)
 ) comment 'IDマスタ' ;
 
 -- ID連番マスタ
-create table MB4_IDBN (
+create table M04_IDBN (
   IDBN_ID INT comment '参照ID'
   , IDBN_BN INT comment '参照連番'
   , IDBN_NO CHAR(10) not null comment 'ID連番NO'
@@ -35,22 +35,22 @@ create table MB4_IDBN (
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint MB4_IDBN_PKC primary key (IDBN_ID,IDBN_BN)
+  , constraint M04_IDBN_PKC primary key (IDBN_ID,IDBN_BN)
 ) comment 'ID連番マスタ' ;
 
 -- NOマスタ
-create table MB4_NO (
+create table M04_NO (
   NOREF_NO CHAR(10) comment '参照NO'
   , NOREF_MEI VARCHAR(60) not null comment 'NO参照名'
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint MB4_NO_PKC primary key (NOREF_NO)
+  , constraint M04_NO_PKC primary key (NOREF_NO)
 ) comment 'NOマスタ' ;
 
 -- マスタ参照１
-create table MB5_REF1 (
+create table M05_REF1 (
   REF1_ID INT comment '参照１ID'
   , REF1_MEI VARCHAR(60) not null comment '参照１名'
   , DELETE_F CHAR(1) comment '削除フラグ'
@@ -60,11 +60,11 @@ create table MB5_REF1 (
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint MB5_REF1_PKC primary key (REF1_ID)
+  , constraint M05_REF1_PKC primary key (REF1_ID)
 ) comment 'マスタ参照１' ;
 
 -- マスタ参照２
-create table MB5_REF2 (
+create table M05_REF2 (
   REF2_ID INT comment '参照２ID'
   , REF2_MEI VARCHAR(60) not null comment '参照２名'
   , DELETE_F CHAR(1) comment '削除フラグ'
@@ -74,11 +74,11 @@ create table MB5_REF2 (
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint MB5_REF2_PKC primary key (REF2_ID)
+  , constraint M05_REF2_PKC primary key (REF2_ID)
 ) comment 'マスタ参照２' ;
 
 -- マスタ参照３
-create table MB5_REF3 (
+create table M05_REF3 (
   REF3_ID INT comment '参照３ID'
   , REF3_MEI VARCHAR(60) not null comment '参照３名'
   , DELETE_F CHAR(1) comment '削除フラグ'
@@ -88,7 +88,7 @@ create table MB5_REF3 (
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint MB5_REF3_PKC primary key (REF3_ID)
+  , constraint M05_REF3_PKC primary key (REF3_ID)
 ) comment 'マスタ参照３' ;
 
 -- 部署マスタ
@@ -229,7 +229,7 @@ create table MSY_TSUKA (
 ) comment '通貨マスタ' ;
 
 -- エンティティ
-create table TB0_ENTITY (
+create table T00_ENTITY (
   ENTITY_ID INT not null comment 'エンティティID'
   , ENTITY_NM VARCHAR(20) not null comment 'エンティティ名称'
   , ENTITY_MEI VARCHAR(60) not null comment 'エンティティ名'
@@ -262,11 +262,11 @@ create table TB0_ENTITY (
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB0_ENTITY_PKC primary key (ENTITY_ID)
+  , constraint T00_ENTITY_PKC primary key (ENTITY_ID)
 ) comment 'エンティティ' ;
 
 -- 主キーなし
-create table TB0_NOKEY (
+create table T00_NOKEY (
   COL_A VARCHAR(60) comment '列Ａ'
   , COL_B VARCHAR(60) comment '列Ｂ'
   , COL_C VARCHAR(60) comment '列Ｃ'
@@ -278,14 +278,14 @@ create table TB0_NOKEY (
   , UPDATE_USER_ID INT not null comment '更新者'
 ) comment '主キーなし' ;
 
-create unique index TB0_NOKEY_IX1
-  on TB0_NOKEY(COL_A,COL_B,COL_C);
+create unique index T00_NOKEY_IX1
+  on T00_NOKEY(COL_A,COL_B,COL_C);
 
-create unique index TB0_NOKEY_IX2
-  on TB0_NOKEY(COL_D,COL_E);
+create unique index T00_NOKEY_IX2
+  on T00_NOKEY(COL_D,COL_E);
 
 -- 子なし
-create table TB1_DINKS (
+create table T01_DINKS (
   OYA_ID INT not null comment '親ID'
   , KO_BN INT comment '子枝番'
   , DINKS_INFO VARCHAR(300) comment '子なし情報'
@@ -293,11 +293,11 @@ create table TB1_DINKS (
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB1_DINKS_PKC primary key (OYA_ID,KO_BN)
+  , constraint T01_DINKS_PKC primary key (OYA_ID,KO_BN)
 ) comment '子なし' ;
 
 -- 子
-create table TB1_KO (
+create table T01_KO (
   OYA_ID INT comment '親ID'
   , KO_BN INT comment '子枝番'
   , KO_INFO VARCHAR(300) comment '子情報'
@@ -305,102 +305,11 @@ create table TB1_KO (
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB1_KO_PKC primary key (OYA_ID,KO_BN)
+  , constraint T01_KO_PKC primary key (OYA_ID,KO_BN)
 ) comment '子' ;
 
--- 孤児
-create table TB1_ORPHAN (
-  OYA_ID INT comment '親ID'
-  , KO_BN INT comment '子枝番'
-  , ORPHAN_INFO VARCHAR(300) comment '孤児情報'
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
-  , INSERT_USER_ID INT not null comment '作成者'
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
-  , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB1_ORPHAN_PKC primary key (OYA_ID,KO_BN)
-) comment '孤児' ;
-
--- 親
-create table TB1_OYA (
-  OYA_ID INT comment '親ID'
-  , OYA_INFO VARCHAR(300) comment '親情報'
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
-  , INSERT_USER_ID INT not null comment '作成者'
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
-  , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB1_OYA_PKC primary key (OYA_ID)
-) comment '親' ;
-
--- 長兄
-create table TB2_ELDEST (
-  BRO_ID INT comment '兄弟ID'
-  , ELDEST_INFO VARCHAR(300) comment '長兄情報'
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
-  , INSERT_USER_ID INT not null comment '作成者'
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
-  , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB2_ELDEST_PKC primary key (BRO_ID)
-) comment '長兄' ;
-
--- 里子
-create table TB2_FOSTER (
-  BRO_ID INT comment '兄弟ID'
-  , FOSTER_INFO VARCHAR(300) comment '里子情報'
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
-  , INSERT_USER_ID INT not null comment '作成者'
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
-  , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB2_FOSTER_PKC primary key (BRO_ID)
-) comment '里子' ;
-
--- 弟
-create table TB2_YOUNGER (
-  BRO_ID INT comment '兄弟ID'
-  , YOUNGER_INFO VARCHAR(300) comment '弟情報'
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
-  , INSERT_USER_ID INT not null comment '作成者'
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
-  , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB2_YOUNGER_PKC primary key (BRO_ID)
-) comment '弟' ;
-
--- 末弟
-create table TB2_YOUNGEST (
-  BRO_ID INT comment '兄弟ID'
-  , YOUNGEST_INFO VARCHAR(300) comment '末弟情報'
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
-  , INSERT_USER_ID INT not null comment '作成者'
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
-  , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB2_YOUNGEST_PKC primary key (BRO_ID)
-) comment '末弟' ;
-
--- 変遷
-create table TB3_TRANS (
-  TRANS_ID INT comment '変遷ID'
-  , TRANS_INFO VARCHAR(300) comment '変遷情報'
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
-  , INSERT_USER_ID INT not null comment '作成者'
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
-  , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB3_TRANS_PKC primary key (TRANS_ID)
-) comment '変遷' ;
-
--- 変遷履歴
-create table TB3_TRANS_HIS (
-  TRANS_ID INT comment '変遷ID'
-  , TRANS_BN INT comment '変遷枝番'
-  , TRANS_INFO VARCHAR(300) comment '変遷情報'
-  , RIYU_TX VARCHAR(300) not null comment '変更理由'
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
-  , INSERT_USER_ID INT not null comment '作成者'
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
-  , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB3_TRANS_HIS_PKC primary key (TRANS_ID,TRANS_BN)
-) comment '変遷履歴' ;
-
 -- 孫
-create table TB4_MAGO (
+create table T01_MAGO (
   OYA_ID INT comment '親ID'
   , KO_BN INT comment '子枝番'
   , MAGO_BN INT comment '孫枝番'
@@ -409,11 +318,102 @@ create table TB4_MAGO (
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB4_MAGO_PKC primary key (OYA_ID,KO_BN,MAGO_BN)
+  , constraint T01_MAGO_PKC primary key (OYA_ID,KO_BN,MAGO_BN)
 ) comment '孫' ;
 
+-- 孤児
+create table T01_ORPHAN (
+  OYA_ID INT comment '親ID'
+  , KO_BN INT comment '子枝番'
+  , ORPHAN_INFO VARCHAR(300) comment '孤児情報'
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
+  , INSERT_USER_ID INT not null comment '作成者'
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
+  , UPDATE_USER_ID INT not null comment '更新者'
+  , constraint T01_ORPHAN_PKC primary key (OYA_ID,KO_BN)
+) comment '孤児' ;
+
+-- 親
+create table T01_OYA (
+  OYA_ID INT comment '親ID'
+  , OYA_INFO VARCHAR(300) comment '親情報'
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
+  , INSERT_USER_ID INT not null comment '作成者'
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
+  , UPDATE_USER_ID INT not null comment '更新者'
+  , constraint T01_OYA_PKC primary key (OYA_ID)
+) comment '親' ;
+
+-- 長兄
+create table T02_ELDEST (
+  BRO_ID INT comment '兄弟ID'
+  , ELDEST_INFO VARCHAR(300) comment '長兄情報'
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
+  , INSERT_USER_ID INT not null comment '作成者'
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
+  , UPDATE_USER_ID INT not null comment '更新者'
+  , constraint T02_ELDEST_PKC primary key (BRO_ID)
+) comment '長兄' ;
+
+-- 里子
+create table T02_FOSTER (
+  BRO_ID INT comment '兄弟ID'
+  , FOSTER_INFO VARCHAR(300) comment '里子情報'
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
+  , INSERT_USER_ID INT not null comment '作成者'
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
+  , UPDATE_USER_ID INT not null comment '更新者'
+  , constraint T02_FOSTER_PKC primary key (BRO_ID)
+) comment '里子' ;
+
+-- 弟
+create table T02_YOUNGER (
+  BRO_ID INT comment '兄弟ID'
+  , YOUNGER_INFO VARCHAR(300) comment '弟情報'
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
+  , INSERT_USER_ID INT not null comment '作成者'
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
+  , UPDATE_USER_ID INT not null comment '更新者'
+  , constraint T02_YOUNGER_PKC primary key (BRO_ID)
+) comment '弟' ;
+
+-- 末弟
+create table T02_YOUNGEST (
+  BRO_ID INT comment '兄弟ID'
+  , YOUNGEST_INFO VARCHAR(300) comment '末弟情報'
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
+  , INSERT_USER_ID INT not null comment '作成者'
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
+  , UPDATE_USER_ID INT not null comment '更新者'
+  , constraint T02_YOUNGEST_PKC primary key (BRO_ID)
+) comment '末弟' ;
+
+-- 変遷
+create table T03_TRANS (
+  TRANS_ID INT comment '変遷ID'
+  , TRANS_INFO VARCHAR(300) comment '変遷情報'
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
+  , INSERT_USER_ID INT not null comment '作成者'
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
+  , UPDATE_USER_ID INT not null comment '更新者'
+  , constraint T03_TRANS_PKC primary key (TRANS_ID)
+) comment '変遷' ;
+
+-- 変遷履歴
+create table T03_TRANS_HIS (
+  TRANS_ID INT comment '変遷ID'
+  , TRANS_BN INT comment '変遷枝番'
+  , TRANS_INFO VARCHAR(300) comment '変遷情報'
+  , RIYU_TX VARCHAR(300) not null comment '変更理由'
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
+  , INSERT_USER_ID INT not null comment '作成者'
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
+  , UPDATE_USER_ID INT not null comment '更新者'
+  , constraint T03_TRANS_HIS_PKC primary key (TRANS_ID,TRANS_BN)
+) comment '変遷履歴' ;
+
 -- 再帰
-create table TB4_SAIKI (
+create table T04_SAIKI (
   SAIKI_ID INT comment '再帰ID'
   , SAIKI_MEI VARCHAR(60) not null comment '再帰名'
   , IDREF_ID INT comment '参照ID'
@@ -426,11 +426,11 @@ create table TB4_SAIKI (
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB4_SAIKI_PKC primary key (SAIKI_ID)
+  , constraint T04_SAIKI_PKC primary key (SAIKI_ID)
 ) comment '再帰' ;
 
 -- 複合１
-create table TB5_COMP1 (
+create table T05_COMP1 (
   REF1_ID INT comment '参照１ID'
   , REF2_ID INT comment '参照２ID'
   , COMP1_INFO VARCHAR(300) comment '複合１情報'
@@ -438,11 +438,11 @@ create table TB5_COMP1 (
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB5_COMP1_PKC primary key (REF1_ID,REF2_ID)
+  , constraint T05_COMP1_PKC primary key (REF1_ID,REF2_ID)
 ) comment '複合１' ;
 
 -- 複合２
-create table TB5_COMP2 (
+create table T05_COMP2 (
   REF1_ID INT comment '参照１ID'
   , REF2_ID INT comment '参照２ID'
   , REF3_ID INT comment '参照３ID'
@@ -452,11 +452,11 @@ create table TB5_COMP2 (
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB5_COMP2_PKC primary key (REF1_ID,REF2_ID,REF3_ID,TEKIYO_BI)
+  , constraint T05_COMP2_PKC primary key (REF1_ID,REF2_ID,REF3_ID,TEKIYO_BI)
 ) comment '複合２' ;
 
 -- 派生１
-create table TB6_DERIVE1 (
+create table T06_DERIVE1 (
   DERIVE1_ID INT comment '派生１ID'
   , ORG_INFO VARCHAR(300) comment '起源情報'
   , ORG_ID INT not null comment '起源ID'
@@ -464,11 +464,11 @@ create table TB6_DERIVE1 (
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB6_DERIVE1_PKC primary key (DERIVE1_ID)
+  , constraint T06_DERIVE1_PKC primary key (DERIVE1_ID)
 ) comment '派生１' ;
 
 -- 派生１明細
-create table TB6_DERIVE1_DET (
+create table T06_DERIVE1_DET (
   DERIVE1_ID INT comment '派生１ID'
   , DERIVE1_BN INT comment '派生１枝番'
   , DET_INFO VARCHAR(300) comment '明細情報'
@@ -476,11 +476,11 @@ create table TB6_DERIVE1_DET (
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB6_DERIVE1_DET_PKC primary key (DERIVE1_ID,DERIVE1_BN)
+  , constraint T06_DERIVE1_DET_PKC primary key (DERIVE1_ID,DERIVE1_BN)
 ) comment '派生１明細' ;
 
 -- 派生２
-create table TB6_DERIVE2 (
+create table T06_DERIVE2 (
   DERIVE2_ID INT comment '派生２ID'
   , ORG_INFO VARCHAR(300) comment '起源情報'
   , ORG_ID INT not null comment '起源ID'
@@ -488,11 +488,11 @@ create table TB6_DERIVE2 (
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB6_DERIVE2_PKC primary key (DERIVE2_ID)
+  , constraint T06_DERIVE2_PKC primary key (DERIVE2_ID)
 ) comment '派生２' ;
 
 -- 派生２明細
-create table TB6_DERIVE2_DET (
+create table T06_DERIVE2_DET (
   DERIVE2_ID INT comment '派生２ID'
   , DERIVE2_BN INT comment '派生２枝番'
   , DET_INFO VARCHAR(300) comment '明細情報'
@@ -500,60 +500,22 @@ create table TB6_DERIVE2_DET (
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB6_DERIVE2_DET_PKC primary key (DERIVE2_ID,DERIVE2_BN)
+  , constraint T06_DERIVE2_DET_PKC primary key (DERIVE2_ID,DERIVE2_BN)
 ) comment '派生２明細' ;
 
--- 寄生
-create table TB6_KISEI (
-  KISEI_ID INT comment '寄生ID'
-  , PREV_INFO VARCHAR(300) comment '前世情報'
-  , PREV_ID INT comment '前世ID'
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
-  , INSERT_USER_ID INT not null comment '作成者'
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
-  , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB6_KISEI_PKC primary key (KISEI_ID)
-) comment '寄生' ;
-
--- 寄生
-create table TB6_KISEI2 (
-  KISEI2_ID INT comment '寄生２ID'
-  , ORG_INFO VARCHAR(300) comment '起源情報'
-  , ORG_ID INT comment '起源ID'
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
-  , INSERT_USER_ID INT not null comment '作成者'
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
-  , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB6_KISEI2_PKC primary key (KISEI2_ID)
-) comment '寄生' ;
-
--- 共生
-create table TB6_KYOSEI (
-  KYOSEI_ID INT comment '共生ID'
-  , PREV_ID INT not null comment '前世ID'
-  , PREV_INFO VARCHAR(300) comment '前世情報'
-  , ORG_ID INT not null comment '起源ID'
-  , ORG_INFO VARCHAR(300) comment '起源情報'
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
-  , INSERT_USER_ID INT not null comment '作成者'
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
-  , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB6_KYOSEI_PKC primary key (KYOSEI_ID)
-) comment '共生' ;
-
 -- 起源
-create table TB6_ORG (
+create table T06_ORG (
   ORG_ID INT comment '起源ID'
   , ORG_INFO VARCHAR(300) comment '起源情報'
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB6_ORG_PKC primary key (ORG_ID)
+  , constraint T06_ORG_PKC primary key (ORG_ID)
 ) comment '起源' ;
 
 -- 起源明細
-create table TB6_ORG_DET (
+create table T06_ORG_DET (
   ORG_ID INT comment '起源ID'
   , ORG_BN INT comment '起源枝番'
   , DET_INFO VARCHAR(300) comment '明細情報'
@@ -561,22 +523,22 @@ create table TB6_ORG_DET (
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB6_ORG_DET_PKC primary key (ORG_ID,ORG_BN)
+  , constraint T06_ORG_DET_PKC primary key (ORG_ID,ORG_BN)
 ) comment '起源明細' ;
 
 -- 前世
-create table TB6_PREV (
+create table T07_PREV (
   PREV_ID INT comment '前世ID'
   , PREV_INFO VARCHAR(300) comment '前世情報'
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB6_PREV_PKC primary key (PREV_ID)
+  , constraint T07_PREV_PKC primary key (PREV_ID)
 ) comment '前世' ;
 
 -- 前世明細
-create table TB6_PREV_DET (
+create table T07_PREV_DET (
   PREV_ID INT comment '前世ID'
   , PREV_BN INT comment '前世枝番'
   , DET_INFO VARCHAR(300) comment '明細情報'
@@ -584,11 +546,11 @@ create table TB6_PREV_DET (
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB6_PREV_DET_PKC primary key (PREV_ID,PREV_BN)
+  , constraint T07_PREV_DET_PKC primary key (PREV_ID,PREV_BN)
 ) comment '前世明細' ;
 
 -- 転生
-create table TB6_REBORN (
+create table T07_REBORN (
   REBORN_ID INT comment '転生ID'
   , PREV_INFO VARCHAR(300) comment '前世情報'
   , PREV_ID INT not null comment '前世ID'
@@ -596,11 +558,11 @@ create table TB6_REBORN (
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB6_REBORN_PKC primary key (REBORN_ID)
+  , constraint T07_REBORN_PKC primary key (REBORN_ID)
 ) comment '転生' ;
 
 -- 転生明細
-create table TB6_REBORN_DET (
+create table T07_REBORN_DET (
   REBORN_ID INT comment '転生ID'
   , REBORN_BN INT comment '転生枝番'
   , DET_INFO VARCHAR(300) comment '明細情報'
@@ -608,152 +570,208 @@ create table TB6_REBORN_DET (
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB6_REBORN_DET_PKC primary key (REBORN_ID,REBORN_BN)
+  , constraint T07_REBORN_DET_PKC primary key (REBORN_ID,REBORN_BN)
 ) comment '転生明細' ;
 
+-- 寄生１
+create table T08_KISEI1 (
+  KISEI1_ID INT comment '寄生１ID'
+  , KISEI1_INFO VARCHAR(300) comment '寄生１情報'
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
+  , INSERT_USER_ID INT not null comment '作成者'
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
+  , UPDATE_USER_ID INT not null comment '更新者'
+  , constraint T08_KISEI1_PKC primary key (KISEI1_ID)
+) comment '寄生１' ;
+
+-- 寄生２
+create table T08_KISEI2 (
+  KISEI2_ID INT comment '寄生２ID'
+  , KISEI2_INFO VARCHAR(300) comment '寄生２情報'
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
+  , INSERT_USER_ID INT not null comment '作成者'
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
+  , UPDATE_USER_ID INT not null comment '更新者'
+  , constraint T08_KISEI2_PKC primary key (KISEI2_ID)
+) comment '寄生２' ;
+
+-- 共生
+create table T08_KYOSEI (
+  KYOSEI_ID INT comment '共生ID'
+  , KISEI1_ID INT not null comment '寄生１ID'
+  , KISEI1_INFO VARCHAR(300) comment '寄生１情報'
+  , KISEI2_ID INT not null comment '寄生２ID'
+  , KISEI2_INFO VARCHAR(300) comment '寄生２情報'
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
+  , INSERT_USER_ID INT not null comment '作成者'
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
+  , UPDATE_USER_ID INT not null comment '更新者'
+  , constraint T08_KYOSEI_PKC primary key (KYOSEI_ID)
+) comment '共生' ;
+
+-- 集団１
+create table T09_GRP1 (
+  GRP1_ID INT comment '集団１ID'
+  , SUM_ID INT comment '集約ID'
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
+  , INSERT_USER_ID INT not null comment '作成者'
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
+  , UPDATE_USER_ID INT not null comment '更新者'
+  , constraint T09_GRP1_PKC primary key (GRP1_ID)
+) comment '集団１' ;
+
+-- 集団２
+create table T09_GRP2 (
+  GRP2_ID INT comment '集団２ID'
+  , SUM_ID INT comment '集約ID'
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
+  , INSERT_USER_ID INT not null comment '作成者'
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
+  , UPDATE_USER_ID INT not null comment '更新者'
+  , constraint T09_GRP2_PKC primary key (GRP2_ID)
+) comment '集団２' ;
+
 -- 集約
-create table TB7_SUM (
+create table T09_SUM (
   SUM_ID INT comment '集約ID'
   , SUM_INFO VARCHAR(300) comment '集約情報'
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB7_SUM_PKC primary key (SUM_ID)
+  , constraint T09_SUM_PKC primary key (SUM_ID)
 ) comment '集約' ;
 
--- 単位１
-create table TB7_UNIT1 (
-  UNIT1_ID INT comment '単位１ID'
-  , SUM_ID INT comment '集約ID'
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
-  , INSERT_USER_ID INT not null comment '作成者'
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
-  , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB7_UNIT1_PKC primary key (UNIT1_ID)
-) comment '単位１' ;
-
--- 単位２
-create table TB7_UNIT2 (
-  UNIT2_ID INT comment '単位２ID'
-  , SUM_ID INT comment '集約ID'
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
-  , INSERT_USER_ID INT not null comment '作成者'
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
-  , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB7_UNIT2_PKC primary key (UNIT2_ID)
-) comment '単位２' ;
-
 -- 選抜
-create table TB8_CHOICE (
+create table T10_CHOICE (
   CHOICE_ID INT comment '選抜ID'
-  , SUM_ID INT comment '集約ID'
-  , SUM_INFO VARCHAR(300) comment '集約情報'
-  , SUM2_ID INT comment '集約２ID'
-  , SUM2_INFO VARCHAR(300) comment '集約２情報'
-  , SUM3_ID INT comment '集約３ID'
-  , SUM3_INFO VARCHAR(300) comment '集約３情報'
+  , KOHO1_ID INT comment '候補１ID'
+  , KOHO1_INFO VARCHAR(300) comment '候補１情報'
+  , KOHO2_ID INT comment '候補２ID'
+  , KOHO2_INFO VARCHAR(300) comment '候補２情報'
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB8_CHOICE_PKC primary key (CHOICE_ID)
+  , constraint T10_CHOICE_PKC primary key (CHOICE_ID)
 ) comment '選抜' ;
 
+-- 候補１
+create table T10_KOHO1 (
+  KOHO1_ID INT comment '候補１ID'
+  , KOHO1_INFO VARCHAR(300) comment '候補１情報'
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
+  , INSERT_USER_ID INT not null comment '作成者'
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
+  , UPDATE_USER_ID INT not null comment '更新者'
+  , constraint T10_KOHO1_PKC primary key (KOHO1_ID)
+) comment '候補１' ;
+
+-- 候補２
+create table T10_KOHO2 (
+  KOHO2_ID INT comment '候補２ID'
+  , KOHO2_INFO VARCHAR(300) comment '候補２情報'
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
+  , INSERT_USER_ID INT not null comment '作成者'
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
+  , UPDATE_USER_ID INT not null comment '更新者'
+  , constraint T10_KOHO2_PKC primary key (KOHO2_ID)
+) comment '候補２' ;
+
 -- 前世２
-create table TB8_PREV2 (
+create table T11_PREV2 (
   PREV2_ID INT comment '前世２ID'
   , PREV2_INFO VARCHAR(300) comment '前世２情報'
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB8_PREV2_PKC primary key (PREV2_ID)
+  , constraint T11_PREV2_PKC primary key (PREV2_ID)
 ) comment '前世２' ;
 
 -- 転生２
-create table TB8_REBORN2 (
+create table T11_REBORN2 (
   REBORN2_ID INT comment '転生２ID'
-  , TASHO2_ID INT not null comment '他生２ID'
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
-  , INSERT_USER_ID INT not null comment '作成者'
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
-  , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB8_REBORN2_PKC primary key (REBORN2_ID)
-) comment '転生２' ;
-
--- 集約２
-create table TB8_SUM2 (
-  SUM2_ID INT comment '集約２ID'
-  , SUM2_INFO VARCHAR(300) comment '集約２情報'
+  , PREV2_INFO VARCHAR(300) comment '前世２情報'
   , PREV2_ID INT not null comment '前世２ID'
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB8_SUM2_PKC primary key (SUM2_ID)
-) comment '集約２' ;
-
--- 集約３
-create table TB8_SUM3 (
-  SUM3_ID INT comment '集約３ID'
-  , SUM3_INFO VARCHAR(300) comment '集約３情報'
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
-  , INSERT_USER_ID INT not null comment '作成者'
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
-  , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB8_SUM3_PKC primary key (SUM3_ID)
-) comment '集約３' ;
+  , constraint T11_REBORN2_PKC primary key (REBORN2_ID)
+) comment '転生２' ;
 
 -- 他生１
-create table TB8_TASHO1 (
+create table T11_TASHO1 (
   TASHO1_ID INT comment '他生１ID'
-  , SUM2_ID INT comment '集約２ID'
+  , REBORN2_ID INT comment '転生２ID'
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB8_TASHO1_PKC primary key (TASHO1_ID)
+  , constraint T11_TASHO1_PKC primary key (TASHO1_ID)
 ) comment '他生１' ;
 
--- 他生２
-create table TB8_TASHO2 (
-  TASHO2_ID INT comment '他生２ID'
-  , SUM3_ID INT comment '集約３ID'
+-- 候補３
+create table T12_KOHO3 (
+  KOHO3_ID INT comment '候補３ID'
+  , KOHO3_INFO VARCHAR(300) comment '候補３情報'
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB8_TASHO2_PKC primary key (TASHO2_ID)
+  , constraint T12_KOHO3_PKC primary key (KOHO3_ID)
+) comment '候補３' ;
+
+-- 転生３
+create table T12_REBORN3 (
+  REBORN3_ID INT comment '転生３ID'
+  , TASHO2_ID INT not null comment '他生２ID'
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
+  , INSERT_USER_ID INT not null comment '作成者'
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
+  , UPDATE_USER_ID INT not null comment '更新者'
+  , constraint T12_REBORN3_PKC primary key (REBORN3_ID)
+) comment '転生３' ;
+
+-- 他生２
+create table T12_TASHO2 (
+  TASHO2_ID INT comment '他生２ID'
+  , KOHO3_ID INT comment '候補３ID'
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
+  , INSERT_USER_ID INT not null comment '作成者'
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
+  , UPDATE_USER_ID INT not null comment '更新者'
+  , constraint T12_TASHO2_PKC primary key (TASHO2_ID)
 ) comment '他生２' ;
 
 -- 変換先
-create table TB9_DEST (
+create table T13_DEST (
   DEST_ID INT comment '変換先ID'
   , DEST_INFO VARCHAR(300) comment '変換先情報'
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB9_DEST_PKC primary key (DEST_ID)
+  , constraint T13_DEST_PKC primary key (DEST_ID)
 ) comment '変換先' ;
 
 -- 変換元
-create table TB9_SRC (
+create table T13_SRC (
   SRC_ID INT comment '変換元ID'
   , SRC_INFO VARCHAR(300) comment '変換元情報'
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '作成タイムスタンプ'
   , INSERT_USER_ID INT not null comment '作成者'
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null comment '更新タイムスタンプ'
   , UPDATE_USER_ID INT not null comment '更新者'
-  , constraint TB9_SRC_PKC primary key (SRC_ID)
+  , constraint T13_SRC_PKC primary key (SRC_ID)
 ) comment '変換元' ;
 
 -- 振分ビュー
-create view TB9_FURIWAKE as 
+create view V13_FURIWAKE as 
 SELECT
     a.table_name                                -- テーブル名
-    , a.src_id$dest_id                          -- ID
+    , a.src_id$dest_id                          -- 振分ID
     , a.info                                    -- 情報
 FROM
     ( 
@@ -762,26 +780,26 @@ FROM
             , s.src_id AS src_id$dest_id
             , s.src_info AS info 
         FROM
-            tb9_src s 
+            t13_src s 
         UNION 
         SELECT
             'TB9_DEST'
             , s.dest_id
             , s.dest_info 
         FROM
-            tb9_dest s
+            t13_dest s
     ) a
 
 ;
 
 -- 変換ビュー
-create view TB9_HENKAN as 
+create view V13_HENKAN as 
 SELECT
     'TB9_DEST' AS table_name                    -- テーブル名
     , s.src_id                                  -- 変換元ID
     , s.src_info AS dest_info                   -- 変換元情報
 FROM
-    tb9_src s
+    t13_src s
 
 ;
 

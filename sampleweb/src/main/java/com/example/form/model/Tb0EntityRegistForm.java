@@ -9,7 +9,7 @@ import jp.co.golorp.emarf.process.BaseProcess;
  * @author toshiyuki
  *
  */
-public class Tb0EntityRegistForm extends com.example.form.model.base.Tb0EntityRegistForm {
+public class Tb0EntityRegistForm extends com.example.form.model.base.T00EntityRegistForm {
 
     /**
      *

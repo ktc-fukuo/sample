@@ -18,18 +18,22 @@ FROM
     INNER JOIN MHR_BUSHO c1 
         ON 1 = 1 
         AND IFNULL (c1.TEKIYO_BI, sysdate()) <= sysdate() 
+        AND DATE_ADD(IFNULL (c1.HAISHI_BI, sysdate()), INTERVAL 1 DAY) > sysdate()
         AND c1.BUSHO_ID = a.BUSHO_ID 
     INNER JOIN MHR_SHOKUI c2 
         ON 1 = 1 
         AND IFNULL (c2.TEKIYO_BI, sysdate()) <= sysdate() 
+        AND DATE_ADD(IFNULL (c2.HAISHI_BI, sysdate()), INTERVAL 1 DAY) > sysdate()
         AND c2.SHOKUI_ID = a.SHOKUI_ID 
     INNER JOIN MHR_USER c3 
         ON 1 = 1 
         AND IFNULL (c3.TEKIYO_BI, sysdate()) <= sysdate() 
+        AND DATE_ADD(IFNULL (c3.HAISHI_BI, sysdate()), INTERVAL 1 DAY) > sysdate()
         AND c3.USER_ID = a.USER_ID 
 WHERE
     1 = 1 
     AND IFNULL (a.TEKIYO_BI, sysdate()) <= sysdate() 
+    AND DATE_ADD(IFNULL (a.HAISHI_BI, sysdate()), INTERVAL 1 DAY) > sysdate() 
     AND a.`BUSHO_ID` = :busho_id 
     AND a.`SHOKUI_ID` = :shokui_id 
     AND a.`USER_ID` = :user_id 
