@@ -41,10 +41,6 @@ public class T01OrphanGetAction extends BaseAction {
             isAllKey = false;
         }
 
-        // 親モデルの取得
-        com.example.entity.T01Oya t01Oya = com.example.entity.T01Oya.get(oyaId);
-        map.put("T01Oya", t01Oya);
-
         // 主キーが不足していたら終了
         if (!isAllKey) {
             return map;

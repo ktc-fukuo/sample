@@ -57,20 +57,6 @@ public class T01OyaDeleteAction extends BaseAction {
             }
         }
 
-
-        java.util.List<com.example.entity.T01Orphan> t01Orphans = e.referT01Orphans();
-        if (t01Orphans != null) {
-            for (com.example.entity.T01Orphan t01Orphan : t01Orphans) {
-
-                // child:T01Mago, parents:2
-
-
-                if (t01Orphan.delete() != 1) {
-                    throw new OptLockError("error.cant.delete", "孤児");
-                }
-            }
-        }
-
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "親");
         }

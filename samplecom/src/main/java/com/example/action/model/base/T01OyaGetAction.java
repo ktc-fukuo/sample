@@ -43,7 +43,6 @@ public class T01OyaGetAction extends BaseAction {
             // 子
             t01Oya.referT01Dinkss();
             t01Oya.referT01Kos();
-            t01Oya.referT01Orphans();
             map.put("T01Oya", t01Oya);
         } catch (NoDataError e) {
             if (postJson.get("IsSilent") == null || !postJson.get("IsSilent").equals("true")) {

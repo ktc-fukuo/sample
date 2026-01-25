@@ -421,13 +421,6 @@ public class T01Ko implements IEntity {
             }
         }
 
-        // 孤児の削除
-        if (this.t01Orphan != null) {
-            if (this.t01Orphan.delete() != 1) {
-                throw new jp.co.golorp.emarf.exception.OptLockError("error.cant.delete", "孤児");
-            }
-        }
-
         // 子の削除
         String sql = "DELETE FROM T01_KO WHERE " + getWhere();
         return Queries.regist(sql, toMap(null, null));

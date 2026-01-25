@@ -102,24 +102,6 @@ public class T01OyaRegistForm implements IForm {
         this.t01KoGrid = p;
     }
 
-    /** 孤児 */
-    @jakarta.validation.Valid
-    private java.util.List<T01OrphanRegistForm> t01OrphanGrid;
-
-    /**
-     * @return 孤児
-     */
-    public java.util.List<T01OrphanRegistForm> getT01OrphanGrid() {
-        return t01OrphanGrid;
-    }
-
-    /**
-     * @param p
-     */
-    public void setT01OrphanGrid(final java.util.List<T01OrphanRegistForm> p) {
-        this.t01OrphanGrid = p;
-    }
-
     /** 関連チェック */
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {

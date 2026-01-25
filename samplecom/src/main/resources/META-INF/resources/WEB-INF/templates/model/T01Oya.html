@@ -48,9 +48,6 @@
       <h3 th:text="#{T01Ko.h3}">h3</h3>
       <a th:href="@{/model/T01Ko.html}" id="T01Ko" target="dialog" th:text="#{T01Ko.add}" class="addChild" tabindex="-1">子</a>
       <div id="T01KoGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/T01Ko.html}" class="childs"></div>
-      <h3 th:text="#{T01Orphan.h3}">h3</h3>
-      <a th:href="@{/model/T01Orphan.html}" id="T01Orphan" target="dialog" th:text="#{T01Orphan.add}" class="addChild" tabindex="-1">孤児</a>
-      <div id="T01OrphanGrid" data-selectionMode="link" data-addRow="true" data-frozenColumn="1" th:data-href="@{/model/T01Orphan.html}" class="childs"></div>
       <div class="buttons">
         <button type="button" id="RefreshT01Oya" th:text="#{common.reset}" class="reset" onClick="Dialogate.refresh(event);">reset</button>
         <a th:href="@{T01OyaGet.xlsx(baseMei=#{T01Oya.h2})}" id="T01OyaGet.xlsx" th:text="#{common.xlsx}" class="output" tabindex="-1">xlsx</a>

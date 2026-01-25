@@ -260,16 +260,6 @@ public class T01Oya implements IEntity {
             }
         }
 
-        // 孤児の登録
-        if (this.t01Orphans != null) {
-            for (T01Orphan t01Orphan : this.t01Orphans) {
-                if (t01Orphan != null) {
-                    t01Orphan.setOyaId(this.getOyaId());
-                }
-                t01Orphan.insert(now, execId);
-            }
-        }
-
         // 親の登録
         String sql = "INSERT INTO T01_OYA(\r\n      " + names() + "\r\n) VALUES (\r\n      " + values() + "\r\n)";
         return Queries.regist(sql, toMap(now, execId));
@@ -349,21 +339,6 @@ public class T01Oya implements IEntity {
             }
         }
 
-        // 孤児の登録
-        if (this.t01Orphans != null) {
-            for (T01Orphan t01Orphan : this.t01Orphans) {
-                if (t01Orphan == null) {
-                    continue;
-                }
-                t01Orphan.setOyaId(this.oyaId);
-                try {
-                    t01Orphan.insert(now, execId);
-                } catch (Exception e) {
-                    t01Orphan.update(now, execId);
-                }
-            }
-        }
-
         // 親の登録
         String sql = "UPDATE T01_OYA\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
         return Queries.regist(sql, toMap(now, execId));
@@ -399,15 +374,6 @@ public class T01Oya implements IEntity {
             for (T01Ko t01Ko : this.t01Kos) {
                 if (t01Ko.delete() != 1) {
                     throw new jp.co.golorp.emarf.exception.OptLockError("error.cant.delete", "子");
-                }
-            }
-        }
-
-        // 孤児の削除
-        if (this.t01Orphans != null) {
-            for (T01Orphan t01Orphan : this.t01Orphans) {
-                if (t01Orphan.delete() != 1) {
-                    throw new jp.co.golorp.emarf.exception.OptLockError("error.cant.delete", "孤児");
                 }
             }
         }
@@ -561,66 +527,5 @@ public class T01Oya implements IEntity {
             return list;
         }
         return new ArrayList<T01Ko>();
-    }
-
-    /*
-     * 子モデル：孤児
-     */
-
-    /** 孤児のリスト */
-    private List<T01Orphan> t01Orphans;
-
-    /** @return 孤児のリスト */
-    @com.fasterxml.jackson.annotation.JsonProperty(value = "T01Orphans", index = 12)
-    public List<T01Orphan> getT01Orphans() {
-        return this.t01Orphans;
-    }
-
-    /** @param list 孤児のリスト */
-    public void setT01Orphans(final List<T01Orphan> list) {
-        this.t01Orphans = list;
-    }
-
-    /** @param t01Orphan */
-    public void addT01Orphans(final T01Orphan t01Orphan) {
-        if (this.t01Orphans == null) {
-            this.t01Orphans = new ArrayList<T01Orphan>();
-        }
-        this.t01Orphans.add(t01Orphan);
-    }
-
-    /** @return 孤児のリスト */
-    public List<T01Orphan> referT01Orphans() {
-        this.t01Orphans = T01Oya.referT01Orphans(this.oyaId);
-        return this.t01Orphans;
-    }
-
-    /**
-     * @param param1 oyaId
-     * @return List<T01Orphan>
-     */
-    public static List<T01Orphan> referT01Orphans(final Integer param1) {
-        List<String> whereList = new ArrayList<String>();
-        whereList.add("OYA_ID = :oya_id");
-        String sql = "SELECT ";
-        sql += "`OYA_ID`";
-        sql += ", `KO_BN`";
-        sql += ", `ORPHAN_INFO`";
-        sql += ", `INSERT_TS` AS INSERT_TS";
-        sql += ", `INSERT_USER_ID`";
-        sql += ", (SELECT r0.`USER_SEI` FROM MHR_USER r0 WHERE r0.`USER_ID` = a.`INSERT_USER_ID`) AS `INSERT_USER_SEI`";
-        sql += ", `UPDATE_TS` AS UPDATE_TS";
-        sql += ", `UPDATE_USER_ID`";
-        sql += ", (SELECT r1.`USER_SEI` FROM MHR_USER r1 WHERE r1.`USER_ID` = a.`UPDATE_USER_ID`) AS `UPDATE_USER_SEI`";
-        sql += " FROM T01_ORPHAN a WHERE " + String.join(" AND ", whereList);
-        sql += " ORDER BY ";
-        sql += "OYA_ID, KO_BN";
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("oya_id", param1);
-        List<T01Orphan> list = Queries.select(sql, map, T01Orphan.class, null, null);
-        if (list != null) {
-            return list;
-        }
-        return new ArrayList<T01Orphan>();
     }
 }
