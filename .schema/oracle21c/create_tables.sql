@@ -1,10 +1,114 @@
 -- Project Name : emarf
--- Date/Time    : 2026/01/21 8:28:27
+-- Date/Time    : 2026/01/28 8:29:57
 -- Author       : KTC0966
 -- RDBMS Type   : Oracle Database
 -- Application  : A5:SQL Mk-2
 
--- éƒ¨ç½²ãƒã‚¹ã‚¿
+-- CDƒ}ƒXƒ^
+create table M04_CD (
+  CDREF_CD CHAR(10)
+  , CDREF_MEI VARCHAR2(60) not null
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID NUMBER(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID NUMBER(10) not null
+  , constraint M04_CD_PKC primary key (CDREF_CD)
+) ;
+
+-- IDƒ}ƒXƒ^
+create table M04_ID (
+  IDREF_ID NUMBER(10)
+  , IDREF_MEI VARCHAR2(60) not null
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID NUMBER(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID NUMBER(10) not null
+  , constraint M04_ID_PKC primary key (IDREF_ID)
+) ;
+
+-- ID˜A”Ôƒ}ƒXƒ^
+create table M04_IDBN (
+  IDBN_ID NUMBER(10)
+  , IDBN_BN NUMBER(10)
+  , IDBN_NO CHAR(10) not null
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID NUMBER(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID NUMBER(10) not null
+  , constraint M04_IDBN_PKC primary key (IDBN_ID,IDBN_BN)
+) ;
+
+-- NOƒ}ƒXƒ^
+create table M04_NO (
+  NOREF_NO CHAR(10)
+  , NOREF_MEI VARCHAR2(60) not null
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID NUMBER(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID NUMBER(10) not null
+  , constraint M04_NO_PKC primary key (NOREF_NO)
+) ;
+
+-- Ä‹A
+create table M04_SAIKI (
+  SAIKI_ID NUMBER(10)
+  , SAIKI_MEI VARCHAR2(60) not null
+  , IDREF_ID NUMBER(10)
+  , CDREF_CD CHAR(10)
+  , NOREF_NO CHAR(10)
+  , IDBN_ID NUMBER(10)
+  , IDBN_BN NUMBER(10)
+  , OYA_SAIKI_ID NUMBER(10)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID NUMBER(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID NUMBER(10) not null
+  , constraint M04_SAIKI_PKC primary key (SAIKI_ID)
+) ;
+
+-- ƒ}ƒXƒ^QÆ‚P
+create table M05_REF1 (
+  REF1_ID NUMBER(10)
+  , REF1_MEI VARCHAR2(60) not null
+  , DELETE_F CHAR(1)
+  , TEKIYO_BI DATE
+  , HAISHI_BI DATE
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID NUMBER(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID NUMBER(10) not null
+  , constraint M05_REF1_PKC primary key (REF1_ID)
+) ;
+
+-- ƒ}ƒXƒ^QÆ‚Q
+create table M05_REF2 (
+  REF2_ID NUMBER(10)
+  , REF2_MEI VARCHAR2(60) not null
+  , DELETE_F CHAR(1)
+  , TEKIYO_BI DATE
+  , HAISHI_BI DATE
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID NUMBER(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID NUMBER(10) not null
+  , constraint M05_REF2_PKC primary key (REF2_ID)
+) ;
+
+-- ƒ}ƒXƒ^QÆ‚R
+create table M05_REF3 (
+  REF3_ID NUMBER(10)
+  , REF3_MEI VARCHAR2(60) not null
+  , DELETE_F CHAR(1)
+  , TEKIYO_BI DATE
+  , HAISHI_BI DATE
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID NUMBER(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID NUMBER(10) not null
+  , constraint M05_REF3_PKC primary key (REF3_ID)
+) ;
+
+-- •”ƒ}ƒXƒ^
 create table MHR_BUSHO (
   BUSHO_ID NUMBER(10) not null
   , BUSHO_MEI VARCHAR2(60) not null
@@ -18,7 +122,7 @@ create table MHR_BUSHO (
   , constraint MHR_BUSHO_PKC primary key (BUSHO_ID)
 ) ;
 
--- è·ä½ãƒã‚¹ã‚¿
+-- EˆÊƒ}ƒXƒ^
 create table MHR_SHOKUI (
   SHOKUI_ID NUMBER(10) not null
   , SHOKUI_MEI VARCHAR2(60) not null
@@ -32,7 +136,7 @@ create table MHR_SHOKUI (
   , constraint MHR_SHOKUI_PKC primary key (SHOKUI_ID)
 ) ;
 
--- èªå¯ãƒã‚¹ã‚¿
+-- ”F‰Âƒ}ƒXƒ^
 create table MHR_SHOKUI_NINKA (
   BUSHO_ID NUMBER(10) not null
   , SHOKUI_ID NUMBER(10) not null
@@ -47,7 +151,7 @@ create table MHR_SHOKUI_NINKA (
   , constraint MHR_SHOKUI_NINKA_PKC primary key (BUSHO_ID,SHOKUI_ID,KINO_NM)
 ) ;
 
--- ãƒ¦ãƒ¼ã‚¶ãƒã‚¹ã‚¿
+-- ƒ†[ƒUƒ}ƒXƒ^
 create table MHR_USER (
   USER_ID NUMBER(10) not null
   , USER_SEI VARCHAR2(60) not null
@@ -63,7 +167,7 @@ create table MHR_USER (
   , constraint MHR_USER_PKC primary key (USER_ID)
 ) ;
 
--- æ‰€å±ãƒã‚¹ã‚¿
+-- Š‘®ƒ}ƒXƒ^
 create table MHR_USER_POS (
   BUSHO_ID NUMBER(10) not null
   , SHOKUI_ID NUMBER(10) not null
@@ -77,7 +181,7 @@ create table MHR_USER_POS (
   , constraint MHR_USER_POS_PKC primary key (BUSHO_ID,SHOKUI_ID,USER_ID,TEKIYO_BI)
 ) ;
 
--- ç¨¼åƒæ—¥ãƒã‚¹ã‚¿
+-- ‰Ò“­“úƒ}ƒXƒ^
 create table MSY_KADOBI (
   KADO_BI DATE
   , BUSHO_ID NUMBER(10)
@@ -90,7 +194,7 @@ create table MSY_KADOBI (
   , constraint MSY_KADOBI_PKC primary key (KADO_BI,BUSHO_ID)
 ) ;
 
--- åŒºåˆ†ãƒã‚¹ã‚¿
+-- ‹æ•ªƒ}ƒXƒ^
 create table MSY_KBN (
   KBN_NM VARCHAR2(20) not null
   , KBN_MEI VARCHAR2(60) not null
@@ -101,7 +205,7 @@ create table MSY_KBN (
   , constraint MSY_KBN_PKC primary key (KBN_NM)
 ) ;
 
--- åŒºåˆ†å€¤ãƒã‚¹ã‚¿
+-- ‹æ•ª’lƒ}ƒXƒ^
 create table MSY_KBN_VAL (
   KBN_NM VARCHAR2(20) not null
   , KBN_VAL VARCHAR2(2) not null
@@ -115,7 +219,7 @@ create table MSY_KBN_VAL (
   , constraint MSY_KBN_VAL_PKC primary key (KBN_NM,KBN_VAL)
 ) ;
 
--- ç¨ãƒã‚¹ã‚¿
+-- Åƒ}ƒXƒ^
 create table MSY_TAX (
   TAX_KB VARCHAR2(2)
   , TEKIYO_BI DATE
@@ -128,7 +232,7 @@ create table MSY_TAX (
   , constraint MSY_TAX_PKC primary key (TAX_KB,TEKIYO_BI)
 ) ;
 
--- é€šè²¨ãƒã‚¹ã‚¿
+-- ’Ê‰İƒ}ƒXƒ^
 create table MSY_TSUKA (
   TSUKA_KB VARCHAR2(2)
   , TEKIYO_BI DATE
@@ -141,8 +245,8 @@ create table MSY_TSUKA (
   , constraint MSY_TSUKA_PKC primary key (TSUKA_KB,TEKIYO_BI)
 ) ;
 
--- ã‚¨ãƒ³ãƒ†ã‚£ãƒ†ã‚£
-create table TB0_ENTITY (
+-- ƒGƒ“ƒeƒBƒeƒB
+create table T00_ENTITY (
   ENTITY_ID NUMBER(10) not null
   , ENTITY_NM VARCHAR2(20) not null
   , ENTITY_MEI VARCHAR2(60) not null
@@ -175,11 +279,11 @@ create table TB0_ENTITY (
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB0_ENTITY_PKC primary key (ENTITY_ID)
+  , constraint T00_ENTITY_PKC primary key (ENTITY_ID)
 ) ;
 
--- ä¸»ã‚­ãƒ¼ãªã—
-create table TB0_NOKEY (
+-- åƒL[‚È‚µ
+create table T00_NOKEY (
   COL_A VARCHAR2(60)
   , COL_B VARCHAR2(60)
   , COL_C VARCHAR2(60)
@@ -191,212 +295,26 @@ create table TB0_NOKEY (
   , UPDATE_USER_ID NUMBER(10) not null
 ) ;
 
-create unique index TB0_NOKEY_IX1
-  on TB0_NOKEY(COL_A,COL_B,COL_C);
+create unique index T00_NOKEY_IX1
+  on T00_NOKEY(COL_A,COL_B,COL_C);
 
-create unique index TB0_NOKEY_IX2
-  on TB0_NOKEY(COL_D,COL_E);
+create unique index T00_NOKEY_IX2
+  on T00_NOKEY(COL_D,COL_E);
 
--- CDå‚ç…§ãƒã‚¹ã‚¿
-create table TB1_CDREF (
-  CDREF_CD CHAR(10)
-  , CDREF_MEI VARCHAR2(60) not null
+-- q‚È‚µ
+create table T01_DINKS (
+  OYA_ID NUMBER(10) not null
+  , KO_BN NUMBER(10)
+  , DINKS_INFO VARCHAR2(300)
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB1_CDREF_PKC primary key (CDREF_CD)
+  , constraint T01_DINKS_PKC primary key (OYA_ID,KO_BN)
 ) ;
 
--- è¤‡åˆï¼‘
-create table TB1_COMBO1 (
-  REFER1_ID NUMBER(10)
-  , REFER2_ID NUMBER(10)
-  , COMBO1_INFO VARCHAR2(300)
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID NUMBER(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB1_COMBO1_PKC primary key (REFER1_ID,REFER2_ID)
-) ;
-
--- è¤‡åˆï¼’
-create table TB1_COMBO2 (
-  REFER1_ID NUMBER(10)
-  , REFER2_ID NUMBER(10)
-  , REFER3_ID NUMBER(10)
-  , TEKIYO_BI DATE
-  , COMBO2_INFO VARCHAR2(300)
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID NUMBER(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB1_COMBO2_PKC primary key (REFER1_ID,REFER2_ID,REFER3_ID,TEKIYO_BI)
-) ;
-
--- IDé€£ç•ªãƒã‚¹ã‚¿
-create table TB1_IDBN (
-  IDREF_ID NUMBER(10)
-  , IDBN_BN NUMBER(10)
-  , IDBN_NO CHAR(10) not null
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID NUMBER(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB1_IDBN_PKC primary key (IDREF_ID,IDBN_BN)
-) ;
-
--- IDå‚ç…§ãƒã‚¹ã‚¿
-create table TB1_IDREF (
-  IDREF_ID NUMBER(10)
-  , IDREF_MEI VARCHAR2(60) not null
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID NUMBER(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB1_IDREF_PKC primary key (IDREF_ID)
-) ;
-
--- NOå‚ç…§ãƒã‚¹ã‚¿
-create table TB1_NOREF (
-  NOREF_NO CHAR(10)
-  , NOREF_MEI VARCHAR2(60) not null
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID NUMBER(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB1_NOREF_PKC primary key (NOREF_NO)
-) ;
-
--- å‚ç…§ï¼‘ãƒã‚¹ã‚¿
-create table TB1_REFER1 (
-  REFER1_ID NUMBER(10)
-  , REFER1_MEI VARCHAR2(60) not null
-  , DELETE_F CHAR(1)
-  , TEKIYO_BI DATE
-  , HAISHI_BI DATE
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID NUMBER(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB1_REFER1_PKC primary key (REFER1_ID)
-) ;
-
--- å‚ç…§ï¼’ãƒã‚¹ã‚¿
-create table TB1_REFER2 (
-  REFER2_ID NUMBER(10)
-  , REFER2_MEI VARCHAR2(60) not null
-  , DELETE_F CHAR(1)
-  , TEKIYO_BI DATE
-  , HAISHI_BI DATE
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID NUMBER(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB1_REFER2_PKC primary key (REFER2_ID)
-) ;
-
--- å‚ç…§ï¼“ãƒã‚¹ã‚¿
-create table TB1_REFER3 (
-  REFER3_ID NUMBER(10)
-  , REFER3_MEI VARCHAR2(60) not null
-  , DELETE_F CHAR(1)
-  , TEKIYO_BI DATE
-  , HAISHI_BI DATE
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID NUMBER(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB1_REFER3_PKC primary key (REFER3_ID)
-) ;
-
--- å†å¸°
-create table TB1_SAIKI (
-  SAIKI_ID NUMBER(10)
-  , SAIKI_MEI VARCHAR2(60) not null
-  , IDREF_ID NUMBER(10)
-  , CDREF_CD CHAR(10)
-  , NOREF_NO CHAR(10)
-  , EX_IDREF_ID NUMBER(10)
-  , IDBN_BN NUMBER(10)
-  , OYA_SAIKI_ID NUMBER(10)
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID NUMBER(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB1_SAIKI_PKC primary key (SAIKI_ID)
-) ;
-
--- é•·å…„
-create table TB2_ELDEST (
-  BRO_ID NUMBER(10)
-  , ELDEST_INFO VARCHAR2(300)
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID NUMBER(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB2_ELDEST_PKC primary key (BRO_ID)
-) ;
-
--- é‡Œå­
-create table TB2_FOSTER (
-  BRO_ID NUMBER(10)
-  , FOSTER_INFO VARCHAR2(300)
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID NUMBER(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB2_FOSTER_PKC primary key (BRO_ID)
-) ;
-
--- å¼Ÿ
-create table TB2_YOUNGER (
-  BRO_ID NUMBER(10)
-  , YOUNGER_INFO VARCHAR2(300)
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID NUMBER(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB2_YOUNGER_PKC primary key (BRO_ID)
-) ;
-
--- æœ«å¼Ÿ
-create table TB2_YOUNGEST (
-  BRO_ID NUMBER(10)
-  , YOUNGEST_INFO VARCHAR2(300)
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID NUMBER(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB2_YOUNGEST_PKC primary key (BRO_ID)
-) ;
-
--- å½“åˆ
-create table TB3_BEGIN (
-  BEGIN_ID NUMBER(10)
-  , BEGIN_INFO VARCHAR2(300)
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID NUMBER(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB3_BEGIN_PKC primary key (BEGIN_ID)
-) ;
-
--- å±¥æ­´
-create table TB3_BEGIN_HIS (
-  BEGIN_ID NUMBER(10)
-  , RIREKI_BN NUMBER(10)
-  , BEGIN_INFO VARCHAR2(300)
-  , REASON VARCHAR2(300) not null
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID NUMBER(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB3_BEGIN_HIS_PKC primary key (BEGIN_ID,RIREKI_BN)
-) ;
-
--- å­
-create table TB4_KO (
+-- q
+create table T01_KO (
   OYA_ID NUMBER(10)
   , KO_BN NUMBER(10)
   , KO_INFO VARCHAR2(300)
@@ -404,35 +322,11 @@ create table TB4_KO (
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB4_KO_PKC primary key (OYA_ID,KO_BN)
+  , constraint T01_KO_PKC primary key (OYA_ID,KO_BN)
 ) ;
 
--- å­ãªã—
-create table TB4_KO_DINKS (
-  OYA_ID NUMBER(10)
-  , KO_BN NUMBER(10)
-  , DINKS_INFO VARCHAR2(300)
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID NUMBER(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB4_KO_DINKS_PKC primary key (OYA_ID,KO_BN)
-) ;
-
--- å­¤å…
-create table TB4_KO_ORPHANS (
-  OYA_ID NUMBER(10)
-  , KO_BN NUMBER(10)
-  , ORPHANS_INFO VARCHAR2(300)
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID NUMBER(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB4_KO_ORPHANS_PKC primary key (OYA_ID,KO_BN)
-) ;
-
--- å­«
-create table TB4_MAGO (
+-- ‘·
+create table T01_MAGO (
   OYA_ID NUMBER(10)
   , KO_BN NUMBER(10)
   , MAGO_BN NUMBER(10)
@@ -441,308 +335,444 @@ create table TB4_MAGO (
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB4_MAGO_PKC primary key (OYA_ID,KO_BN,MAGO_BN)
+  , constraint T01_MAGO_PKC primary key (OYA_ID,KO_BN,MAGO_BN)
 ) ;
 
--- è¦ª
-create table TB4_OYA (
+-- ŒÇ™
+create table T01_ORPHAN (
+  OYA_ID NUMBER(10)
+  , KO_BN NUMBER(10)
+  , ORPHAN_INFO VARCHAR2(300)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID NUMBER(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID NUMBER(10) not null
+  , constraint T01_ORPHAN_PKC primary key (OYA_ID,KO_BN)
+) ;
+
+-- e
+create table T01_OYA (
   OYA_ID NUMBER(10)
   , OYA_INFO VARCHAR2(300)
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB4_OYA_PKC primary key (OYA_ID)
+  , constraint T01_OYA_PKC primary key (OYA_ID)
 ) ;
 
--- æ´¾ç”Ÿ
-create table TB5_DERIVE (
-  DERIVE_ID NUMBER(10)
-  , PREV_ID NUMBER(10)
-  , PREV_INFO VARCHAR2(300)
+-- ’·ŒZ
+create table T02_ELDEST (
+  BRO_ID NUMBER(10)
+  , ELDEST_INFO VARCHAR2(300)
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB5_DERIVE_PKC primary key (DERIVE_ID)
+  , constraint T02_ELDEST_PKC primary key (BRO_ID)
 ) ;
 
--- çµ±åˆ
-create table TB5_MERGE (
-  MERGE_ID NUMBER(10)
-  , PREV_ID NUMBER(10) not null
-  , PREV_INFO VARCHAR2(300)
-  , ORG_ID NUMBER(10) not null
-  , ORG_INFO VARCHAR2(300)
+-- —¢q
+create table T02_FOSTER (
+  BRO_ID NUMBER(10)
+  , FOSTER_INFO VARCHAR2(300)
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB5_MERGE_PKC primary key (MERGE_ID)
+  , constraint T02_FOSTER_PKC primary key (BRO_ID)
 ) ;
 
--- å‰ä¸–
-create table TB5_PREV (
-  PREV_ID NUMBER(10)
-  , PREV_INFO VARCHAR2(300)
+-- ’í
+create table T02_YOUNGER (
+  BRO_ID NUMBER(10)
+  , YOUNGER_INFO VARCHAR2(300)
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB5_PREV_PKC primary key (PREV_ID)
+  , constraint T02_YOUNGER_PKC primary key (BRO_ID)
 ) ;
 
--- å‰ä¸–æ˜ç´°
-create table TB5_PREV_DET (
-  PREV_ID NUMBER(10)
-  , PREV_BN NUMBER(10)
-  , PREV_DET_INFO VARCHAR2(300)
+-- ––’í
+create table T02_YOUNGEST (
+  BRO_ID NUMBER(10)
+  , YOUNGEST_INFO VARCHAR2(300)
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB5_PREV_DET_PKC primary key (PREV_ID,PREV_BN)
+  , constraint T02_YOUNGEST_PKC primary key (BRO_ID)
 ) ;
 
--- è»¢ç”Ÿ
-create table TB5_REBORN (
-  REBORN_ID NUMBER(10)
-  , PREV_ID NUMBER(10) not null
-  , PREV_INFO VARCHAR2(300)
+-- •Ï‘J
+create table T03_TRANS (
+  TRANS_ID NUMBER(10)
+  , TRANS_INFO VARCHAR2(300)
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB5_REBORN_PKC primary key (REBORN_ID)
+  , constraint T03_TRANS_PKC primary key (TRANS_ID)
 ) ;
 
--- è»¢ç”Ÿæ˜ç´°
-create table TB5_REBORN_DET (
-  REBORN_ID NUMBER(10)
-  , REBORN_BN NUMBER(10)
-  , PREV_DET_INFO VARCHAR2(300)
+-- •Ï‘J—š—ğ
+create table T03_TRANS_HIS (
+  TRANS_ID NUMBER(10)
+  , TRANS_BN NUMBER(10)
+  , TRANS_INFO VARCHAR2(300)
+  , RIYU_TX VARCHAR2(300) not null
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB5_REBORN_DET_PKC primary key (REBORN_ID,REBORN_BN)
+  , constraint T03_TRANS_HIS_PKC primary key (TRANS_ID,TRANS_BN)
 ) ;
 
--- æ´¾ç”Ÿï¼‘
-create table TB6_DERIVE1 (
+-- •¡‡‚P
+create table T05_COMP1 (
+  REF1_ID NUMBER(10)
+  , REF2_ID NUMBER(10)
+  , COMP1_MEI VARCHAR2(300)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID NUMBER(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID NUMBER(10) not null
+  , constraint T05_COMP1_PKC primary key (REF1_ID,REF2_ID)
+) ;
+
+-- •¡‡‚Q
+create table T05_COMP2 (
+  REF1_ID NUMBER(10)
+  , REF2_ID NUMBER(10)
+  , REF3_ID NUMBER(10)
+  , TEKIYO_BI DATE
+  , COMP2_INFO VARCHAR2(300)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID NUMBER(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID NUMBER(10) not null
+  , constraint T05_COMP2_PKC primary key (REF1_ID,REF2_ID,REF3_ID,TEKIYO_BI)
+) ;
+
+-- ”h¶‚P
+create table T06_DERIVE1 (
   DERIVE1_ID NUMBER(10)
-  , ORG_ID NUMBER(10) not null
   , ORG_INFO VARCHAR2(300)
+  , ORG_ID NUMBER(10) not null
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB6_DERIVE1_PKC primary key (DERIVE1_ID)
+  , constraint T06_DERIVE1_PKC primary key (DERIVE1_ID)
 ) ;
 
--- æ´¾ç”Ÿï¼‘æ˜ç´°
-create table TB6_DERIVE1_DET (
+-- ”h¶‚P–¾×
+create table T06_DERIVE1_DET (
   DERIVE1_ID NUMBER(10)
   , DERIVE1_BN NUMBER(10)
-  , ORG_DET_INFO VARCHAR2(300)
+  , DET_INFO VARCHAR2(300)
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB6_DERIVE1_DET_PKC primary key (DERIVE1_ID,DERIVE1_BN)
+  , constraint T06_DERIVE1_DET_PKC primary key (DERIVE1_ID,DERIVE1_BN)
 ) ;
 
--- æ´¾ç”Ÿï¼’
-create table TB6_DERIVE2 (
+-- ”h¶‚Q
+create table T06_DERIVE2 (
   DERIVE2_ID NUMBER(10)
-  , ORG_ID NUMBER(10) not null
   , ORG_INFO VARCHAR2(300)
+  , ORG_ID NUMBER(10) not null
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB6_DERIVE2_PKC primary key (DERIVE2_ID)
+  , constraint T06_DERIVE2_PKC primary key (DERIVE2_ID)
 ) ;
 
--- æ´¾ç”Ÿï¼’æ˜ç´°
-create table TB6_DERIVE2_DET (
+-- ”h¶‚Q–¾×
+create table T06_DERIVE2_DET (
   DERIVE2_ID NUMBER(10)
   , DERIVE2_BN NUMBER(10)
-  , ORG_DET_INFO VARCHAR2(300)
+  , DET_INFO VARCHAR2(300)
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB6_DERIVE2_DET_PKC primary key (DERIVE2_ID,DERIVE2_BN)
+  , constraint T06_DERIVE2_DET_PKC primary key (DERIVE2_ID,DERIVE2_BN)
 ) ;
 
--- èµ·æº
-create table TB6_ORG (
+-- ‹NŒ¹
+create table T06_ORG (
   ORG_ID NUMBER(10)
   , ORG_INFO VARCHAR2(300)
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB6_ORG_PKC primary key (ORG_ID)
+  , constraint T06_ORG_PKC primary key (ORG_ID)
 ) ;
 
--- èµ·æºæ˜ç´°
-create table TB6_ORG_DET (
+-- ‹NŒ¹–¾×
+create table T06_ORG_DET (
   ORG_ID NUMBER(10)
   , ORG_BN NUMBER(10)
-  , ORG_DET_INFO VARCHAR2(300)
+  , DET_INFO VARCHAR2(300)
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB6_ORG_DET_PKC primary key (ORG_ID,ORG_BN)
+  , constraint T06_ORG_DET_PKC primary key (ORG_ID,ORG_BN)
 ) ;
 
--- é›†ç´„
-create table TB7_SUM (
+-- ‘O¢
+create table T07_PREV (
+  PREV_ID NUMBER(10)
+  , PREV_INFO VARCHAR2(300)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID NUMBER(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID NUMBER(10) not null
+  , constraint T07_PREV_PKC primary key (PREV_ID)
+) ;
+
+-- ‘O¢–¾×
+create table T07_PREV_DET (
+  PREV_ID NUMBER(10)
+  , PREV_BN NUMBER(10)
+  , DET_INFO VARCHAR2(300)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID NUMBER(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID NUMBER(10) not null
+  , constraint T07_PREV_DET_PKC primary key (PREV_ID,PREV_BN)
+) ;
+
+-- “]¶
+create table T07_REBORN (
+  REBORN_ID NUMBER(10)
+  , PREV_INFO VARCHAR2(300)
+  , PREV_ID NUMBER(10) not null
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID NUMBER(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID NUMBER(10) not null
+  , constraint T07_REBORN_PKC primary key (REBORN_ID)
+) ;
+
+-- “]¶–¾×
+create table T07_REBORN_DET (
+  REBORN_ID NUMBER(10)
+  , REBORN_BN NUMBER(10)
+  , DET_INFO VARCHAR2(300)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID NUMBER(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID NUMBER(10) not null
+  , constraint T07_REBORN_DET_PKC primary key (REBORN_ID,REBORN_BN)
+) ;
+
+-- Šñ¶‚P
+create table T08_KISEI1 (
+  KISEI1_ID NUMBER(10)
+  , KISEI1_INFO VARCHAR2(300)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID NUMBER(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID NUMBER(10) not null
+  , constraint T08_KISEI1_PKC primary key (KISEI1_ID)
+) ;
+
+-- Šñ¶‚Q
+create table T08_KISEI2 (
+  KISEI2_ID NUMBER(10)
+  , KISEI2_INFO VARCHAR2(300)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID NUMBER(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID NUMBER(10) not null
+  , constraint T08_KISEI2_PKC primary key (KISEI2_ID)
+) ;
+
+-- ‹¤¶
+create table T08_KYOSEI (
+  KYOSEI_ID NUMBER(10)
+  , KISEI1_ID NUMBER(10) not null
+  , KISEI1_INFO VARCHAR2(300)
+  , KISEI2_ID NUMBER(10) not null
+  , KISEI2_INFO VARCHAR2(300)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID NUMBER(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID NUMBER(10) not null
+  , constraint T08_KYOSEI_PKC primary key (KYOSEI_ID)
+) ;
+
+-- W’c‚P
+create table T09_GRP1 (
+  GRP1_ID NUMBER(10)
+  , SUM_ID NUMBER(10)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID NUMBER(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID NUMBER(10) not null
+  , constraint T09_GRP1_PKC primary key (GRP1_ID)
+) ;
+
+-- W’c‚Q
+create table T09_GRP2 (
+  GRP2_ID NUMBER(10)
+  , SUM_ID NUMBER(10)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID NUMBER(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID NUMBER(10) not null
+  , constraint T09_GRP2_PKC primary key (GRP2_ID)
+) ;
+
+-- W–ñ
+create table T09_SUM (
   SUM_ID NUMBER(10)
   , SUM_INFO VARCHAR2(300)
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB7_SUM_PKC primary key (SUM_ID)
+  , constraint T09_SUM_PKC primary key (SUM_ID)
 ) ;
 
--- å˜ä½ï¼‘
-create table TB7_UNIT1 (
-  UNIT1_ID NUMBER(10)
-  , SUM_ID NUMBER(10)
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID NUMBER(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB7_UNIT1_PKC primary key (UNIT1_ID)
-) ;
-
--- å˜ä½ï¼’
-create table TB7_UNIT2 (
-  UNIT2_ID NUMBER(10)
-  , SUM_ID NUMBER(10)
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID NUMBER(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB7_UNIT2_PKC primary key (UNIT2_ID)
-) ;
-
--- é¸æŠœ
-create table TB8_CHOICE (
+-- ‘I”²
+create table T10_CHOICE (
   CHOICE_ID NUMBER(10)
-  , SUM_ID NUMBER(10)
-  , SUM_INFO VARCHAR2(300)
-  , SUM2_ID NUMBER(10)
-  , SUM2_INFO VARCHAR2(300)
-  , SUM3_ID NUMBER(10)
-  , SUM3_INFO VARCHAR2(300)
+  , KOHO1_ID NUMBER(10)
+  , KOHO1_INFO VARCHAR2(300)
+  , KOHO2_ID NUMBER(10)
+  , KOHO2_INFO VARCHAR2(300)
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB8_CHOICE_PKC primary key (CHOICE_ID)
+  , constraint T10_CHOICE_PKC primary key (CHOICE_ID)
 ) ;
 
--- å‰ä¸–ï¼’
-create table TB8_PREV2 (
+-- Œó•â‚P
+create table T10_KOHO1 (
+  KOHO1_ID NUMBER(10)
+  , KOHO1_INFO VARCHAR2(300)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID NUMBER(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID NUMBER(10) not null
+  , constraint T10_KOHO1_PKC primary key (KOHO1_ID)
+) ;
+
+-- Œó•â‚Q
+create table T10_KOHO2 (
+  KOHO2_ID NUMBER(10)
+  , KOHO2_INFO VARCHAR2(300)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID NUMBER(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID NUMBER(10) not null
+  , constraint T10_KOHO2_PKC primary key (KOHO2_ID)
+) ;
+
+-- ‘O¢‚Q
+create table T11_PREV2 (
   PREV2_ID NUMBER(10)
   , PREV2_INFO VARCHAR2(300)
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB8_PREV2_PKC primary key (PREV2_ID)
+  , constraint T11_PREV2_PKC primary key (PREV2_ID)
 ) ;
 
--- è»¢ç”Ÿï¼’
-create table TB8_REBORN2 (
+-- “]¶‚Q
+create table T11_REBORN2 (
   REBORN2_ID NUMBER(10)
-  , TASHO2_ID NUMBER(10) not null
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID NUMBER(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB8_REBORN2_PKC primary key (REBORN2_ID)
-) ;
-
--- é›†ç´„ï¼’
-create table TB8_SUM2 (
-  SUM2_ID NUMBER(10)
-  , SUM2_INFO VARCHAR2(300)
+  , PREV2_INFO VARCHAR2(300)
   , PREV2_ID NUMBER(10) not null
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB8_SUM2_PKC primary key (SUM2_ID)
+  , constraint T11_REBORN2_PKC primary key (REBORN2_ID)
 ) ;
 
--- é›†ç´„ï¼“
-create table TB8_SUM3 (
-  SUM3_ID NUMBER(10)
-  , SUM3_INFO VARCHAR2(300)
-  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , INSERT_USER_ID NUMBER(10) not null
-  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
-  , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB8_SUM3_PKC primary key (SUM3_ID)
-) ;
-
--- ä»–ç”Ÿï¼‘
-create table TB8_TASHO1 (
+-- ‘¼¶‚P
+create table T11_TASHO1 (
   TASHO1_ID NUMBER(10)
-  , SUM2_ID NUMBER(10)
+  , REBORN2_ID NUMBER(10)
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB8_TASHO1_PKC primary key (TASHO1_ID)
+  , constraint T11_TASHO1_PKC primary key (TASHO1_ID)
 ) ;
 
--- ä»–ç”Ÿï¼’
-create table TB8_TASHO2 (
+-- Œó•â‚R
+create table T12_KOHO3 (
+  KOHO3_ID NUMBER(10)
+  , KOHO3_INFO VARCHAR2(300)
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID NUMBER(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID NUMBER(10) not null
+  , constraint T12_KOHO3_PKC primary key (KOHO3_ID)
+) ;
+
+-- “]¶‚R
+create table T12_REBORN3 (
+  REBORN3_ID NUMBER(10)
+  , TASHO2_ID NUMBER(10) not null
+  , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , INSERT_USER_ID NUMBER(10) not null
+  , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
+  , UPDATE_USER_ID NUMBER(10) not null
+  , constraint T12_REBORN3_PKC primary key (REBORN3_ID)
+) ;
+
+-- ‘¼¶‚Q
+create table T12_TASHO2 (
   TASHO2_ID NUMBER(10)
-  , SUM3_ID NUMBER(10)
+  , KOHO3_ID NUMBER(10)
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB8_TASHO2_PKC primary key (TASHO2_ID)
+  , constraint T12_TASHO2_PKC primary key (TASHO2_ID)
 ) ;
 
--- å¤‰æ›å…ˆ
-create table TB9_DEST (
+-- •ÏŠ·æ
+create table T13_DEST (
   DEST_ID NUMBER(10)
   , DEST_INFO VARCHAR2(300)
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB9_DEST_PKC primary key (DEST_ID)
+  , constraint T13_DEST_PKC primary key (DEST_ID)
 ) ;
 
--- å¤‰æ›å…ƒ
-create table TB9_SRC (
+-- •ÏŠ·Œ³
+create table T13_SRC (
   SRC_ID NUMBER(10)
   , SRC_INFO VARCHAR2(300)
   , INSERT_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , INSERT_USER_ID NUMBER(10) not null
   , UPDATE_TS TIMESTAMP default CURRENT_TIMESTAMP not null
   , UPDATE_USER_ID NUMBER(10) not null
-  , constraint TB9_SRC_PKC primary key (SRC_ID)
+  , constraint T13_SRC_PKC primary key (SRC_ID)
 ) ;
 
--- æŒ¯åˆ†ãƒ“ãƒ¥ãƒ¼
-create view TB9_FURIWAKE as 
+-- U•ªƒrƒ…[
+create view V13_FURIWAKE as 
 SELECT
-    a.table_name                                -- ãƒ†ãƒ¼ãƒ–ãƒ«å
-    , a.src_id$dest_id                          -- ID
-    , a.info                                    -- æƒ…å ±
+    a.table_name                                -- ƒe[ƒuƒ‹–¼
+    , a.src_id$dest_id                          -- U•ªID
+    , a.info                                    -- î•ñ
 FROM
     ( 
         SELECT
@@ -750,593 +780,614 @@ FROM
             , s.src_id AS src_id$dest_id
             , s.src_info AS info 
         FROM
-            tb9_src s 
+            t13_src s 
         UNION 
         SELECT
             'TB9_DEST'
             , s.dest_id
             , s.dest_info 
         FROM
-            tb9_dest s
+            t13_dest s
     ) a
 
 ;
 
--- å¤‰æ›ãƒ“ãƒ¥ãƒ¼
-create view TB9_HENKAN as 
+-- •ÏŠ·ƒrƒ…[
+create view V13_HENKAN as 
 SELECT
-    'TB9_DEST' AS table_name                    -- ãƒ†ãƒ¼ãƒ–ãƒ«å
-    , s.src_id                                  -- å¤‰æ›å…ƒID
-    , s.src_info AS dest_info                   -- å¤‰æ›å…ƒæƒ…å ±
+    'TB9_DEST' AS table_name                    -- ƒe[ƒuƒ‹–¼
+    , s.src_id                                  -- •ÏŠ·Œ³ID
+    , s.src_info AS dest_info                   -- •ÏŠ·Œ³î•ñ
 FROM
-    tb9_src s
+    t13_src s
 
 ;
 
-comment on table MHR_BUSHO is 'éƒ¨ç½²ãƒã‚¹ã‚¿';
-comment on column MHR_BUSHO.BUSHO_ID is 'éƒ¨ç½²ID';
-comment on column MHR_BUSHO.BUSHO_MEI is 'éƒ¨ç½²å';
-comment on column MHR_BUSHO.OYA_BUSHO_ID is 'è¦ªéƒ¨ç½²ID';
-comment on column MHR_BUSHO.TEKIYO_BI is 'é©ç”¨æ—¥';
-comment on column MHR_BUSHO.HAISHI_BI is 'å»ƒæ­¢æ—¥';
-comment on column MHR_BUSHO.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column MHR_BUSHO.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column MHR_BUSHO.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column MHR_BUSHO.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table M04_CD is 'CDƒ}ƒXƒ^';
+comment on column M04_CD.CDREF_CD is 'QÆCD';
+comment on column M04_CD.CDREF_MEI is 'CDQÆ–¼';
+comment on column M04_CD.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column M04_CD.INSERT_USER_ID is 'ì¬Ò';
+comment on column M04_CD.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column M04_CD.UPDATE_USER_ID is 'XVÒ';
 
-comment on table MHR_SHOKUI is 'è·ä½ãƒã‚¹ã‚¿';
-comment on column MHR_SHOKUI.SHOKUI_ID is 'è·ä½ID';
-comment on column MHR_SHOKUI.SHOKUI_MEI is 'è·ä½å';
-comment on column MHR_SHOKUI.SHOKUI_ON is 'è·ä½é †';
-comment on column MHR_SHOKUI.TEKIYO_BI is 'é©ç”¨æ—¥';
-comment on column MHR_SHOKUI.HAISHI_BI is 'å»ƒæ­¢æ—¥';
-comment on column MHR_SHOKUI.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column MHR_SHOKUI.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column MHR_SHOKUI.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column MHR_SHOKUI.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table M04_ID is 'IDƒ}ƒXƒ^';
+comment on column M04_ID.IDREF_ID is 'QÆID';
+comment on column M04_ID.IDREF_MEI is 'IDQÆ–¼';
+comment on column M04_ID.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column M04_ID.INSERT_USER_ID is 'ì¬Ò';
+comment on column M04_ID.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column M04_ID.UPDATE_USER_ID is 'XVÒ';
 
-comment on table MHR_SHOKUI_NINKA is 'èªå¯ãƒã‚¹ã‚¿';
-comment on column MHR_SHOKUI_NINKA.BUSHO_ID is 'éƒ¨ç½²ID';
-comment on column MHR_SHOKUI_NINKA.SHOKUI_ID is 'è·ä½ID';
-comment on column MHR_SHOKUI_NINKA.KINO_NM is 'æ©Ÿèƒ½åç§°';
-comment on column MHR_SHOKUI_NINKA.KENGEN_KB is 'æ¨©é™åŒºåˆ†';
-comment on column MHR_SHOKUI_NINKA.TEKIYO_BI is 'é©ç”¨æ—¥';
-comment on column MHR_SHOKUI_NINKA.HAISHI_BI is 'å»ƒæ­¢æ—¥';
-comment on column MHR_SHOKUI_NINKA.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column MHR_SHOKUI_NINKA.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column MHR_SHOKUI_NINKA.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column MHR_SHOKUI_NINKA.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table M04_IDBN is 'ID˜A”Ôƒ}ƒXƒ^';
+comment on column M04_IDBN.IDBN_ID is 'QÆID';
+comment on column M04_IDBN.IDBN_BN is 'QÆ˜A”Ô';
+comment on column M04_IDBN.IDBN_NO is 'ID˜A”ÔNO';
+comment on column M04_IDBN.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column M04_IDBN.INSERT_USER_ID is 'ì¬Ò';
+comment on column M04_IDBN.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column M04_IDBN.UPDATE_USER_ID is 'XVÒ';
 
-comment on table MHR_USER is 'ãƒ¦ãƒ¼ã‚¶ãƒã‚¹ã‚¿';
-comment on column MHR_USER.USER_ID is 'ãƒ¦ãƒ¼ã‚¶ID';
-comment on column MHR_USER.USER_SEI is 'ãƒ¦ãƒ¼ã‚¶å§“';
-comment on column MHR_USER.USER_MEI is 'ãƒ¦ãƒ¼ã‚¶å';
-comment on column MHR_USER.E_MAIL is 'ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹';
-comment on column MHR_USER.PASSWORD is 'ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰';
-comment on column MHR_USER.TEKIYO_BI is 'é©ç”¨æ—¥';
-comment on column MHR_USER.HAISHI_BI is 'å»ƒæ­¢æ—¥';
-comment on column MHR_USER.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column MHR_USER.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column MHR_USER.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column MHR_USER.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table M04_NO is 'NOƒ}ƒXƒ^';
+comment on column M04_NO.NOREF_NO is 'QÆNO';
+comment on column M04_NO.NOREF_MEI is 'NOQÆ–¼';
+comment on column M04_NO.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column M04_NO.INSERT_USER_ID is 'ì¬Ò';
+comment on column M04_NO.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column M04_NO.UPDATE_USER_ID is 'XVÒ';
 
-comment on table MHR_USER_POS is 'æ‰€å±ãƒã‚¹ã‚¿';
-comment on column MHR_USER_POS.BUSHO_ID is 'éƒ¨ç½²ID';
-comment on column MHR_USER_POS.SHOKUI_ID is 'è·ä½ID';
-comment on column MHR_USER_POS.USER_ID is 'ãƒ¦ãƒ¼ã‚¶ID';
-comment on column MHR_USER_POS.TEKIYO_BI is 'é©ç”¨æ—¥';
-comment on column MHR_USER_POS.HAISHI_BI is 'å»ƒæ­¢æ—¥';
-comment on column MHR_USER_POS.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column MHR_USER_POS.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column MHR_USER_POS.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column MHR_USER_POS.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table M04_SAIKI is 'Ä‹A';
+comment on column M04_SAIKI.SAIKI_ID is 'Ä‹AID';
+comment on column M04_SAIKI.SAIKI_MEI is 'Ä‹A–¼';
+comment on column M04_SAIKI.IDREF_ID is 'QÆID';
+comment on column M04_SAIKI.CDREF_CD is 'QÆCD';
+comment on column M04_SAIKI.NOREF_NO is 'QÆNO';
+comment on column M04_SAIKI.IDBN_ID is 'ID˜A”ÔID';
+comment on column M04_SAIKI.IDBN_BN is 'ID˜A”Ô';
+comment on column M04_SAIKI.OYA_SAIKI_ID is 'eÄ‹AID';
+comment on column M04_SAIKI.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column M04_SAIKI.INSERT_USER_ID is 'ì¬Ò';
+comment on column M04_SAIKI.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column M04_SAIKI.UPDATE_USER_ID is 'XVÒ';
 
-comment on table MSY_KADOBI is 'ç¨¼åƒæ—¥ãƒã‚¹ã‚¿';
-comment on column MSY_KADOBI.KADO_BI is 'ç¨¼åƒæ—¥';
-comment on column MSY_KADOBI.BUSHO_ID is 'éƒ¨ç½²ID';
-comment on column MSY_KADOBI.KADOBI_F is 'ç¨¼åƒæ—¥ãƒ•ãƒ©ã‚°';
-comment on column MSY_KADOBI.MEMO is 'ãƒ¡ãƒ¢';
-comment on column MSY_KADOBI.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column MSY_KADOBI.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column MSY_KADOBI.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column MSY_KADOBI.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table M05_REF1 is 'ƒ}ƒXƒ^QÆ‚P';
+comment on column M05_REF1.REF1_ID is 'QÆ‚PID';
+comment on column M05_REF1.REF1_MEI is 'QÆ‚P–¼';
+comment on column M05_REF1.DELETE_F is 'íœƒtƒ‰ƒO';
+comment on column M05_REF1.TEKIYO_BI is '“K—p“ú';
+comment on column M05_REF1.HAISHI_BI is '”p~“ú';
+comment on column M05_REF1.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column M05_REF1.INSERT_USER_ID is 'ì¬Ò';
+comment on column M05_REF1.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column M05_REF1.UPDATE_USER_ID is 'XVÒ';
 
-comment on table MSY_KBN is 'åŒºåˆ†ãƒã‚¹ã‚¿';
-comment on column MSY_KBN.KBN_NM is 'åŒºåˆ†åç§°';
-comment on column MSY_KBN.KBN_MEI is 'åŒºåˆ†å';
-comment on column MSY_KBN.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column MSY_KBN.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column MSY_KBN.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column MSY_KBN.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table M05_REF2 is 'ƒ}ƒXƒ^QÆ‚Q';
+comment on column M05_REF2.REF2_ID is 'QÆ‚QID';
+comment on column M05_REF2.REF2_MEI is 'QÆ‚Q–¼';
+comment on column M05_REF2.DELETE_F is 'íœƒtƒ‰ƒO';
+comment on column M05_REF2.TEKIYO_BI is '“K—p“ú';
+comment on column M05_REF2.HAISHI_BI is '”p~“ú';
+comment on column M05_REF2.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column M05_REF2.INSERT_USER_ID is 'ì¬Ò';
+comment on column M05_REF2.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column M05_REF2.UPDATE_USER_ID is 'XVÒ';
 
-comment on table MSY_KBN_VAL is 'åŒºåˆ†å€¤ãƒã‚¹ã‚¿';
-comment on column MSY_KBN_VAL.KBN_NM is 'åŒºåˆ†åç§°';
-comment on column MSY_KBN_VAL.KBN_VAL is 'åŒºåˆ†å€¤';
-comment on column MSY_KBN_VAL.KBN_VAL_MEI is 'åŒºåˆ†å€¤å';
-comment on column MSY_KBN_VAL.HYOJI_ON is 'è¡¨ç¤ºé †';
-comment on column MSY_KBN_VAL.CRITERIA is 'å–å¾—æ¡ä»¶';
-comment on column MSY_KBN_VAL.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column MSY_KBN_VAL.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column MSY_KBN_VAL.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column MSY_KBN_VAL.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table M05_REF3 is 'ƒ}ƒXƒ^QÆ‚R';
+comment on column M05_REF3.REF3_ID is 'QÆ‚RID';
+comment on column M05_REF3.REF3_MEI is 'QÆ‚R–¼';
+comment on column M05_REF3.DELETE_F is 'íœƒtƒ‰ƒO';
+comment on column M05_REF3.TEKIYO_BI is '“K—p“ú';
+comment on column M05_REF3.HAISHI_BI is '”p~“ú';
+comment on column M05_REF3.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column M05_REF3.INSERT_USER_ID is 'ì¬Ò';
+comment on column M05_REF3.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column M05_REF3.UPDATE_USER_ID is 'XVÒ';
 
-comment on table MSY_TAX is 'ç¨ãƒã‚¹ã‚¿';
-comment on column MSY_TAX.TAX_KB is 'ç¨åŒºåˆ†';
-comment on column MSY_TAX.TEKIYO_BI is 'é©ç”¨æ—¥';
-comment on column MSY_TAX.HAISHI_BI is 'å»ƒæ­¢æ—¥';
-comment on column MSY_TAX.TAX_RT is 'ç¨ç‡';
-comment on column MSY_TAX.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column MSY_TAX.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column MSY_TAX.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column MSY_TAX.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table MHR_BUSHO is '•”ƒ}ƒXƒ^';
+comment on column MHR_BUSHO.BUSHO_ID is '•”ID';
+comment on column MHR_BUSHO.BUSHO_MEI is '•”–¼';
+comment on column MHR_BUSHO.OYA_BUSHO_ID is 'e•”ID';
+comment on column MHR_BUSHO.TEKIYO_BI is '“K—p“ú';
+comment on column MHR_BUSHO.HAISHI_BI is '”p~“ú';
+comment on column MHR_BUSHO.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column MHR_BUSHO.INSERT_USER_ID is 'ì¬Ò';
+comment on column MHR_BUSHO.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column MHR_BUSHO.UPDATE_USER_ID is 'XVÒ';
 
-comment on table MSY_TSUKA is 'é€šè²¨ãƒã‚¹ã‚¿';
-comment on column MSY_TSUKA.TSUKA_KB is 'é€šè²¨åŒºåˆ†';
-comment on column MSY_TSUKA.TEKIYO_BI is 'é©ç”¨æ—¥';
-comment on column MSY_TSUKA.TTS is 'è²©å£²ãƒ¬ãƒ¼ãƒˆ';
-comment on column MSY_TSUKA.TTB is 'è²·å–ãƒ¬ãƒ¼ãƒˆ';
-comment on column MSY_TSUKA.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column MSY_TSUKA.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column MSY_TSUKA.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column MSY_TSUKA.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table MHR_SHOKUI is 'EˆÊƒ}ƒXƒ^';
+comment on column MHR_SHOKUI.SHOKUI_ID is 'EˆÊID';
+comment on column MHR_SHOKUI.SHOKUI_MEI is 'EˆÊ–¼';
+comment on column MHR_SHOKUI.SHOKUI_ON is 'EˆÊ‡';
+comment on column MHR_SHOKUI.TEKIYO_BI is '“K—p“ú';
+comment on column MHR_SHOKUI.HAISHI_BI is '”p~“ú';
+comment on column MHR_SHOKUI.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column MHR_SHOKUI.INSERT_USER_ID is 'ì¬Ò';
+comment on column MHR_SHOKUI.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column MHR_SHOKUI.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB0_ENTITY is 'ã‚¨ãƒ³ãƒ†ã‚£ãƒ†ã‚£';
-comment on column TB0_ENTITY.ENTITY_ID is 'ã‚¨ãƒ³ãƒ†ã‚£ãƒ†ã‚£ID';
-comment on column TB0_ENTITY.ENTITY_NM is 'ã‚¨ãƒ³ãƒ†ã‚£ãƒ†ã‚£åç§°';
-comment on column TB0_ENTITY.ENTITY_MEI is 'ã‚¨ãƒ³ãƒ†ã‚£ãƒ†ã‚£å';
-comment on column TB0_ENTITY.CHECK_F is 'ãƒã‚§ãƒƒã‚¯ãƒ•ãƒ©ã‚°';
-comment on column TB0_ENTITY.RADIO_KB is 'ãƒ©ã‚¸ã‚ªåŒºåˆ†';
-comment on column TB0_ENTITY.PULLDOWN_KB is 'ãƒ—ãƒ«ãƒ€ã‚¦ãƒ³åŒºåˆ†';
-comment on column TB0_ENTITY.PULLDOWN_SB is 'ãƒ—ãƒ«ãƒ€ã‚¦ãƒ³ç¨®åˆ¥';
-comment on column TB0_ENTITY.MEMO_TX is 'ãƒ¡ãƒ¢';
-comment on column TB0_ENTITY.MEMO is 'ï¼‘è¡Œãƒ¡ãƒ¢';
-comment on column TB0_ENTITY.TENPU_FILE is 'æ·»ä»˜ãƒ•ã‚¡ã‚¤ãƒ«';
-comment on column TB0_ENTITY.NENGAPPI_Y is 'å¹´æœˆæ—¥å¹´';
-comment on column TB0_ENTITY.NENGAPPI_M is 'å¹´æœˆæ—¥æœˆ';
-comment on column TB0_ENTITY.NENGAPPI_D is 'å¹´æœˆæ—¥æ—¥';
-comment on column TB0_ENTITY.NENGETSU_YM is 'å¹´æœˆ';
-comment on column TB0_ENTITY.NENGAPPI_YMD is 'å¹´æœˆæ—¥';
-comment on column TB0_ENTITY.TIMESTAMP_TS is 'ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB0_ENTITY.NICHIJI_DT is 'æ—¥æ™‚';
-comment on column TB0_ENTITY.HIDUKE_BI is 'æ—¥ä»˜';
-comment on column TB0_ENTITY.JIKOKU_HM is 'æ™‚åˆ»';
-comment on column TB0_ENTITY.JIKAN_TM is 'æ™‚é–“';
-comment on column TB0_ENTITY.SURYO_QT is 'æ•°é‡';
-comment on column TB0_ENTITY.TSUKA_KB is 'é€šè²¨åŒºåˆ†';
-comment on column TB0_ENTITY.JUCHU_PR is 'å—æ³¨å˜ä¾¡';
-comment on column TB0_ENTITY.JUCHU_AM is 'å—æ³¨é‡‘é¡';
-comment on column TB0_ENTITY.HACHU_PR is 'ç™ºæ³¨å˜ä¾¡';
-comment on column TB0_ENTITY.HACHU_AM is 'ç™ºæ³¨é‡‘é¡';
-comment on column TB0_ENTITY.DELETE_F is 'å‰Šé™¤ãƒ•ãƒ©ã‚°:å¿…é ˆãƒã‚§ãƒƒã‚¯ã«ã‹ã‹ã‚‹ã®ã§NOTNULLã«ã—ãªã„';
-comment on column TB0_ENTITY.STATUS_KB is 'ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹åŒºåˆ†:å¿…é ˆãƒã‚§ãƒƒã‚¯ã«ã‹ã‹ã‚‹ã®ã§NOTNULLã«ã—ãªã„';
-comment on column TB0_ENTITY.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB0_ENTITY.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB0_ENTITY.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB0_ENTITY.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table MHR_SHOKUI_NINKA is '”F‰Âƒ}ƒXƒ^';
+comment on column MHR_SHOKUI_NINKA.BUSHO_ID is '•”ID';
+comment on column MHR_SHOKUI_NINKA.SHOKUI_ID is 'EˆÊID';
+comment on column MHR_SHOKUI_NINKA.KINO_NM is '‹@”\–¼Ì:‹@”\–¼‚Ì³‹K•\Œ»';
+comment on column MHR_SHOKUI_NINKA.KENGEN_KB is 'Œ ŒÀ‹æ•ª:1:QÆ,2:o—Í,3:XVíœ,4:’Ç‰Á,5:³”F,6:”Û”F';
+comment on column MHR_SHOKUI_NINKA.TEKIYO_BI is '“K—p“ú';
+comment on column MHR_SHOKUI_NINKA.HAISHI_BI is '”p~“ú';
+comment on column MHR_SHOKUI_NINKA.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column MHR_SHOKUI_NINKA.INSERT_USER_ID is 'ì¬Ò';
+comment on column MHR_SHOKUI_NINKA.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column MHR_SHOKUI_NINKA.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB0_NOKEY is 'ä¸»ã‚­ãƒ¼ãªã—';
-comment on column TB0_NOKEY.COL_A is 'åˆ—ï¼¡';
-comment on column TB0_NOKEY.COL_B is 'åˆ—ï¼¢';
-comment on column TB0_NOKEY.COL_C is 'åˆ—ï¼£';
-comment on column TB0_NOKEY.COL_D is 'åˆ—ï¼¤';
-comment on column TB0_NOKEY.COL_E is 'åˆ—ï¼¥';
-comment on column TB0_NOKEY.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB0_NOKEY.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB0_NOKEY.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB0_NOKEY.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table MHR_USER is 'ƒ†[ƒUƒ}ƒXƒ^';
+comment on column MHR_USER.USER_ID is 'ƒ†[ƒUID';
+comment on column MHR_USER.USER_SEI is 'ƒ†[ƒU©';
+comment on column MHR_USER.USER_MEI is 'ƒ†[ƒU–¼';
+comment on column MHR_USER.E_MAIL is 'ƒ[ƒ‹ƒAƒhƒŒƒX';
+comment on column MHR_USER.PASSWORD is 'ƒpƒXƒ[ƒh';
+comment on column MHR_USER.TEKIYO_BI is '“K—p“ú';
+comment on column MHR_USER.HAISHI_BI is '”p~“ú';
+comment on column MHR_USER.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column MHR_USER.INSERT_USER_ID is 'ì¬Ò';
+comment on column MHR_USER.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column MHR_USER.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB1_CDREF is 'CDå‚ç…§ãƒã‚¹ã‚¿';
-comment on column TB1_CDREF.CDREF_CD is 'å‚ç…§CD';
-comment on column TB1_CDREF.CDREF_MEI is 'å‚ç…§CDå';
-comment on column TB1_CDREF.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB1_CDREF.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB1_CDREF.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB1_CDREF.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table MHR_USER_POS is 'Š‘®ƒ}ƒXƒ^';
+comment on column MHR_USER_POS.BUSHO_ID is '•”ID';
+comment on column MHR_USER_POS.SHOKUI_ID is 'EˆÊID';
+comment on column MHR_USER_POS.USER_ID is 'ƒ†[ƒUID';
+comment on column MHR_USER_POS.TEKIYO_BI is '“K—p“ú';
+comment on column MHR_USER_POS.HAISHI_BI is '”p~“ú';
+comment on column MHR_USER_POS.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column MHR_USER_POS.INSERT_USER_ID is 'ì¬Ò';
+comment on column MHR_USER_POS.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column MHR_USER_POS.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB1_COMBO1 is 'è¤‡åˆï¼‘';
-comment on column TB1_COMBO1.REFER1_ID is 'å‚ç…§ï¼‘ID';
-comment on column TB1_COMBO1.REFER2_ID is 'å‚ç…§ï¼’ID';
-comment on column TB1_COMBO1.COMBO1_INFO is 'è¤‡åˆï¼‘æƒ…å ±';
-comment on column TB1_COMBO1.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB1_COMBO1.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB1_COMBO1.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB1_COMBO1.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table MSY_KADOBI is '‰Ò“­“úƒ}ƒXƒ^';
+comment on column MSY_KADOBI.KADO_BI is '‰Ò“­“ú';
+comment on column MSY_KADOBI.BUSHO_ID is '•”ID';
+comment on column MSY_KADOBI.KADOBI_F is '‰Ò“­“úƒtƒ‰ƒO';
+comment on column MSY_KADOBI.MEMO is 'ƒƒ‚';
+comment on column MSY_KADOBI.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column MSY_KADOBI.INSERT_USER_ID is 'ì¬Ò';
+comment on column MSY_KADOBI.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column MSY_KADOBI.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB1_COMBO2 is 'è¤‡åˆï¼’';
-comment on column TB1_COMBO2.REFER1_ID is 'å‚ç…§ï¼‘ID';
-comment on column TB1_COMBO2.REFER2_ID is 'å‚ç…§ï¼’ID';
-comment on column TB1_COMBO2.REFER3_ID is 'å‚ç…§ï¼“ID';
-comment on column TB1_COMBO2.TEKIYO_BI is 'é©ç”¨æ—¥';
-comment on column TB1_COMBO2.COMBO2_INFO is 'è¤‡åˆï¼’æƒ…å ±';
-comment on column TB1_COMBO2.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB1_COMBO2.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB1_COMBO2.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB1_COMBO2.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table MSY_KBN is '‹æ•ªƒ}ƒXƒ^';
+comment on column MSY_KBN.KBN_NM is '‹æ•ª–¼Ì';
+comment on column MSY_KBN.KBN_MEI is '‹æ•ª–¼';
+comment on column MSY_KBN.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column MSY_KBN.INSERT_USER_ID is 'ì¬Ò';
+comment on column MSY_KBN.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column MSY_KBN.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB1_IDBN is 'IDé€£ç•ªãƒã‚¹ã‚¿';
-comment on column TB1_IDBN.IDREF_ID is 'å‚ç…§ID';
-comment on column TB1_IDBN.IDBN_BN is 'å‚ç…§IDé€£ç•ª';
-comment on column TB1_IDBN.IDBN_NO is 'IDé€£ç•ªNO';
-comment on column TB1_IDBN.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB1_IDBN.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB1_IDBN.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB1_IDBN.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table MSY_KBN_VAL is '‹æ•ª’lƒ}ƒXƒ^';
+comment on column MSY_KBN_VAL.KBN_NM is '‹æ•ª–¼Ì';
+comment on column MSY_KBN_VAL.KBN_VAL is '‹æ•ª’l';
+comment on column MSY_KBN_VAL.KBN_VAL_MEI is '‹æ•ª’l–¼';
+comment on column MSY_KBN_VAL.HYOJI_ON is '•\¦‡';
+comment on column MSY_KBN_VAL.CRITERIA is 'æ“¾ğŒ';
+comment on column MSY_KBN_VAL.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column MSY_KBN_VAL.INSERT_USER_ID is 'ì¬Ò';
+comment on column MSY_KBN_VAL.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column MSY_KBN_VAL.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB1_IDREF is 'IDå‚ç…§ãƒã‚¹ã‚¿';
-comment on column TB1_IDREF.IDREF_ID is 'å‚ç…§ID';
-comment on column TB1_IDREF.IDREF_MEI is 'å‚ç…§IDå';
-comment on column TB1_IDREF.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB1_IDREF.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB1_IDREF.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB1_IDREF.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table MSY_TAX is 'Åƒ}ƒXƒ^';
+comment on column MSY_TAX.TAX_KB is 'Å‹æ•ª';
+comment on column MSY_TAX.TEKIYO_BI is '“K—p“ú';
+comment on column MSY_TAX.HAISHI_BI is '”p~“ú';
+comment on column MSY_TAX.TAX_RT is 'Å—¦';
+comment on column MSY_TAX.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column MSY_TAX.INSERT_USER_ID is 'ì¬Ò';
+comment on column MSY_TAX.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column MSY_TAX.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB1_NOREF is 'NOå‚ç…§ãƒã‚¹ã‚¿';
-comment on column TB1_NOREF.NOREF_NO is 'å‚ç…§NO';
-comment on column TB1_NOREF.NOREF_MEI is 'å‚ç…§NOå';
-comment on column TB1_NOREF.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB1_NOREF.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB1_NOREF.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB1_NOREF.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table MSY_TSUKA is '’Ê‰İƒ}ƒXƒ^';
+comment on column MSY_TSUKA.TSUKA_KB is '’Ê‰İ‹æ•ª';
+comment on column MSY_TSUKA.TEKIYO_BI is '“K—p“ú';
+comment on column MSY_TSUKA.TTS is '”Ì”„ƒŒ[ƒg';
+comment on column MSY_TSUKA.TTB is '”ƒæƒŒ[ƒg';
+comment on column MSY_TSUKA.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column MSY_TSUKA.INSERT_USER_ID is 'ì¬Ò';
+comment on column MSY_TSUKA.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column MSY_TSUKA.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB1_REFER1 is 'å‚ç…§ï¼‘ãƒã‚¹ã‚¿';
-comment on column TB1_REFER1.REFER1_ID is 'å‚ç…§ï¼‘ID';
-comment on column TB1_REFER1.REFER1_MEI is 'å‚ç…§ï¼‘å';
-comment on column TB1_REFER1.DELETE_F is 'å‰Šé™¤ãƒ•ãƒ©ã‚°';
-comment on column TB1_REFER1.TEKIYO_BI is 'é©ç”¨æ—¥';
-comment on column TB1_REFER1.HAISHI_BI is 'å»ƒæ­¢æ—¥';
-comment on column TB1_REFER1.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB1_REFER1.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB1_REFER1.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB1_REFER1.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T00_ENTITY is 'ƒGƒ“ƒeƒBƒeƒB';
+comment on column T00_ENTITY.ENTITY_ID is 'ƒGƒ“ƒeƒBƒeƒBID';
+comment on column T00_ENTITY.ENTITY_NM is 'ƒGƒ“ƒeƒBƒeƒB–¼Ì';
+comment on column T00_ENTITY.ENTITY_MEI is 'ƒGƒ“ƒeƒBƒeƒB–¼';
+comment on column T00_ENTITY.CHECK_F is 'ƒ`ƒFƒbƒNƒtƒ‰ƒO';
+comment on column T00_ENTITY.RADIO_KB is 'ƒ‰ƒWƒI‹æ•ª';
+comment on column T00_ENTITY.PULLDOWN_KB is 'ƒvƒ‹ƒ_ƒEƒ“‹æ•ª';
+comment on column T00_ENTITY.PULLDOWN_SB is 'ƒvƒ‹ƒ_ƒEƒ“í•Ê';
+comment on column T00_ENTITY.MEMO_TX is 'ƒƒ‚';
+comment on column T00_ENTITY.MEMO is '‚Psƒƒ‚';
+comment on column T00_ENTITY.TENPU_FILE is '“Y•tƒtƒ@ƒCƒ‹';
+comment on column T00_ENTITY.NENGAPPI_Y is '”NŒ“ú”N';
+comment on column T00_ENTITY.NENGAPPI_M is '”NŒ“úŒ';
+comment on column T00_ENTITY.NENGAPPI_D is '”NŒ“ú“ú';
+comment on column T00_ENTITY.NENGETSU_YM is '”NŒ';
+comment on column T00_ENTITY.NENGAPPI_YMD is '”NŒ“ú';
+comment on column T00_ENTITY.TIMESTAMP_TS is 'ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T00_ENTITY.NICHIJI_DT is '“ú';
+comment on column T00_ENTITY.HIDUKE_BI is '“ú•t';
+comment on column T00_ENTITY.JIKOKU_HM is '';
+comment on column T00_ENTITY.JIKAN_TM is 'ŠÔ';
+comment on column T00_ENTITY.SURYO_QT is '”—Ê';
+comment on column T00_ENTITY.TSUKA_KB is '’Ê‰İ‹æ•ª';
+comment on column T00_ENTITY.JUCHU_PR is 'ó’’P‰¿';
+comment on column T00_ENTITY.JUCHU_AM is 'ó’‹àŠz';
+comment on column T00_ENTITY.HACHU_PR is '”­’’P‰¿';
+comment on column T00_ENTITY.HACHU_AM is '”­’‹àŠz';
+comment on column T00_ENTITY.DELETE_F is 'íœƒtƒ‰ƒO:•K{ƒ`ƒFƒbƒN‚É‚©‚©‚é‚Ì‚ÅNOTNULL‚É‚µ‚È‚¢';
+comment on column T00_ENTITY.STATUS_KB is 'ƒXƒe[ƒ^ƒX‹æ•ª:•K{ƒ`ƒFƒbƒN‚É‚©‚©‚é‚Ì‚ÅNOTNULL‚É‚µ‚È‚¢';
+comment on column T00_ENTITY.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T00_ENTITY.INSERT_USER_ID is 'ì¬Ò';
+comment on column T00_ENTITY.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T00_ENTITY.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB1_REFER2 is 'å‚ç…§ï¼’ãƒã‚¹ã‚¿';
-comment on column TB1_REFER2.REFER2_ID is 'å‚ç…§ï¼’ID';
-comment on column TB1_REFER2.REFER2_MEI is 'å‚ç…§ï¼’å';
-comment on column TB1_REFER2.DELETE_F is 'å‰Šé™¤ãƒ•ãƒ©ã‚°';
-comment on column TB1_REFER2.TEKIYO_BI is 'é©ç”¨æ—¥';
-comment on column TB1_REFER2.HAISHI_BI is 'å»ƒæ­¢æ—¥';
-comment on column TB1_REFER2.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB1_REFER2.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB1_REFER2.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB1_REFER2.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T00_NOKEY is 'åƒL[‚È‚µ';
+comment on column T00_NOKEY.COL_A is '—ñ‚`';
+comment on column T00_NOKEY.COL_B is '—ñ‚a';
+comment on column T00_NOKEY.COL_C is '—ñ‚b';
+comment on column T00_NOKEY.COL_D is '—ñ‚c';
+comment on column T00_NOKEY.COL_E is '—ñ‚d';
+comment on column T00_NOKEY.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T00_NOKEY.INSERT_USER_ID is 'ì¬Ò';
+comment on column T00_NOKEY.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T00_NOKEY.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB1_REFER3 is 'å‚ç…§ï¼“ãƒã‚¹ã‚¿';
-comment on column TB1_REFER3.REFER3_ID is 'å‚ç…§ï¼“ID';
-comment on column TB1_REFER3.REFER3_MEI is 'å‚ç…§ï¼“å';
-comment on column TB1_REFER3.DELETE_F is 'å‰Šé™¤ãƒ•ãƒ©ã‚°';
-comment on column TB1_REFER3.TEKIYO_BI is 'é©ç”¨æ—¥';
-comment on column TB1_REFER3.HAISHI_BI is 'å»ƒæ­¢æ—¥';
-comment on column TB1_REFER3.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB1_REFER3.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB1_REFER3.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB1_REFER3.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T01_DINKS is 'q‚È‚µ';
+comment on column T01_DINKS.OYA_ID is 'eID';
+comment on column T01_DINKS.KO_BN is 'q}”Ô';
+comment on column T01_DINKS.DINKS_INFO is 'q‚È‚µî•ñ';
+comment on column T01_DINKS.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T01_DINKS.INSERT_USER_ID is 'ì¬Ò';
+comment on column T01_DINKS.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T01_DINKS.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB1_SAIKI is 'å†å¸°';
-comment on column TB1_SAIKI.SAIKI_ID is 'å†å¸°ID';
-comment on column TB1_SAIKI.SAIKI_MEI is 'å†å¸°å';
-comment on column TB1_SAIKI.IDREF_ID is 'å‚ç…§ID';
-comment on column TB1_SAIKI.CDREF_CD is 'å‚ç…§CD';
-comment on column TB1_SAIKI.NOREF_NO is 'å‚ç…§NO';
-comment on column TB1_SAIKI.EX_IDREF_ID is 'åˆ¥å‚ç…§ID';
-comment on column TB1_SAIKI.IDBN_BN is 'IDé€£ç•ª';
-comment on column TB1_SAIKI.OYA_SAIKI_ID is 'è¦ªå†å¸°ID';
-comment on column TB1_SAIKI.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB1_SAIKI.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB1_SAIKI.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB1_SAIKI.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T01_KO is 'q';
+comment on column T01_KO.OYA_ID is 'eID';
+comment on column T01_KO.KO_BN is 'q}”Ô';
+comment on column T01_KO.KO_INFO is 'qî•ñ';
+comment on column T01_KO.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T01_KO.INSERT_USER_ID is 'ì¬Ò';
+comment on column T01_KO.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T01_KO.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB2_ELDEST is 'é•·å…„';
-comment on column TB2_ELDEST.BRO_ID is 'å…„å¼ŸID';
-comment on column TB2_ELDEST.ELDEST_INFO is 'é•·å…„æƒ…å ±';
-comment on column TB2_ELDEST.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB2_ELDEST.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB2_ELDEST.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB2_ELDEST.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T01_MAGO is '‘·';
+comment on column T01_MAGO.OYA_ID is 'eID';
+comment on column T01_MAGO.KO_BN is 'q}”Ô';
+comment on column T01_MAGO.MAGO_BN is '‘·}”Ô';
+comment on column T01_MAGO.MAGO_INFO is '‘·î•ñ';
+comment on column T01_MAGO.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T01_MAGO.INSERT_USER_ID is 'ì¬Ò';
+comment on column T01_MAGO.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T01_MAGO.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB2_FOSTER is 'é‡Œå­';
-comment on column TB2_FOSTER.BRO_ID is 'å…„å¼ŸID';
-comment on column TB2_FOSTER.FOSTER_INFO is 'é‡Œå­æƒ…å ±';
-comment on column TB2_FOSTER.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB2_FOSTER.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB2_FOSTER.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB2_FOSTER.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T01_ORPHAN is 'ŒÇ™';
+comment on column T01_ORPHAN.OYA_ID is 'eID';
+comment on column T01_ORPHAN.KO_BN is 'q}”Ô';
+comment on column T01_ORPHAN.ORPHAN_INFO is 'ŒÇ™î•ñ';
+comment on column T01_ORPHAN.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T01_ORPHAN.INSERT_USER_ID is 'ì¬Ò';
+comment on column T01_ORPHAN.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T01_ORPHAN.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB2_YOUNGER is 'å¼Ÿ';
-comment on column TB2_YOUNGER.BRO_ID is 'å…„å¼ŸID';
-comment on column TB2_YOUNGER.YOUNGER_INFO is 'å¼Ÿæƒ…å ±';
-comment on column TB2_YOUNGER.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB2_YOUNGER.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB2_YOUNGER.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB2_YOUNGER.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T01_OYA is 'e';
+comment on column T01_OYA.OYA_ID is 'eID';
+comment on column T01_OYA.OYA_INFO is 'eî•ñ';
+comment on column T01_OYA.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T01_OYA.INSERT_USER_ID is 'ì¬Ò';
+comment on column T01_OYA.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T01_OYA.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB2_YOUNGEST is 'æœ«å¼Ÿ';
-comment on column TB2_YOUNGEST.BRO_ID is 'å…„å¼ŸID';
-comment on column TB2_YOUNGEST.YOUNGEST_INFO is 'æœ«å¼Ÿæƒ…å ±';
-comment on column TB2_YOUNGEST.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB2_YOUNGEST.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB2_YOUNGEST.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB2_YOUNGEST.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T02_ELDEST is '’·ŒZ';
+comment on column T02_ELDEST.BRO_ID is 'ŒZ’íID';
+comment on column T02_ELDEST.ELDEST_INFO is '’·ŒZî•ñ';
+comment on column T02_ELDEST.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T02_ELDEST.INSERT_USER_ID is 'ì¬Ò';
+comment on column T02_ELDEST.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T02_ELDEST.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB3_BEGIN is 'å½“åˆ';
-comment on column TB3_BEGIN.BEGIN_ID is 'å½“åˆID';
-comment on column TB3_BEGIN.BEGIN_INFO is 'å½“åˆæƒ…å ±';
-comment on column TB3_BEGIN.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB3_BEGIN.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB3_BEGIN.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB3_BEGIN.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T02_FOSTER is '—¢q';
+comment on column T02_FOSTER.BRO_ID is 'ŒZ’íID';
+comment on column T02_FOSTER.FOSTER_INFO is '—¢qî•ñ';
+comment on column T02_FOSTER.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T02_FOSTER.INSERT_USER_ID is 'ì¬Ò';
+comment on column T02_FOSTER.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T02_FOSTER.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB3_BEGIN_HIS is 'å±¥æ­´';
-comment on column TB3_BEGIN_HIS.BEGIN_ID is 'å½“åˆID';
-comment on column TB3_BEGIN_HIS.RIREKI_BN is 'å±¥æ­´æç•ª';
-comment on column TB3_BEGIN_HIS.BEGIN_INFO is 'å½“åˆæƒ…å ±';
-comment on column TB3_BEGIN_HIS.REASON is 'å¤‰æ›´ç†ç”±';
-comment on column TB3_BEGIN_HIS.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB3_BEGIN_HIS.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB3_BEGIN_HIS.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB3_BEGIN_HIS.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T02_YOUNGER is '’í';
+comment on column T02_YOUNGER.BRO_ID is 'ŒZ’íID';
+comment on column T02_YOUNGER.YOUNGER_INFO is '’íî•ñ';
+comment on column T02_YOUNGER.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T02_YOUNGER.INSERT_USER_ID is 'ì¬Ò';
+comment on column T02_YOUNGER.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T02_YOUNGER.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB4_KO is 'å­';
-comment on column TB4_KO.OYA_ID is 'è¦ªID';
-comment on column TB4_KO.KO_BN is 'å­æç•ª';
-comment on column TB4_KO.KO_INFO is 'å­æƒ…å ±';
-comment on column TB4_KO.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB4_KO.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB4_KO.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB4_KO.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T02_YOUNGEST is '––’í';
+comment on column T02_YOUNGEST.BRO_ID is 'ŒZ’íID';
+comment on column T02_YOUNGEST.YOUNGEST_INFO is '––’íî•ñ';
+comment on column T02_YOUNGEST.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T02_YOUNGEST.INSERT_USER_ID is 'ì¬Ò';
+comment on column T02_YOUNGEST.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T02_YOUNGEST.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB4_KO_DINKS is 'å­ãªã—';
-comment on column TB4_KO_DINKS.OYA_ID is 'è¦ªID';
-comment on column TB4_KO_DINKS.KO_BN is 'å­æç•ª';
-comment on column TB4_KO_DINKS.DINKS_INFO is 'å­ãªã—æƒ…å ±';
-comment on column TB4_KO_DINKS.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB4_KO_DINKS.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB4_KO_DINKS.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB4_KO_DINKS.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T03_TRANS is '•Ï‘J';
+comment on column T03_TRANS.TRANS_ID is '•Ï‘JID';
+comment on column T03_TRANS.TRANS_INFO is '•Ï‘Jî•ñ';
+comment on column T03_TRANS.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T03_TRANS.INSERT_USER_ID is 'ì¬Ò';
+comment on column T03_TRANS.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T03_TRANS.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB4_KO_ORPHANS is 'å­¤å…';
-comment on column TB4_KO_ORPHANS.OYA_ID is 'è¦ªID';
-comment on column TB4_KO_ORPHANS.KO_BN is 'å­æç•ª';
-comment on column TB4_KO_ORPHANS.ORPHANS_INFO is 'å­¤å…æƒ…å ±';
-comment on column TB4_KO_ORPHANS.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB4_KO_ORPHANS.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB4_KO_ORPHANS.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB4_KO_ORPHANS.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T03_TRANS_HIS is '•Ï‘J—š—ğ';
+comment on column T03_TRANS_HIS.TRANS_ID is '•Ï‘JID';
+comment on column T03_TRANS_HIS.TRANS_BN is '•Ï‘J}”Ô';
+comment on column T03_TRANS_HIS.TRANS_INFO is '•Ï‘Jî•ñ';
+comment on column T03_TRANS_HIS.RIYU_TX is '•ÏX——R';
+comment on column T03_TRANS_HIS.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T03_TRANS_HIS.INSERT_USER_ID is 'ì¬Ò';
+comment on column T03_TRANS_HIS.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T03_TRANS_HIS.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB4_MAGO is 'å­«';
-comment on column TB4_MAGO.OYA_ID is 'è¦ªID';
-comment on column TB4_MAGO.KO_BN is 'å­æç•ª';
-comment on column TB4_MAGO.MAGO_BN is 'å­«æç•ª';
-comment on column TB4_MAGO.MAGO_INFO is 'å­«æƒ…å ±';
-comment on column TB4_MAGO.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB4_MAGO.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB4_MAGO.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB4_MAGO.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T05_COMP1 is '•¡‡‚P';
+comment on column T05_COMP1.REF1_ID is 'QÆ‚PID';
+comment on column T05_COMP1.REF2_ID is 'QÆ‚QID';
+comment on column T05_COMP1.COMP1_MEI is '•¡‡‚P–¼';
+comment on column T05_COMP1.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T05_COMP1.INSERT_USER_ID is 'ì¬Ò';
+comment on column T05_COMP1.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T05_COMP1.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB4_OYA is 'è¦ª';
-comment on column TB4_OYA.OYA_ID is 'è¦ªID';
-comment on column TB4_OYA.OYA_INFO is 'è¦ªæƒ…å ±';
-comment on column TB4_OYA.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB4_OYA.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB4_OYA.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB4_OYA.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T05_COMP2 is '•¡‡‚Q';
+comment on column T05_COMP2.REF1_ID is 'QÆ‚PID';
+comment on column T05_COMP2.REF2_ID is 'QÆ‚QID';
+comment on column T05_COMP2.REF3_ID is 'QÆ‚RID';
+comment on column T05_COMP2.TEKIYO_BI is '“K—p“ú';
+comment on column T05_COMP2.COMP2_INFO is '•¡‡‚Qî•ñ';
+comment on column T05_COMP2.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T05_COMP2.INSERT_USER_ID is 'ì¬Ò';
+comment on column T05_COMP2.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T05_COMP2.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB5_DERIVE is 'æ´¾ç”Ÿ';
-comment on column TB5_DERIVE.DERIVE_ID is 'æ´¾ç”ŸID';
-comment on column TB5_DERIVE.PREV_ID is 'å‰ä¸–ID';
-comment on column TB5_DERIVE.PREV_INFO is 'å‰ä¸–æƒ…å ±';
-comment on column TB5_DERIVE.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB5_DERIVE.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB5_DERIVE.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB5_DERIVE.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T06_DERIVE1 is '”h¶‚P';
+comment on column T06_DERIVE1.DERIVE1_ID is '”h¶‚PID';
+comment on column T06_DERIVE1.ORG_INFO is '‹NŒ¹î•ñ';
+comment on column T06_DERIVE1.ORG_ID is '‹NŒ¹ID';
+comment on column T06_DERIVE1.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T06_DERIVE1.INSERT_USER_ID is 'ì¬Ò';
+comment on column T06_DERIVE1.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T06_DERIVE1.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB5_MERGE is 'çµ±åˆ';
-comment on column TB5_MERGE.MERGE_ID is 'çµ±åˆID';
-comment on column TB5_MERGE.PREV_ID is 'å‰ä¸–ID';
-comment on column TB5_MERGE.PREV_INFO is 'å‰ä¸–æƒ…å ±';
-comment on column TB5_MERGE.ORG_ID is 'èµ·æºID';
-comment on column TB5_MERGE.ORG_INFO is 'èµ·æºæƒ…å ±';
-comment on column TB5_MERGE.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB5_MERGE.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB5_MERGE.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB5_MERGE.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T06_DERIVE1_DET is '”h¶‚P–¾×';
+comment on column T06_DERIVE1_DET.DERIVE1_ID is '”h¶‚PID';
+comment on column T06_DERIVE1_DET.DERIVE1_BN is '”h¶‚P}”Ô';
+comment on column T06_DERIVE1_DET.DET_INFO is '–¾×î•ñ';
+comment on column T06_DERIVE1_DET.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T06_DERIVE1_DET.INSERT_USER_ID is 'ì¬Ò';
+comment on column T06_DERIVE1_DET.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T06_DERIVE1_DET.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB5_PREV is 'å‰ä¸–';
-comment on column TB5_PREV.PREV_ID is 'å‰ä¸–ID';
-comment on column TB5_PREV.PREV_INFO is 'å‰ä¸–æƒ…å ±';
-comment on column TB5_PREV.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB5_PREV.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB5_PREV.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB5_PREV.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T06_DERIVE2 is '”h¶‚Q';
+comment on column T06_DERIVE2.DERIVE2_ID is '”h¶‚QID';
+comment on column T06_DERIVE2.ORG_INFO is '‹NŒ¹î•ñ';
+comment on column T06_DERIVE2.ORG_ID is '‹NŒ¹ID';
+comment on column T06_DERIVE2.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T06_DERIVE2.INSERT_USER_ID is 'ì¬Ò';
+comment on column T06_DERIVE2.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T06_DERIVE2.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB5_PREV_DET is 'å‰ä¸–æ˜ç´°';
-comment on column TB5_PREV_DET.PREV_ID is 'å‰ä¸–ID';
-comment on column TB5_PREV_DET.PREV_BN is 'å‰ä¸–æ˜ç´°æç•ª';
-comment on column TB5_PREV_DET.PREV_DET_INFO is 'å‰ä¸–æ˜ç´°æƒ…å ±';
-comment on column TB5_PREV_DET.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB5_PREV_DET.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB5_PREV_DET.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB5_PREV_DET.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T06_DERIVE2_DET is '”h¶‚Q–¾×';
+comment on column T06_DERIVE2_DET.DERIVE2_ID is '”h¶‚QID';
+comment on column T06_DERIVE2_DET.DERIVE2_BN is '”h¶‚Q}”Ô';
+comment on column T06_DERIVE2_DET.DET_INFO is '–¾×î•ñ';
+comment on column T06_DERIVE2_DET.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T06_DERIVE2_DET.INSERT_USER_ID is 'ì¬Ò';
+comment on column T06_DERIVE2_DET.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T06_DERIVE2_DET.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB5_REBORN is 'è»¢ç”Ÿ';
-comment on column TB5_REBORN.REBORN_ID is 'è»¢ç”ŸID';
-comment on column TB5_REBORN.PREV_ID is 'å‰ä¸–ID';
-comment on column TB5_REBORN.PREV_INFO is 'å‰ä¸–æƒ…å ±';
-comment on column TB5_REBORN.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB5_REBORN.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB5_REBORN.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB5_REBORN.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T06_ORG is '‹NŒ¹';
+comment on column T06_ORG.ORG_ID is '‹NŒ¹ID';
+comment on column T06_ORG.ORG_INFO is '‹NŒ¹î•ñ';
+comment on column T06_ORG.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T06_ORG.INSERT_USER_ID is 'ì¬Ò';
+comment on column T06_ORG.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T06_ORG.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB5_REBORN_DET is 'è»¢ç”Ÿæ˜ç´°';
-comment on column TB5_REBORN_DET.REBORN_ID is 'è»¢ç”ŸID';
-comment on column TB5_REBORN_DET.REBORN_BN is 'è»¢ç”Ÿæ˜ç´°æç•ª';
-comment on column TB5_REBORN_DET.PREV_DET_INFO is 'å‰ä¸–æ˜ç´°æƒ…å ±';
-comment on column TB5_REBORN_DET.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB5_REBORN_DET.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB5_REBORN_DET.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB5_REBORN_DET.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T06_ORG_DET is '‹NŒ¹–¾×';
+comment on column T06_ORG_DET.ORG_ID is '‹NŒ¹ID';
+comment on column T06_ORG_DET.ORG_BN is '‹NŒ¹}”Ô';
+comment on column T06_ORG_DET.DET_INFO is '–¾×î•ñ';
+comment on column T06_ORG_DET.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T06_ORG_DET.INSERT_USER_ID is 'ì¬Ò';
+comment on column T06_ORG_DET.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T06_ORG_DET.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB6_DERIVE1 is 'æ´¾ç”Ÿï¼‘';
-comment on column TB6_DERIVE1.DERIVE1_ID is 'æ´¾ç”Ÿï¼‘ID';
-comment on column TB6_DERIVE1.ORG_ID is 'èµ·æºID';
-comment on column TB6_DERIVE1.ORG_INFO is 'èµ·æºæƒ…å ±';
-comment on column TB6_DERIVE1.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB6_DERIVE1.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB6_DERIVE1.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB6_DERIVE1.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T07_PREV is '‘O¢';
+comment on column T07_PREV.PREV_ID is '‘O¢ID';
+comment on column T07_PREV.PREV_INFO is '‘O¢î•ñ';
+comment on column T07_PREV.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T07_PREV.INSERT_USER_ID is 'ì¬Ò';
+comment on column T07_PREV.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T07_PREV.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB6_DERIVE1_DET is 'æ´¾ç”Ÿï¼‘æ˜ç´°';
-comment on column TB6_DERIVE1_DET.DERIVE1_ID is 'æ´¾ç”Ÿï¼‘ID';
-comment on column TB6_DERIVE1_DET.DERIVE1_BN is 'æ´¾ç”Ÿï¼‘æç•ª';
-comment on column TB6_DERIVE1_DET.ORG_DET_INFO is 'èµ·æºæ˜ç´°æƒ…å ±';
-comment on column TB6_DERIVE1_DET.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB6_DERIVE1_DET.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB6_DERIVE1_DET.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB6_DERIVE1_DET.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T07_PREV_DET is '‘O¢–¾×';
+comment on column T07_PREV_DET.PREV_ID is '‘O¢ID';
+comment on column T07_PREV_DET.PREV_BN is '‘O¢}”Ô';
+comment on column T07_PREV_DET.DET_INFO is '–¾×î•ñ';
+comment on column T07_PREV_DET.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T07_PREV_DET.INSERT_USER_ID is 'ì¬Ò';
+comment on column T07_PREV_DET.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T07_PREV_DET.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB6_DERIVE2 is 'æ´¾ç”Ÿï¼’';
-comment on column TB6_DERIVE2.DERIVE2_ID is 'æ´¾ç”Ÿï¼’ID';
-comment on column TB6_DERIVE2.ORG_ID is 'èµ·æºID';
-comment on column TB6_DERIVE2.ORG_INFO is 'èµ·æºæƒ…å ±';
-comment on column TB6_DERIVE2.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB6_DERIVE2.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB6_DERIVE2.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB6_DERIVE2.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T07_REBORN is '“]¶';
+comment on column T07_REBORN.REBORN_ID is '“]¶ID';
+comment on column T07_REBORN.PREV_INFO is '‘O¢î•ñ';
+comment on column T07_REBORN.PREV_ID is '‘O¢ID';
+comment on column T07_REBORN.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T07_REBORN.INSERT_USER_ID is 'ì¬Ò';
+comment on column T07_REBORN.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T07_REBORN.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB6_DERIVE2_DET is 'æ´¾ç”Ÿï¼’æ˜ç´°';
-comment on column TB6_DERIVE2_DET.DERIVE2_ID is 'æ´¾ç”Ÿï¼’ID';
-comment on column TB6_DERIVE2_DET.DERIVE2_BN is 'æ´¾ç”Ÿï¼’æç•ª';
-comment on column TB6_DERIVE2_DET.ORG_DET_INFO is 'èµ·æºæ˜ç´°æƒ…å ±';
-comment on column TB6_DERIVE2_DET.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB6_DERIVE2_DET.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB6_DERIVE2_DET.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB6_DERIVE2_DET.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T07_REBORN_DET is '“]¶–¾×';
+comment on column T07_REBORN_DET.REBORN_ID is '“]¶ID';
+comment on column T07_REBORN_DET.REBORN_BN is '“]¶}”Ô';
+comment on column T07_REBORN_DET.DET_INFO is '–¾×î•ñ';
+comment on column T07_REBORN_DET.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T07_REBORN_DET.INSERT_USER_ID is 'ì¬Ò';
+comment on column T07_REBORN_DET.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T07_REBORN_DET.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB6_ORG is 'èµ·æº';
-comment on column TB6_ORG.ORG_ID is 'èµ·æºID';
-comment on column TB6_ORG.ORG_INFO is 'èµ·æºæƒ…å ±';
-comment on column TB6_ORG.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB6_ORG.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB6_ORG.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB6_ORG.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T08_KISEI1 is 'Šñ¶‚P';
+comment on column T08_KISEI1.KISEI1_ID is 'Šñ¶‚PID';
+comment on column T08_KISEI1.KISEI1_INFO is 'Šñ¶‚Pî•ñ';
+comment on column T08_KISEI1.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T08_KISEI1.INSERT_USER_ID is 'ì¬Ò';
+comment on column T08_KISEI1.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T08_KISEI1.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB6_ORG_DET is 'èµ·æºæ˜ç´°';
-comment on column TB6_ORG_DET.ORG_ID is 'èµ·æºID';
-comment on column TB6_ORG_DET.ORG_BN is 'èµ·æºæ˜ç´°æç•ª';
-comment on column TB6_ORG_DET.ORG_DET_INFO is 'èµ·æºæ˜ç´°æƒ…å ±';
-comment on column TB6_ORG_DET.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB6_ORG_DET.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB6_ORG_DET.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB6_ORG_DET.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T08_KISEI2 is 'Šñ¶‚Q';
+comment on column T08_KISEI2.KISEI2_ID is 'Šñ¶‚QID';
+comment on column T08_KISEI2.KISEI2_INFO is 'Šñ¶‚Qî•ñ';
+comment on column T08_KISEI2.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T08_KISEI2.INSERT_USER_ID is 'ì¬Ò';
+comment on column T08_KISEI2.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T08_KISEI2.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB7_SUM is 'é›†ç´„';
-comment on column TB7_SUM.SUM_ID is 'é›†ç´„ID';
-comment on column TB7_SUM.SUM_INFO is 'é›†ç´„æƒ…å ±';
-comment on column TB7_SUM.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB7_SUM.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB7_SUM.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB7_SUM.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T08_KYOSEI is '‹¤¶';
+comment on column T08_KYOSEI.KYOSEI_ID is '‹¤¶ID';
+comment on column T08_KYOSEI.KISEI1_ID is 'Šñ¶‚PID';
+comment on column T08_KYOSEI.KISEI1_INFO is 'Šñ¶‚Pî•ñ';
+comment on column T08_KYOSEI.KISEI2_ID is 'Šñ¶‚QID';
+comment on column T08_KYOSEI.KISEI2_INFO is 'Šñ¶‚Qî•ñ';
+comment on column T08_KYOSEI.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T08_KYOSEI.INSERT_USER_ID is 'ì¬Ò';
+comment on column T08_KYOSEI.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T08_KYOSEI.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB7_UNIT1 is 'å˜ä½ï¼‘';
-comment on column TB7_UNIT1.UNIT1_ID is 'å˜ä½ï¼‘ID';
-comment on column TB7_UNIT1.SUM_ID is 'é›†ç´„ID';
-comment on column TB7_UNIT1.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB7_UNIT1.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB7_UNIT1.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB7_UNIT1.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T09_GRP1 is 'W’c‚P';
+comment on column T09_GRP1.GRP1_ID is 'W’c‚PID';
+comment on column T09_GRP1.SUM_ID is 'W–ñID';
+comment on column T09_GRP1.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T09_GRP1.INSERT_USER_ID is 'ì¬Ò';
+comment on column T09_GRP1.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T09_GRP1.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB7_UNIT2 is 'å˜ä½ï¼’';
-comment on column TB7_UNIT2.UNIT2_ID is 'å˜ä½ï¼’ID';
-comment on column TB7_UNIT2.SUM_ID is 'é›†ç´„ID';
-comment on column TB7_UNIT2.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB7_UNIT2.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB7_UNIT2.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB7_UNIT2.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T09_GRP2 is 'W’c‚Q';
+comment on column T09_GRP2.GRP2_ID is 'W’c‚QID';
+comment on column T09_GRP2.SUM_ID is 'W–ñID';
+comment on column T09_GRP2.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T09_GRP2.INSERT_USER_ID is 'ì¬Ò';
+comment on column T09_GRP2.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T09_GRP2.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB8_CHOICE is 'é¸æŠœ';
-comment on column TB8_CHOICE.CHOICE_ID is 'é¸æŠœID';
-comment on column TB8_CHOICE.SUM_ID is 'é›†ç´„ID';
-comment on column TB8_CHOICE.SUM_INFO is 'é›†ç´„æƒ…å ±';
-comment on column TB8_CHOICE.SUM2_ID is 'é›†ç´„ï¼’ID';
-comment on column TB8_CHOICE.SUM2_INFO is 'é›†ç´„ï¼’æƒ…å ±';
-comment on column TB8_CHOICE.SUM3_ID is 'é›†ç´„ï¼“ID';
-comment on column TB8_CHOICE.SUM3_INFO is 'é›†ç´„ï¼“æƒ…å ±';
-comment on column TB8_CHOICE.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB8_CHOICE.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB8_CHOICE.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB8_CHOICE.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T09_SUM is 'W–ñ';
+comment on column T09_SUM.SUM_ID is 'W–ñID';
+comment on column T09_SUM.SUM_INFO is 'W–ñî•ñ';
+comment on column T09_SUM.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T09_SUM.INSERT_USER_ID is 'ì¬Ò';
+comment on column T09_SUM.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T09_SUM.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB8_PREV2 is 'å‰ä¸–ï¼’';
-comment on column TB8_PREV2.PREV2_ID is 'å‰ä¸–ï¼’ID';
-comment on column TB8_PREV2.PREV2_INFO is 'å‰ä¸–ï¼’æƒ…å ±';
-comment on column TB8_PREV2.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB8_PREV2.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB8_PREV2.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB8_PREV2.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T10_CHOICE is '‘I”²';
+comment on column T10_CHOICE.CHOICE_ID is '‘I”²ID';
+comment on column T10_CHOICE.KOHO1_ID is 'Œó•â‚PID';
+comment on column T10_CHOICE.KOHO1_INFO is 'Œó•â‚Pî•ñ';
+comment on column T10_CHOICE.KOHO2_ID is 'Œó•â‚QID';
+comment on column T10_CHOICE.KOHO2_INFO is 'Œó•â‚Qî•ñ';
+comment on column T10_CHOICE.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T10_CHOICE.INSERT_USER_ID is 'ì¬Ò';
+comment on column T10_CHOICE.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T10_CHOICE.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB8_REBORN2 is 'è»¢ç”Ÿï¼’';
-comment on column TB8_REBORN2.REBORN2_ID is 'è»¢ç”Ÿï¼’ID';
-comment on column TB8_REBORN2.TASHO2_ID is 'ä»–ç”Ÿï¼’ID';
-comment on column TB8_REBORN2.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB8_REBORN2.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB8_REBORN2.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB8_REBORN2.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T10_KOHO1 is 'Œó•â‚P';
+comment on column T10_KOHO1.KOHO1_ID is 'Œó•â‚PID';
+comment on column T10_KOHO1.KOHO1_INFO is 'Œó•â‚Pî•ñ';
+comment on column T10_KOHO1.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T10_KOHO1.INSERT_USER_ID is 'ì¬Ò';
+comment on column T10_KOHO1.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T10_KOHO1.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB8_SUM2 is 'é›†ç´„ï¼’';
-comment on column TB8_SUM2.SUM2_ID is 'é›†ç´„ï¼’ID';
-comment on column TB8_SUM2.SUM2_INFO is 'é›†ç´„ï¼’æƒ…å ±';
-comment on column TB8_SUM2.PREV2_ID is 'å‰ä¸–ï¼’ID';
-comment on column TB8_SUM2.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB8_SUM2.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB8_SUM2.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB8_SUM2.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T10_KOHO2 is 'Œó•â‚Q';
+comment on column T10_KOHO2.KOHO2_ID is 'Œó•â‚QID';
+comment on column T10_KOHO2.KOHO2_INFO is 'Œó•â‚Qî•ñ';
+comment on column T10_KOHO2.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T10_KOHO2.INSERT_USER_ID is 'ì¬Ò';
+comment on column T10_KOHO2.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T10_KOHO2.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB8_SUM3 is 'é›†ç´„ï¼“';
-comment on column TB8_SUM3.SUM3_ID is 'é›†ç´„ï¼“ID';
-comment on column TB8_SUM3.SUM3_INFO is 'é›†ç´„ï¼“æƒ…å ±';
-comment on column TB8_SUM3.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB8_SUM3.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB8_SUM3.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB8_SUM3.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T11_PREV2 is '‘O¢‚Q';
+comment on column T11_PREV2.PREV2_ID is '‘O¢‚QID';
+comment on column T11_PREV2.PREV2_INFO is '‘O¢‚Qî•ñ';
+comment on column T11_PREV2.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T11_PREV2.INSERT_USER_ID is 'ì¬Ò';
+comment on column T11_PREV2.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T11_PREV2.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB8_TASHO1 is 'ä»–ç”Ÿï¼‘';
-comment on column TB8_TASHO1.TASHO1_ID is 'ä»–ç”Ÿï¼‘ID';
-comment on column TB8_TASHO1.SUM2_ID is 'é›†ç´„ï¼’ID';
-comment on column TB8_TASHO1.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB8_TASHO1.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB8_TASHO1.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB8_TASHO1.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T11_REBORN2 is '“]¶‚Q';
+comment on column T11_REBORN2.REBORN2_ID is '“]¶‚QID';
+comment on column T11_REBORN2.PREV2_INFO is '‘O¢‚Qî•ñ';
+comment on column T11_REBORN2.PREV2_ID is '‘O¢‚QID';
+comment on column T11_REBORN2.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T11_REBORN2.INSERT_USER_ID is 'ì¬Ò';
+comment on column T11_REBORN2.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T11_REBORN2.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB8_TASHO2 is 'ä»–ç”Ÿï¼’';
-comment on column TB8_TASHO2.TASHO2_ID is 'ä»–ç”Ÿï¼’ID';
-comment on column TB8_TASHO2.SUM3_ID is 'é›†ç´„ï¼“ID';
-comment on column TB8_TASHO2.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB8_TASHO2.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB8_TASHO2.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB8_TASHO2.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T11_TASHO1 is '‘¼¶‚P';
+comment on column T11_TASHO1.TASHO1_ID is '‘¼¶‚PID';
+comment on column T11_TASHO1.REBORN2_ID is '“]¶‚QID';
+comment on column T11_TASHO1.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T11_TASHO1.INSERT_USER_ID is 'ì¬Ò';
+comment on column T11_TASHO1.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T11_TASHO1.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB9_DEST is 'å¤‰æ›å…ˆ';
-comment on column TB9_DEST.DEST_ID is 'å¤‰æ›å…ˆID';
-comment on column TB9_DEST.DEST_INFO is 'å¤‰æ›å…ˆæƒ…å ±';
-comment on column TB9_DEST.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB9_DEST.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB9_DEST.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB9_DEST.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T12_KOHO3 is 'Œó•â‚R';
+comment on column T12_KOHO3.KOHO3_ID is 'Œó•â‚RID';
+comment on column T12_KOHO3.KOHO3_INFO is 'Œó•â‚Rî•ñ';
+comment on column T12_KOHO3.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T12_KOHO3.INSERT_USER_ID is 'ì¬Ò';
+comment on column T12_KOHO3.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T12_KOHO3.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB9_FURIWAKE is 'æŒ¯åˆ†ãƒ“ãƒ¥ãƒ¼';
-comment on column TB9_FURIWAKE.table_name is 'ãƒ†ãƒ¼ãƒ–ãƒ«å';
-comment on column TB9_FURIWAKE."src_id$dest_id" is 'ID';
-comment on column TB9_FURIWAKE.info is 'æƒ…å ±';
+comment on table T12_REBORN3 is '“]¶‚R';
+comment on column T12_REBORN3.REBORN3_ID is '“]¶‚RID';
+comment on column T12_REBORN3.TASHO2_ID is '‘¼¶‚QID';
+comment on column T12_REBORN3.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T12_REBORN3.INSERT_USER_ID is 'ì¬Ò';
+comment on column T12_REBORN3.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T12_REBORN3.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB9_HENKAN is 'å¤‰æ›ãƒ“ãƒ¥ãƒ¼';
-comment on column TB9_HENKAN.table_name is 'ãƒ†ãƒ¼ãƒ–ãƒ«å';
-comment on column TB9_HENKAN.src_id is 'å¤‰æ›å…ƒID';
-comment on column TB9_HENKAN.dest_info is 'å¤‰æ›å…ƒæƒ…å ±';
+comment on table T12_TASHO2 is '‘¼¶‚Q';
+comment on column T12_TASHO2.TASHO2_ID is '‘¼¶‚QID';
+comment on column T12_TASHO2.KOHO3_ID is 'Œó•â‚RID';
+comment on column T12_TASHO2.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T12_TASHO2.INSERT_USER_ID is 'ì¬Ò';
+comment on column T12_TASHO2.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T12_TASHO2.UPDATE_USER_ID is 'XVÒ';
 
-comment on table TB9_SRC is 'å¤‰æ›å…ƒ';
-comment on column TB9_SRC.SRC_ID is 'å¤‰æ›å…ƒID';
-comment on column TB9_SRC.SRC_INFO is 'å¤‰æ›å…ƒæƒ…å ±';
-comment on column TB9_SRC.INSERT_TS is 'ä½œæˆã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB9_SRC.INSERT_USER_ID is 'ä½œæˆè€…';
-comment on column TB9_SRC.UPDATE_TS is 'æ›´æ–°ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—';
-comment on column TB9_SRC.UPDATE_USER_ID is 'æ›´æ–°è€…';
+comment on table T13_DEST is '•ÏŠ·æ';
+comment on column T13_DEST.DEST_ID is '•ÏŠ·æID';
+comment on column T13_DEST.DEST_INFO is '•ÏŠ·æî•ñ';
+comment on column T13_DEST.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T13_DEST.INSERT_USER_ID is 'ì¬Ò';
+comment on column T13_DEST.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T13_DEST.UPDATE_USER_ID is 'XVÒ';
+
+comment on table T13_SRC is '•ÏŠ·Œ³';
+comment on column T13_SRC.SRC_ID is '•ÏŠ·Œ³ID';
+comment on column T13_SRC.SRC_INFO is '•ÏŠ·Œ³î•ñ';
+comment on column T13_SRC.INSERT_TS is 'ì¬ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T13_SRC.INSERT_USER_ID is 'ì¬Ò';
+comment on column T13_SRC.UPDATE_TS is 'XVƒ^ƒCƒ€ƒXƒ^ƒ“ƒv';
+comment on column T13_SRC.UPDATE_USER_ID is 'XVÒ';
+
+comment on table V13_FURIWAKE is 'U•ªƒrƒ…[';
+comment on column V13_FURIWAKE.table_name is 'ƒe[ƒuƒ‹–¼';
+--comment on column V13_FURIWAKE."src_id$dest_id" is 'U•ªID';
+comment on column V13_FURIWAKE.info is 'î•ñ';
+
+comment on table V13_HENKAN is '•ÏŠ·ƒrƒ…[';
+comment on column V13_HENKAN.table_name is 'ƒe[ƒuƒ‹–¼';
+comment on column V13_HENKAN.src_id is '•ÏŠ·Œ³ID';
+comment on column V13_HENKAN.dest_info is '•ÏŠ·Œ³î•ñ';
 
