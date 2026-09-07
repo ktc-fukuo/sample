@@ -287,12 +287,12 @@ public class V14Yojitsu implements IEntity {
         sql += "SELECT \n";
         sql += "      a.\"KOUTEI_ID\" \n";
         sql += "    , a.\"KOUTEI_TX\" \n";
-        sql += "    , RTRIM (RTRIM (a.\"KAISHI_YMD\"), '　') AS KAISHI_YMD \n";
-        sql += "    , RTRIM (RTRIM (a.\"SHURYO_YMD\"), '　') AS SHURYO_YMD \n";
+        sql += "    , a.\"KAISHI_YMD\" \n";
+        sql += "    , a.\"SHURYO_YMD\" \n";
         sql += "    , RTRIM (RTRIM (a.\"SAGYOKU_CD\"), '　') AS SAGYOKU_CD \n";
         sql += "    , a.\"OYA_KOUTEI_ID\" \n";
-        sql += "    , RTRIM (RTRIM (a.\"JISSHI_YMD\"), '　') AS JISSHI_YMD \n";
-        sql += "    , RTRIM (RTRIM (a.\"KANRYO_YMD\"), '　') AS KANRYO_YMD \n";
+        sql += "    , a.\"JISSHI_YMD\" \n";
+        sql += "    , a.\"KANRYO_YMD\" \n";
         sql += "    , a.\"DEPENDENCIES\" \n";
         sql += "    , a.\"KOUTEI_PATH\" \n";
         sql += "    , a.\"ROOT\" \n";
