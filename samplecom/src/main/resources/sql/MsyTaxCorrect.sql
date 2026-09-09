@@ -13,8 +13,8 @@ FROM
     MSY_TAX a 
 WHERE
     1 = 1 
-    AND NVL (a.TEKIYO_BI, SYSDATE) <= SYSDATE 
-    AND NVL (a.HAISHI_BI, SYSDATE) + 1 > SYSDATE 
+    AND NVL (a.tekiyo_bi, SYSDATE) <= SYSDATE 
+    AND NVL (a.haishi_bi, SYSDATE) + 1 > SYSDATE 
     AND RTRIM (RTRIM (a."TAX_KB"), '　') IN (:tax_kb) 
     AND a."TEKIYO_BI" = TO_DATE (SUBSTR (:tekiyo_bi, 0, 10), 'YYYY-MM-DD') 
     AND a."TEKIYO_BI" >= TO_DATE (SUBSTR (:tekiyo_bi_1 , 0, 10), 'YYYY-MM-DD')

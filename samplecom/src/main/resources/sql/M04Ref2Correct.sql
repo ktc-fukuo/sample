@@ -14,9 +14,9 @@ FROM
     M04_REF2 a 
 WHERE
     1 = 1 
-    AND NVL (a.DELETE_F, 0) != 1 
-    AND NVL (a.TEKIYO_BI, SYSDATE) <= SYSDATE 
-    AND NVL (a.HAISHI_BI, SYSDATE) + 1 > SYSDATE 
+    AND NVL (a.delete_f, 0) != 1 
+    AND NVL (a.tekiyo_bi, SYSDATE) <= SYSDATE 
+    AND NVL (a.haishi_bi, SYSDATE) + 1 > SYSDATE 
     AND a."REF2_ID" = :ref_2_id 
     AND UPPER (RTRIM (RTRIM (a."REF2_MEI"), '　')) LIKE UPPER ('%' || :ref_2_mei || '%') 
     AND CASE WHEN RTRIM (RTRIM (a."DELETE_F"), '　') IS NULL THEN '0' ELSE TO_CHAR (a."DELETE_F") END IN (:delete_f) 

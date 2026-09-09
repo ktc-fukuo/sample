@@ -14,15 +14,15 @@ FROM
     T04_COMP1 a 
     INNER JOIN M04_REF1 c1 
         ON 1 = 1 
-        AND NVL (c1.DELETE_F, 0) != 1 
-        AND NVL (c1.TEKIYO_BI, SYSDATE) <= SYSDATE 
-        AND NVL (c1.HAISHI_BI, SYSDATE) + 1 > SYSDATE
+        AND NVL (c1.delete_f, 0) != 1 
+        AND NVL (c1.tekiyo_bi, SYSDATE) <= SYSDATE 
+        AND NVL (c1.haishi_bi, SYSDATE) + 1 > SYSDATE
         AND c1.REF1_ID = a.REF1_ID 
     INNER JOIN M04_REF2 c2 
         ON 1 = 1 
-        AND NVL (c2.DELETE_F, 0) != 1 
-        AND NVL (c2.TEKIYO_BI, SYSDATE) <= SYSDATE 
-        AND NVL (c2.HAISHI_BI, SYSDATE) + 1 > SYSDATE
+        AND NVL (c2.delete_f, 0) != 1 
+        AND NVL (c2.tekiyo_bi, SYSDATE) <= SYSDATE 
+        AND NVL (c2.haishi_bi, SYSDATE) + 1 > SYSDATE
         AND c2.REF2_ID = a.REF2_ID 
 WHERE
     1 = 1 

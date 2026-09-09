@@ -14,8 +14,8 @@ FROM
     MHR_SHOKUI a 
 WHERE
     1 = 1 
-    AND NVL (a.TEKIYO_BI, SYSDATE) <= SYSDATE 
-    AND NVL (a.HAISHI_BI, SYSDATE) + 1 > SYSDATE 
+    AND NVL (a.tekiyo_bi, SYSDATE) <= SYSDATE 
+    AND NVL (a.haishi_bi, SYSDATE) + 1 > SYSDATE 
     AND a."SHOKUI_ID" = :shokui_id 
     AND UPPER (RTRIM (RTRIM (a."SHOKUI_MEI"), '　')) LIKE UPPER ('%' || :shokui_mei || '%') 
     AND a."SHOKUI_ON" = :shokui_on 

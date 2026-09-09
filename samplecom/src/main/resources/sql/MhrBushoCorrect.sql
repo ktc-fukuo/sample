@@ -15,8 +15,8 @@ FROM
     MHR_BUSHO a 
 WHERE
     1 = 1 
-    AND NVL (a.TEKIYO_BI, SYSDATE) <= SYSDATE 
-    AND NVL (a.HAISHI_BI, SYSDATE) + 1 > SYSDATE 
+    AND NVL (a.tekiyo_bi, SYSDATE) <= SYSDATE 
+    AND NVL (a.haishi_bi, SYSDATE) + 1 > SYSDATE 
     AND a."BUSHO_ID" = :busho_id 
     AND UPPER (RTRIM (RTRIM (a."BUSHO_MEI"), '　')) LIKE UPPER ('%' || :busho_mei || '%') 
     AND a."OYA_BUSHO_ID" = :oya_busho_id 

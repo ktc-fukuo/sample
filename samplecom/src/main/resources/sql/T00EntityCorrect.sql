@@ -39,7 +39,7 @@ FROM
     T00_ENTITY a 
 WHERE
     1 = 1 
-    AND NVL (a.DELETE_F, 0) != 1 
+    AND NVL (a.delete_f, 0) != 1 
     AND a."ENTITY_ID" = :entity_id 
     AND UPPER (RTRIM (RTRIM (a."ENTITY_NM"), '　')) LIKE UPPER ('%' || :entity_nm || '%') 
     AND UPPER (RTRIM (RTRIM (a."ENTITY_MEI"), '　')) LIKE UPPER ('%' || :entity_mei || '%') 

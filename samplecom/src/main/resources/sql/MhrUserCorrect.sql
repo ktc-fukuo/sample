@@ -16,8 +16,8 @@ FROM
     MHR_USER a 
 WHERE
     1 = 1 
-    AND NVL (a.TEKIYO_BI, SYSDATE) <= SYSDATE 
-    AND NVL (a.HAISHI_BI, SYSDATE) + 1 > SYSDATE 
+    AND NVL (a.tekiyo_bi, SYSDATE) <= SYSDATE 
+    AND NVL (a.haishi_bi, SYSDATE) + 1 > SYSDATE 
     AND a."USER_ID" = :user_id 
     AND UPPER (RTRIM (RTRIM (a."USER_SEI"), '　')) LIKE UPPER ('%' || :user_sei || '%') 
     AND UPPER (RTRIM (RTRIM (a."USER_MEI"), '　')) LIKE UPPER ('%' || :user_mei || '%') 
