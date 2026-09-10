@@ -1,6 +1,7 @@
 package com.example.entity;
 
 import jp.co.golorp.emarf.entity.IEntity;
+import jp.co.golorp.emarf.lang.StringUtil;
 import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
@@ -53,10 +54,7 @@ public class V13Henkan implements IEntity {
 
     /** @param o id */
     public final void setId(final Object o) {
-        this.id = null;
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.id = Integer.valueOf(o.toString());
-        }
+        this.id = StringUtil.ifNullInteger(o);
     }
 
     /** TABLE_NAME */
@@ -70,10 +68,7 @@ public class V13Henkan implements IEntity {
 
     /** @param o TABLE_NAME */
     public void setTableName(final Object o) {
-        this.tableName = null;
-        if (o != null) {
-            this.tableName = o.toString();
-        }
+        this.tableName = StringUtil.ifNull(o);
     }
 
     /** SRC_ID */
@@ -87,10 +82,7 @@ public class V13Henkan implements IEntity {
 
     /** @param o SRC_ID */
     public void setSrcId(final Object o) {
-        this.srcId = null;
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.srcId = Integer.valueOf(o.toString());
-        }
+        this.srcId = StringUtil.ifNullInteger(o);
     }
 
     /** DEST_INFO */
@@ -104,9 +96,6 @@ public class V13Henkan implements IEntity {
 
     /** @param o DEST_INFO */
     public void setDestInfo(final Object o) {
-        this.destInfo = null;
-        if (o != null) {
-            this.destInfo = o.toString();
-        }
+        this.destInfo = StringUtil.ifNull(o);
     }
 }

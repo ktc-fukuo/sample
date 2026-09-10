@@ -1,6 +1,7 @@
 package com.example.entity;
 
 import jp.co.golorp.emarf.entity.IEntity;
+import jp.co.golorp.emarf.lang.StringUtil;
 import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
@@ -45,7 +46,7 @@ public class V14Yojitsu implements IEntity {
 
     /** @return boolean 主キーが不足していたらtrue */
     public boolean isNew() {
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.kouteiId)) {
+        if (StringUtil.isNullOrWhiteSpace(this.kouteiId)) {
             return true;
         }
         return false;
@@ -79,10 +80,7 @@ public class V14Yojitsu implements IEntity {
 
     /** @param o id */
     public final void setId(final Object o) {
-        this.id = null;
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.id = Integer.valueOf(o.toString());
-        }
+        this.id = StringUtil.ifNullInteger(o);
     }
 
     /** KOUTEI_ID */
@@ -99,10 +97,7 @@ public class V14Yojitsu implements IEntity {
     /** @param o KOUTEI_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setKouteiId(final Object o) {
-        this.kouteiId = null;
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.kouteiId = Integer.valueOf(o.toString());
-        }
+        this.kouteiId = StringUtil.ifNullInteger(o);
     }
 
     /** KOUTEI_TX */
@@ -116,10 +111,7 @@ public class V14Yojitsu implements IEntity {
 
     /** @param o KOUTEI_TX */
     public void setKouteiTx(final Object o) {
-        this.kouteiTx = null;
-        if (o != null) {
-            this.kouteiTx = o.toString();
-        }
+        this.kouteiTx = StringUtil.ifNull(o);
     }
 
     /** KAISHI_YMD */
@@ -133,10 +125,7 @@ public class V14Yojitsu implements IEntity {
 
     /** @param o KAISHI_YMD */
     public void setKaishiYmd(final Object o) {
-        this.kaishiYmd = null;
-        if (o != null) {
-            this.kaishiYmd = o.toString();
-        }
+        this.kaishiYmd = StringUtil.ifNull(o);
     }
 
     /** SHURYO_YMD */
@@ -150,10 +139,7 @@ public class V14Yojitsu implements IEntity {
 
     /** @param o SHURYO_YMD */
     public void setShuryoYmd(final Object o) {
-        this.shuryoYmd = null;
-        if (o != null) {
-            this.shuryoYmd = o.toString();
-        }
+        this.shuryoYmd = StringUtil.ifNull(o);
     }
 
     /** SAGYOKU_CD */
@@ -167,10 +153,7 @@ public class V14Yojitsu implements IEntity {
 
     /** @param o SAGYOKU_CD */
     public void setSagyokuCd(final Object o) {
-        this.sagyokuCd = null;
-        if (o != null) {
-            this.sagyokuCd = o.toString();
-        }
+        this.sagyokuCd = StringUtil.ifNull(o);
     }
 
     /** OYA_KOUTEI_ID */
@@ -184,10 +167,7 @@ public class V14Yojitsu implements IEntity {
 
     /** @param o OYA_KOUTEI_ID */
     public void setOyaKouteiId(final Object o) {
-        this.oyaKouteiId = null;
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.oyaKouteiId = Integer.valueOf(o.toString());
-        }
+        this.oyaKouteiId = StringUtil.ifNullInteger(o);
     }
 
     /** JISSHI_YMD */
@@ -201,10 +181,7 @@ public class V14Yojitsu implements IEntity {
 
     /** @param o JISSHI_YMD */
     public void setJisshiYmd(final Object o) {
-        this.jisshiYmd = null;
-        if (o != null) {
-            this.jisshiYmd = o.toString();
-        }
+        this.jisshiYmd = StringUtil.ifNull(o);
     }
 
     /** KANRYO_YMD */
@@ -218,10 +195,7 @@ public class V14Yojitsu implements IEntity {
 
     /** @param o KANRYO_YMD */
     public void setKanryoYmd(final Object o) {
-        this.kanryoYmd = null;
-        if (o != null) {
-            this.kanryoYmd = o.toString();
-        }
+        this.kanryoYmd = StringUtil.ifNull(o);
     }
 
     /** DEPENDENCIES */
@@ -235,10 +209,7 @@ public class V14Yojitsu implements IEntity {
 
     /** @param o DEPENDENCIES */
     public void setDependencies(final Object o) {
-        this.dependencies = null;
-        if (o != null) {
-            this.dependencies = o.toString();
-        }
+        this.dependencies = StringUtil.ifNull(o);
     }
 
     /** KOUTEI_PATH */
@@ -252,10 +223,7 @@ public class V14Yojitsu implements IEntity {
 
     /** @param o KOUTEI_PATH */
     public void setKouteiPath(final Object o) {
-        this.kouteiPath = null;
-        if (o != null) {
-            this.kouteiPath = o.toString();
-        }
+        this.kouteiPath = StringUtil.ifNull(o);
     }
 
     /** ROOT */
@@ -269,10 +237,7 @@ public class V14Yojitsu implements IEntity {
 
     /** @param o ROOT */
     public void setRoot(final Object o) {
-        this.root = null;
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.root = new java.math.BigDecimal(o.toString());
-        }
+        this.root = StringUtil.ifNullBigDecimal(o);
     }
 
     /**

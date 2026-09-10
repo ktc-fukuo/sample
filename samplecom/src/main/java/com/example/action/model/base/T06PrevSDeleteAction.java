@@ -43,6 +43,7 @@ public class T06PrevSDeleteAction extends BaseAction {
 
                 T06Prev e = FormValidator.toBean(T06Prev.class.getName(), row);
 
+                // 子：前世明細の削除
                 java.util.List<com.example.entity.T06PrevDet> t06PrevDets = e.referT06PrevDets();
                 if (t06PrevDets != null) {
                     for (com.example.entity.T06PrevDet t06PrevDet : t06PrevDets) {

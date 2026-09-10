@@ -1,6 +1,7 @@
 package com.example.entity;
 
 import jp.co.golorp.emarf.entity.IEntity;
+import jp.co.golorp.emarf.lang.StringUtil;
 import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
@@ -35,10 +36,10 @@ public class T02Oya implements IEntity {
 
     /** @return boolean 主キーが不足していたらtrue */
     public boolean isNew() {
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.oyaId)) {
+        if (StringUtil.isNullOrWhiteSpace(this.oyaId)) {
             return true;
         }
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
+        if (StringUtil.isNullOrWhiteSpace(this.updateTs)) {
             return true; // 楽観ロック値がなくてもINSERT
         }
         return false;
@@ -63,10 +64,7 @@ public class T02Oya implements IEntity {
 
     /** @param o id */
     public final void setId(final Object o) {
-        this.id = null;
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.id = Integer.valueOf(o.toString());
-        }
+        this.id = StringUtil.ifNullInteger(o);
     }
 
     /** OYA_ID */
@@ -83,10 +81,7 @@ public class T02Oya implements IEntity {
     /** @param o OYA_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setOyaId(final Object o) {
-        this.oyaId = null;
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.oyaId = Integer.valueOf(o.toString());
-        }
+        this.oyaId = StringUtil.ifNullInteger(o);
     }
 
     /** OYA_INFO */
@@ -100,10 +95,7 @@ public class T02Oya implements IEntity {
 
     /** @param o OYA_INFO */
     public void setOyaInfo(final Object o) {
-        this.oyaInfo = null;
-        if (o != null) {
-            this.oyaInfo = o.toString();
-        }
+        this.oyaInfo = StringUtil.ifNull(o);
     }
 
     /** INSERT_TS */
@@ -120,19 +112,7 @@ public class T02Oya implements IEntity {
 
     /** @param o INSERT_TS */
     public void setInsertTs(final Object o) {
-        this.insertTs = null;
-        if (o != null && o instanceof Long) {
-            java.util.Date d = new java.util.Date((Long) o);
-            this.insertTs = java.time.LocalDateTime.ofInstant(d.toInstant(), java.time.ZoneId.systemDefault());
-        } else if (o != null && o.toString().matches("^[0-9]+")) {
-            java.util.Date d = new java.util.Date(Long.valueOf(o.toString()));
-            this.insertTs = java.time.LocalDateTime.ofInstant(d.toInstant(), java.time.ZoneId.systemDefault());
-        } else if (o != null && o.toString().matches("^.+\\+\\d{2}:\\d{2}$")) {
-            java.time.Instant instant = java.time.Instant.parse(o.toString());
-            this.insertTs = java.time.LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault());
-        } else if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.insertTs = java.time.LocalDateTime.parse(o.toString().replace(" ", "T").replace("/", "-"));
-        }
+        this.insertTs = jp.co.golorp.emarf.time.DateTimeUtil.parse(o);
     }
 
     /** INSERT_USER_ID */
@@ -146,10 +126,7 @@ public class T02Oya implements IEntity {
 
     /** @param o INSERT_USER_ID */
     public void setInsertUserId(final Object o) {
-        this.insertUserId = null;
-        if (o != null) {
-            this.insertUserId = o.toString();
-        }
+        this.insertUserId = StringUtil.ifNull(o);
     }
 
     /** 作成者参照 */
@@ -187,19 +164,7 @@ public class T02Oya implements IEntity {
     /** @param o UPDATE_TS */
     @jp.co.golorp.emarf.validation.OptLock
     public void setUpdateTs(final Object o) {
-        this.updateTs = null;
-        if (o != null && o instanceof Long) {
-            java.util.Date d = new java.util.Date((Long) o);
-            this.updateTs = java.time.LocalDateTime.ofInstant(d.toInstant(), java.time.ZoneId.systemDefault());
-        } else if (o != null && o.toString().matches("^[0-9]+")) {
-            java.util.Date d = new java.util.Date(Long.valueOf(o.toString()));
-            this.updateTs = java.time.LocalDateTime.ofInstant(d.toInstant(), java.time.ZoneId.systemDefault());
-        } else if (o != null && o.toString().matches("^.+\\+\\d{2}:\\d{2}$")) {
-            java.time.Instant instant = java.time.Instant.parse(o.toString());
-            this.updateTs = java.time.LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault());
-        } else if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.updateTs = java.time.LocalDateTime.parse(o.toString().replace(" ", "T").replace("/", "-"));
-        }
+        this.updateTs = jp.co.golorp.emarf.time.DateTimeUtil.parse(o);
     }
 
     /** UPDATE_USER_ID */
@@ -213,10 +178,7 @@ public class T02Oya implements IEntity {
 
     /** @param o UPDATE_USER_ID */
     public void setUpdateUserId(final Object o) {
-        this.updateUserId = null;
-        if (o != null) {
-            this.updateUserId = o.toString();
-        }
+        this.updateUserId = StringUtil.ifNull(o);
     }
 
     /** 更新者参照 */
@@ -388,7 +350,7 @@ public class T02Oya implements IEntity {
     /** @return 削除件数 */
     public int delete() {
 
-        // 子なしの削除
+        // 子：子なしの削除
         if (this.t02Dinkss != null) {
             for (T02Dinks t02Dinks : this.t02Dinkss) {
                 if (t02Dinks.delete() != 1) {
@@ -397,7 +359,7 @@ public class T02Oya implements IEntity {
             }
         }
 
-        // 子の削除
+        // 子：子の削除
         if (this.t02Kos != null) {
             for (T02Ko t02Ko : this.t02Kos) {
                 if (t02Ko.delete() != 1) {

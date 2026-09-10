@@ -119,7 +119,7 @@ public class MsyKbnValRegistForm implements IForm {
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
         LOG.trace("validate() not overridden in subclasses.");
 
-        // 区分名称 のマスタチェック TODO できればAssertTrueにしたい
+        // 区分名称 のマスタチェック
         Map<String, Object> kbnNmParams = new java.util.HashMap<String, Object>();
         kbnNmParams.put("kbnNmFull", this.getKbnNm());
         baseProcess.masterCheck(errors, "MsyKbnSearch", "kbnNm", kbnNmParams, jp.co.golorp.emarf.util.Messages.get("MsyKbnVal.kbnNm"));

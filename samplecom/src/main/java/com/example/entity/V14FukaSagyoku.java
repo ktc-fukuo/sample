@@ -1,6 +1,7 @@
 package com.example.entity;
 
 import jp.co.golorp.emarf.entity.IEntity;
+import jp.co.golorp.emarf.lang.StringUtil;
 import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
@@ -59,10 +60,7 @@ public class V14FukaSagyoku implements IEntity {
 
     /** @param o id */
     public final void setId(final Object o) {
-        this.id = null;
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.id = Integer.valueOf(o.toString());
-        }
+        this.id = StringUtil.ifNullInteger(o);
     }
 
     /** LABELS */
@@ -76,10 +74,7 @@ public class V14FukaSagyoku implements IEntity {
 
     /** @param o LABELS */
     public void setLabels(final Object o) {
-        this.labels = null;
-        if (o != null) {
-            this.labels = o.toString();
-        }
+        this.labels = StringUtil.ifNull(o);
     }
 
     /** TYPE */
@@ -93,10 +88,7 @@ public class V14FukaSagyoku implements IEntity {
 
     /** @param o TYPE */
     public void setType(final Object o) {
-        this.type = null;
-        if (o != null) {
-            this.type = o.toString();
-        }
+        this.type = StringUtil.ifNull(o);
     }
 
     /** STACK */
@@ -110,10 +102,7 @@ public class V14FukaSagyoku implements IEntity {
 
     /** @param o STACK */
     public void setStack(final Object o) {
-        this.stack = null;
-        if (o != null) {
-            this.stack = o.toString();
-        }
+        this.stack = StringUtil.ifNull(o);
     }
 
     /** LABEL */
@@ -127,10 +116,7 @@ public class V14FukaSagyoku implements IEntity {
 
     /** @param o LABEL */
     public void setLabel(final Object o) {
-        this.label = null;
-        if (o != null) {
-            this.label = o.toString();
-        }
+        this.label = StringUtil.ifNull(o);
     }
 
     /** DATA */
@@ -144,9 +130,6 @@ public class V14FukaSagyoku implements IEntity {
 
     /** @param o DATA */
     public void setData(final Object o) {
-        this.data = null;
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.data = new java.math.BigDecimal(o.toString());
-        }
+        this.data = StringUtil.ifNullBigDecimal(o);
     }
 }

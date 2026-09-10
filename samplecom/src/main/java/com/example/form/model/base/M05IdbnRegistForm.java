@@ -90,7 +90,7 @@ public class M05IdbnRegistForm implements IForm {
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
         LOG.trace("validate() not overridden in subclasses.");
 
-        // 参照ID のマスタチェック TODO できればAssertTrueにしたい
+        // 参照ID のマスタチェック
         Map<String, Object> idrefIdParams = new java.util.HashMap<String, Object>();
         idrefIdParams.put("idrefId", this.getIdrefId());
         baseProcess.masterCheck(errors, "M05IdSearch", "idrefId", idrefIdParams, jp.co.golorp.emarf.util.Messages.get("M05Idbn.idrefId"));

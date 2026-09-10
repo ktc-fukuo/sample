@@ -33,6 +33,7 @@ public class MsyKbnDeleteAction extends BaseAction {
 
         MsyKbn e = FormValidator.toBean(MsyKbn.class.getName(), form);
 
+        // 子：区分値マスタの削除
         java.util.List<com.example.entity.MsyKbnVal> msyKbnVals = e.referMsyKbnVals();
         if (msyKbnVals != null) {
             for (com.example.entity.MsyKbnVal msyKbnVal : msyKbnVals) {

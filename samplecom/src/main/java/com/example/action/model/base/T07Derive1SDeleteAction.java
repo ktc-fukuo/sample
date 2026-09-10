@@ -43,6 +43,7 @@ public class T07Derive1SDeleteAction extends BaseAction {
 
                 T07Derive1 e = FormValidator.toBean(T07Derive1.class.getName(), row);
 
+                // 子：派生１明細の削除
                 java.util.List<com.example.entity.T07Derive1Det> t07Derive1Dets = e.referT07Derive1Dets();
                 if (t07Derive1Dets != null) {
                     for (com.example.entity.T07Derive1Det t07Derive1Det : t07Derive1Dets) {

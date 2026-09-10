@@ -43,6 +43,7 @@ public class T02OyaSDeleteAction extends BaseAction {
 
                 T02Oya e = FormValidator.toBean(T02Oya.class.getName(), row);
 
+                // 子：子なしの削除
                 java.util.List<com.example.entity.T02Dinks> t02Dinkss = e.referT02Dinkss();
                 if (t02Dinkss != null) {
                     for (com.example.entity.T02Dinks t02Dinks : t02Dinkss) {
@@ -54,6 +55,7 @@ public class T02OyaSDeleteAction extends BaseAction {
                 }
 
 
+                // 子：子の削除
                 java.util.List<com.example.entity.T02Ko> t02Kos = e.referT02Kos();
                 if (t02Kos != null) {
                     for (com.example.entity.T02Ko t02Ko : t02Kos) {

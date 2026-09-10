@@ -33,6 +33,7 @@ public class T06RebornDeleteAction extends BaseAction {
 
         T06Reborn e = FormValidator.toBean(T06Reborn.class.getName(), form);
 
+        // 子：転生明細の削除
         java.util.List<com.example.entity.T06RebornDet> t06RebornDets = e.referT06RebornDets();
         if (t06RebornDets != null) {
             for (com.example.entity.T06RebornDet t06RebornDet : t06RebornDets) {

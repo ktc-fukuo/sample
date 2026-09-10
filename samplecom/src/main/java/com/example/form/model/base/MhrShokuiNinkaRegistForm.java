@@ -135,12 +135,12 @@ public class MhrShokuiNinkaRegistForm implements IForm {
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
         LOG.trace("validate() not overridden in subclasses.");
 
-        // 部署ID のマスタチェック TODO できればAssertTrueにしたい
+        // 部署ID のマスタチェック
         Map<String, Object> bushoIdParams = new java.util.HashMap<String, Object>();
         bushoIdParams.put("bushoId", this.getBushoId());
         baseProcess.masterCheck(errors, "MhrBushoSearch", "bushoId", bushoIdParams, jp.co.golorp.emarf.util.Messages.get("MhrShokuiNinka.bushoId"));
 
-        // 職位ID のマスタチェック TODO できればAssertTrueにしたい
+        // 職位ID のマスタチェック
         Map<String, Object> shokuiIdParams = new java.util.HashMap<String, Object>();
         shokuiIdParams.put("shokuiId", this.getShokuiId());
         baseProcess.masterCheck(errors, "MhrShokuiSearch", "shokuiId", shokuiIdParams, jp.co.golorp.emarf.util.Messages.get("MhrShokuiNinka.shokuiId"));

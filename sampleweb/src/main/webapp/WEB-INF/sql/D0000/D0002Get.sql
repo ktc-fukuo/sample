@@ -8,14 +8,14 @@ SELECT
     , o.oya_info
     , o.insert_ts
     , o.insert_user_id
-    , o.update_ts AS "T01_OYA.UPDATE_TS"
+    , o.update_ts AS "T02_OYA.UPDATE_TS"
     , o.update_user_id
     , k.ko_bn
     , k.ko_info
-    , k.update_ts AS "T01_KO.UPDATE_TS"
+    , k.update_ts AS "T02_KO.UPDATE_TS"
     , m.mago_bn
     , m.mago_info
-    , m.update_ts AS "T01_MAGO.UPDATE_TS" 
+    , m.update_ts AS "T02_MAGO.UPDATE_TS" 
 FROM
     t02_oya o 
     LEFT OUTER JOIN t02_ko k 

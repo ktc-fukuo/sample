@@ -106,7 +106,7 @@ public class T14JissekiRegistForm implements IForm {
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
         LOG.trace("validate() not overridden in subclasses.");
 
-        // 工程ID のマスタチェック TODO できればAssertTrueにしたい
+        // 工程ID のマスタチェック
         Map<String, Object> kouteiIdParams = new java.util.HashMap<String, Object>();
         kouteiIdParams.put("kouteiId", this.getKouteiId());
         baseProcess.masterCheck(errors, "T14KouteiSearch", "kouteiId", kouteiIdParams, jp.co.golorp.emarf.util.Messages.get("T14Jisseki.kouteiId"));

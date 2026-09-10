@@ -46,6 +46,7 @@ public class T04Comp1SDeleteAction extends BaseAction {
 
                 T04Comp1 e = FormValidator.toBean(T04Comp1.class.getName(), row);
 
+                // 子：複合２の削除
                 java.util.List<com.example.entity.T04Comp2> t04Comp2s = e.referT04Comp2s();
                 if (t04Comp2s != null) {
                     for (com.example.entity.T04Comp2 t04Comp2 : t04Comp2s) {

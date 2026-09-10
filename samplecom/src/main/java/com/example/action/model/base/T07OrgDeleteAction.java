@@ -33,6 +33,7 @@ public class T07OrgDeleteAction extends BaseAction {
 
         T07Org e = FormValidator.toBean(T07Org.class.getName(), form);
 
+        // 子：起源明細の削除
         java.util.List<com.example.entity.T07OrgDet> t07OrgDets = e.referT07OrgDets();
         if (t07OrgDets != null) {
             for (com.example.entity.T07OrgDet t07OrgDet : t07OrgDets) {

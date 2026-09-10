@@ -71,7 +71,7 @@ public class T10Grp2RegistForm implements IForm {
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
         LOG.trace("validate() not overridden in subclasses.");
 
-        // 集約 の集約先チェック TODO できればAssertTrueにしたい
+        // 集約 の集約先チェック
         Map<String, Object> t10SumParams = new java.util.HashMap<String, Object>();
         t10SumParams.put("sumId", this.getSumId());
         baseProcess.masterCheck(errors, "T10SumSearch", "sumId", t10SumParams, jp.co.golorp.emarf.util.Messages.get("T10Grp2"));

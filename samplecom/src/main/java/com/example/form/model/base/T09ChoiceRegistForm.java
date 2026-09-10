@@ -113,12 +113,12 @@ public class T09ChoiceRegistForm implements IForm {
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
         LOG.trace("validate() not overridden in subclasses.");
 
-        // 候補１ の派生元チェック TODO できればAssertTrueにしたい
+        // 候補１ の派生元チェック
         Map<String, Object> t09Koho1Params = new java.util.HashMap<String, Object>();
         t09Koho1Params.put("koho1Id", this.getKoho1Id());
         baseProcess.masterCheck(errors, "T09Koho1Search", "koho1Id", t09Koho1Params, jp.co.golorp.emarf.util.Messages.get("T09Choice"));
 
-        // 候補２ の派生元チェック TODO できればAssertTrueにしたい
+        // 候補２ の派生元チェック
         Map<String, Object> t09Koho2Params = new java.util.HashMap<String, Object>();
         t09Koho2Params.put("koho2Id", this.getKoho2Id());
         baseProcess.masterCheck(errors, "T09Koho2Search", "koho2Id", t09Koho2Params, jp.co.golorp.emarf.util.Messages.get("T09Choice"));

@@ -107,12 +107,12 @@ public class T04Comp1RegistForm implements IForm {
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
         LOG.trace("validate() not overridden in subclasses.");
 
-        // 参照１ID のマスタチェック TODO できればAssertTrueにしたい
+        // 参照１ID のマスタチェック
         Map<String, Object> ref1IdParams = new java.util.HashMap<String, Object>();
         ref1IdParams.put("ref1Id", this.getRef1Id());
         baseProcess.masterCheck(errors, "M04Ref1Search", "ref1Id", ref1IdParams, jp.co.golorp.emarf.util.Messages.get("T04Comp1.ref1Id"));
 
-        // 参照２ID のマスタチェック TODO できればAssertTrueにしたい
+        // 参照２ID のマスタチェック
         Map<String, Object> ref2IdParams = new java.util.HashMap<String, Object>();
         ref2IdParams.put("ref2Id", this.getRef2Id());
         baseProcess.masterCheck(errors, "M04Ref2Search", "ref2Id", ref2IdParams, jp.co.golorp.emarf.util.Messages.get("T04Comp1.ref2Id"));

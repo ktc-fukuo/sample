@@ -62,7 +62,6 @@ public class D0002RegistForm implements IForm {
 
     @Override
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
-        // TODO 自動生成されたメソッド・スタブ
     }
 
 }

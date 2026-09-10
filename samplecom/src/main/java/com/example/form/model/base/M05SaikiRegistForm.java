@@ -158,33 +158,33 @@ public class M05SaikiRegistForm implements IForm {
     public void validate(final Map<String, String> errors, final BaseProcess baseProcess) {
         LOG.trace("validate() not overridden in subclasses.");
 
-        // 参照ID のマスタチェック TODO できればAssertTrueにしたい
+        // 参照ID のマスタチェック
         Map<String, Object> idrefIdParams = new java.util.HashMap<String, Object>();
         idrefIdParams.put("idrefId", this.getIdrefId());
         baseProcess.masterCheck(errors, "M05IdSearch", "idrefId", idrefIdParams, jp.co.golorp.emarf.util.Messages.get("M05Saiki.idrefId"));
 
-        // 参照CD のマスタチェック TODO できればAssertTrueにしたい
+        // 参照CD のマスタチェック
         Map<String, Object> cdrefCdParams = new java.util.HashMap<String, Object>();
         cdrefCdParams.put("cdrefCdFull", this.getCdrefCd());
         baseProcess.masterCheck(errors, "M05CdSearch", "cdrefCd", cdrefCdParams, jp.co.golorp.emarf.util.Messages.get("M05Saiki.cdrefCd"));
 
-        // 参照NO のマスタチェック TODO できればAssertTrueにしたい
+        // 参照NO のマスタチェック
         Map<String, Object> norefNoParams = new java.util.HashMap<String, Object>();
         norefNoParams.put("norefNoFull", this.getNorefNo());
         baseProcess.masterCheck(errors, "M05NoSearch", "norefNo", norefNoParams, jp.co.golorp.emarf.util.Messages.get("M05Saiki.norefNo"));
 
-        // ID連番ID のマスタチェック TODO できればAssertTrueにしたい
+        // ID連番ID のマスタチェック
         Map<String, Object> exIdrefIdParams = new java.util.HashMap<String, Object>();
         exIdrefIdParams.put("idrefId", this.getExIdrefId());
         baseProcess.masterCheck(errors, "M05IdSearch", "exIdrefId", exIdrefIdParams, jp.co.golorp.emarf.util.Messages.get("M05Saiki.exIdrefId"));
 
-        // ID連番 のマスタチェック TODO できればAssertTrueにしたい
+        // ID連番 のマスタチェック
         Map<String, Object> exIdbnBnParams = new java.util.HashMap<String, Object>();
         exIdbnBnParams.put("idrefId", this.getExIdrefId());
         exIdbnBnParams.put("idbnBn", this.getExIdbnBn());
         baseProcess.masterCheck(errors, "M05IdbnSearch", "exIdbnBn", exIdbnBnParams, jp.co.golorp.emarf.util.Messages.get("M05Saiki.exIdbnBn"));
 
-        // 親再帰ID のマスタチェック TODO できればAssertTrueにしたい
+        // 親再帰ID のマスタチェック
         Map<String, Object> oyaSaikiIdParams = new java.util.HashMap<String, Object>();
         oyaSaikiIdParams.put("saikiId", this.getOyaSaikiId());
         baseProcess.masterCheck(errors, "M05SaikiSearch", "oyaSaikiId", oyaSaikiIdParams, jp.co.golorp.emarf.util.Messages.get("M05Saiki.oyaSaikiId"));

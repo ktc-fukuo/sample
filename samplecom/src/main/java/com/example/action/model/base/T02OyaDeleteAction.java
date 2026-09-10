@@ -33,6 +33,7 @@ public class T02OyaDeleteAction extends BaseAction {
 
         T02Oya e = FormValidator.toBean(T02Oya.class.getName(), form);
 
+        // 子：子なしの削除
         java.util.List<com.example.entity.T02Dinks> t02Dinkss = e.referT02Dinkss();
         if (t02Dinkss != null) {
             for (com.example.entity.T02Dinks t02Dinks : t02Dinkss) {
@@ -43,13 +44,12 @@ public class T02OyaDeleteAction extends BaseAction {
             }
         }
 
-
+        // 子：子の削除
         java.util.List<com.example.entity.T02Ko> t02Kos = e.referT02Kos();
         if (t02Kos != null) {
             for (com.example.entity.T02Ko t02Ko : t02Kos) {
 
                 // child:T02Mago, parents:2
-
 
                 if (t02Ko.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "子");

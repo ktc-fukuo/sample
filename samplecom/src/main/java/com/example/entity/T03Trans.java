@@ -1,6 +1,7 @@
 package com.example.entity;
 
 import jp.co.golorp.emarf.entity.IEntity;
+import jp.co.golorp.emarf.lang.StringUtil;
 import jp.co.golorp.emarf.util.IgnoreCaseLinkedMap;
 
 /**
@@ -37,10 +38,10 @@ public class T03Trans implements IEntity {
 
     /** @return boolean 主キーが不足していたらtrue */
     public boolean isNew() {
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.transId)) {
+        if (StringUtil.isNullOrWhiteSpace(this.transId)) {
             return true;
         }
-        if (jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(this.updateTs)) {
+        if (StringUtil.isNullOrWhiteSpace(this.updateTs)) {
             return true; // 楽観ロック値がなくてもINSERT
         }
         return false;
@@ -65,10 +66,7 @@ public class T03Trans implements IEntity {
 
     /** @param o id */
     public final void setId(final Object o) {
-        this.id = null;
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.id = Integer.valueOf(o.toString());
-        }
+        this.id = StringUtil.ifNullInteger(o);
     }
 
     /** TRANS_ID */
@@ -85,10 +83,7 @@ public class T03Trans implements IEntity {
     /** @param o TRANS_ID */
     @jp.co.golorp.emarf.validation.PrimaryKeys
     public void setTransId(final Object o) {
-        this.transId = null;
-        if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.transId = Integer.valueOf(o.toString());
-        }
+        this.transId = StringUtil.ifNullInteger(o);
     }
 
     /** TRANS_INFO */
@@ -102,10 +97,7 @@ public class T03Trans implements IEntity {
 
     /** @param o TRANS_INFO */
     public void setTransInfo(final Object o) {
-        this.transInfo = null;
-        if (o != null) {
-            this.transInfo = o.toString();
-        }
+        this.transInfo = StringUtil.ifNull(o);
     }
 
     /** STATUS_KB */
@@ -119,10 +111,7 @@ public class T03Trans implements IEntity {
 
     /** @param o STATUS_KB */
     public void setStatusKb(final Object o) {
-        this.statusKb = null;
-        if (o != null) {
-            this.statusKb = o.toString();
-        }
+        this.statusKb = StringUtil.ifNull(o);
     }
 
     /** INSERT_TS */
@@ -139,19 +128,7 @@ public class T03Trans implements IEntity {
 
     /** @param o INSERT_TS */
     public void setInsertTs(final Object o) {
-        this.insertTs = null;
-        if (o != null && o instanceof Long) {
-            java.util.Date d = new java.util.Date((Long) o);
-            this.insertTs = java.time.LocalDateTime.ofInstant(d.toInstant(), java.time.ZoneId.systemDefault());
-        } else if (o != null && o.toString().matches("^[0-9]+")) {
-            java.util.Date d = new java.util.Date(Long.valueOf(o.toString()));
-            this.insertTs = java.time.LocalDateTime.ofInstant(d.toInstant(), java.time.ZoneId.systemDefault());
-        } else if (o != null && o.toString().matches("^.+\\+\\d{2}:\\d{2}$")) {
-            java.time.Instant instant = java.time.Instant.parse(o.toString());
-            this.insertTs = java.time.LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault());
-        } else if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.insertTs = java.time.LocalDateTime.parse(o.toString().replace(" ", "T").replace("/", "-"));
-        }
+        this.insertTs = jp.co.golorp.emarf.time.DateTimeUtil.parse(o);
     }
 
     /** INSERT_USER_ID */
@@ -165,10 +142,7 @@ public class T03Trans implements IEntity {
 
     /** @param o INSERT_USER_ID */
     public void setInsertUserId(final Object o) {
-        this.insertUserId = null;
-        if (o != null) {
-            this.insertUserId = o.toString();
-        }
+        this.insertUserId = StringUtil.ifNull(o);
     }
 
     /** 作成者参照 */
@@ -206,19 +180,7 @@ public class T03Trans implements IEntity {
     /** @param o UPDATE_TS */
     @jp.co.golorp.emarf.validation.OptLock
     public void setUpdateTs(final Object o) {
-        this.updateTs = null;
-        if (o != null && o instanceof Long) {
-            java.util.Date d = new java.util.Date((Long) o);
-            this.updateTs = java.time.LocalDateTime.ofInstant(d.toInstant(), java.time.ZoneId.systemDefault());
-        } else if (o != null && o.toString().matches("^[0-9]+")) {
-            java.util.Date d = new java.util.Date(Long.valueOf(o.toString()));
-            this.updateTs = java.time.LocalDateTime.ofInstant(d.toInstant(), java.time.ZoneId.systemDefault());
-        } else if (o != null && o.toString().matches("^.+\\+\\d{2}:\\d{2}$")) {
-            java.time.Instant instant = java.time.Instant.parse(o.toString());
-            this.updateTs = java.time.LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault());
-        } else if (!jp.co.golorp.emarf.lang.StringUtil.isNullOrWhiteSpace(o)) {
-            this.updateTs = java.time.LocalDateTime.parse(o.toString().replace(" ", "T").replace("/", "-"));
-        }
+        this.updateTs = jp.co.golorp.emarf.time.DateTimeUtil.parse(o);
     }
 
     /** UPDATE_USER_ID */
@@ -232,10 +194,7 @@ public class T03Trans implements IEntity {
 
     /** @param o UPDATE_USER_ID */
     public void setUpdateUserId(final Object o) {
-        this.updateUserId = null;
-        if (o != null) {
-            this.updateUserId = o.toString();
-        }
+        this.updateUserId = StringUtil.ifNull(o);
     }
 
     /** 更新者参照 */
