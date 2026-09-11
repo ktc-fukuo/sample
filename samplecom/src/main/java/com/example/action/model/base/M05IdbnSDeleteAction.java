@@ -45,6 +45,7 @@ public class M05IdbnSDeleteAction extends BaseAction {
                 }
 
                 M05Idbn e = FormValidator.toBean(M05Idbn.class.getName(), row);
+
                 if (e.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "ID連番マスタ");
                 }

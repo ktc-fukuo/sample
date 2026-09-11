@@ -32,6 +32,7 @@ public class T09Koho2DeleteAction extends BaseAction {
         }
 
         T09Koho2 e = FormValidator.toBean(T09Koho2.class.getName(), form);
+
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "候補２");
         }

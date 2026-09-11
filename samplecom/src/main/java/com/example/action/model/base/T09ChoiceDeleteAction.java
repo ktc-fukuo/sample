@@ -32,6 +32,7 @@ public class T09ChoiceDeleteAction extends BaseAction {
         }
 
         T09Choice e = FormValidator.toBean(T09Choice.class.getName(), form);
+
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "選択");
         }

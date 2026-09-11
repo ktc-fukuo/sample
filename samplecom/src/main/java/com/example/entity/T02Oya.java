@@ -474,6 +474,11 @@ public class T02Oya implements IEntity {
         return new java.util.ArrayList<T02Dinks>();
     }
 
+    /** 子なしを再帰 */
+    public void nestT02Dinkss() {
+        this.t02Dinkss = T02Oya.referT02Dinkss(this.oyaId);
+    }
+
     /*
      * 子モデル：子
      */
@@ -533,5 +538,13 @@ public class T02Oya implements IEntity {
             return list;
         }
         return new java.util.ArrayList<T02Ko>();
+    }
+
+    /** 子を再帰 */
+    public void nestT02Kos() {
+        this.t02Kos = T02Oya.referT02Kos(this.oyaId);
+        for (T02Ko t02Ko : this.t02Kos) {
+            t02Ko.nestT02Magos();
+        }
     }
 }

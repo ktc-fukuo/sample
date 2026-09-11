@@ -45,6 +45,7 @@ public class T07Derive1DetSDeleteAction extends BaseAction {
                 }
 
                 T07Derive1Det e = FormValidator.toBean(T07Derive1Det.class.getName(), row);
+
                 if (e.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "派生１明細");
                 }

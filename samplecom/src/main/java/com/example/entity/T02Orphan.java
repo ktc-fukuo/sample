@@ -574,4 +574,9 @@ public class T02Orphan implements IEntity {
         }
         return new java.util.ArrayList<T02Mago>();
     }
+
+    /** 孫を再帰 */
+    public void nestT02Magos() {
+        this.t02Magos = T02Orphan.referT02Magos(this.oyaId, this.koBn);
+    }
 }

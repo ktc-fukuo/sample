@@ -45,6 +45,7 @@ public class T06RebornDetSDeleteAction extends BaseAction {
                 }
 
                 T06RebornDet e = FormValidator.toBean(T06RebornDet.class.getName(), row);
+
                 if (e.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "転生明細");
                 }

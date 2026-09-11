@@ -39,6 +39,7 @@ public class T00UniqueDeleteAction extends BaseAction {
         }
 
         T00Unique e = FormValidator.toBean(T00Unique.class.getName(), form);
+
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "ユニークキー");
         }

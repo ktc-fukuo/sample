@@ -42,6 +42,7 @@ public class MhrShokuiSDeleteAction extends BaseAction {
                 }
 
                 MhrShokui e = FormValidator.toBean(MhrShokui.class.getName(), row);
+
                 if (e.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "職位マスタ");
                 }

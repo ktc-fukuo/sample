@@ -32,6 +32,7 @@ public class M05CdDeleteAction extends BaseAction {
         }
 
         M05Cd e = FormValidator.toBean(M05Cd.class.getName(), form);
+
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "CDマスタ");
         }

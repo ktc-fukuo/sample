@@ -40,15 +40,10 @@ public class T04Comp1DeleteAction extends BaseAction {
 
         T04Comp1 e = FormValidator.toBean(T04Comp1.class.getName(), form);
 
-        // 子：複合２の削除
-        java.util.List<com.example.entity.T04Comp2> t04Comp2s = e.referT04Comp2s();
-        if (t04Comp2s != null) {
-            for (com.example.entity.T04Comp2 t04Comp2 : t04Comp2s) {
-
-                if (t04Comp2.delete() != 1) {
-                    throw new OptLockError("error.cant.delete", "複合２");
-                }
-            }
+        // 子：複合２を全て指定済みか確認
+        int orgT04Comp2sSize = e.getT04Comp2s().size();
+        if (e.referT04Comp2s().size() != orgT04Comp2sSize) {
+            throw new OptLockError("error.cant.delete", "複合２");
         }
 
         if (e.delete() != 1) {

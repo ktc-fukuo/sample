@@ -390,6 +390,11 @@ public class T10Sum implements IEntity {
         return new java.util.ArrayList<T10Grp1>();
     }
 
+    /** 集団１を再帰 */
+    public void nestT10Grp1s() {
+        this.t10Grp1s = T10Sum.referT10Grp1s(this.sumId);
+    }
+
     /* 集約元：集団２ */
 
     /** 集団２のリスト */
@@ -446,5 +451,10 @@ public class T10Sum implements IEntity {
             return list;
         }
         return new java.util.ArrayList<T10Grp2>();
+    }
+
+    /** 集団２を再帰 */
+    public void nestT10Grp2s() {
+        this.t10Grp2s = T10Sum.referT10Grp2s(this.sumId);
     }
 }

@@ -32,6 +32,7 @@ public class T08Kisei2DeleteAction extends BaseAction {
         }
 
         T08Kisei2 e = FormValidator.toBean(T08Kisei2.class.getName(), form);
+
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "寄生２");
         }

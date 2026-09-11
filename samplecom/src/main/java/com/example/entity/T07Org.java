@@ -434,4 +434,9 @@ public class T07Org implements IEntity {
         }
         return new java.util.ArrayList<T07OrgDet>();
     }
+
+    /** 起源明細を再帰 */
+    public void nestT07OrgDets() {
+        this.t07OrgDets = T07Org.referT07OrgDets(this.orgId);
+    }
 }

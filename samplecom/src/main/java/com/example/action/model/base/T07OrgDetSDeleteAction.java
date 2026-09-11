@@ -45,6 +45,7 @@ public class T07OrgDetSDeleteAction extends BaseAction {
                 }
 
                 T07OrgDet e = FormValidator.toBean(T07OrgDet.class.getName(), row);
+
                 if (e.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "起源明細");
                 }

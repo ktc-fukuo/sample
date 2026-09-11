@@ -32,6 +32,7 @@ public class T14KouteiDeleteAction extends BaseAction {
         }
 
         T14Koutei e = FormValidator.toBean(T14Koutei.class.getName(), form);
+
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "工程");
         }

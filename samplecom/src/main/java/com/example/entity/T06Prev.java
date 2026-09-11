@@ -435,6 +435,11 @@ public class T06Prev implements IEntity {
         return new java.util.ArrayList<T06PrevDet>();
     }
 
+    /** 前世明細を再帰 */
+    public void nestT06PrevDets() {
+        this.t06PrevDets = T06Prev.referT06PrevDets(this.prevId);
+    }
+
     /* 転生先：転生 */
 
     /** 転生のリスト */
@@ -492,5 +497,13 @@ public class T06Prev implements IEntity {
             return list;
         }
         return new java.util.ArrayList<T06Reborn>();
+    }
+
+    /** 転生を再帰 */
+    public void nestT06Reborns() {
+        this.t06Reborns = T06Prev.referT06Reborns(this.prevId);
+        for (T06Reborn t06Reborn : this.t06Reborns) {
+            t06Reborn.nestT06RebornDets();
+        }
     }
 }

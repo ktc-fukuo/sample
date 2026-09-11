@@ -45,6 +45,7 @@ public class MsyTaxSDeleteAction extends BaseAction {
                 }
 
                 MsyTax e = FormValidator.toBean(MsyTax.class.getName(), row);
+
                 if (e.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "税マスタ");
                 }

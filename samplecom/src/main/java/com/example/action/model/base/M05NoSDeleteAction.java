@@ -42,6 +42,7 @@ public class M05NoSDeleteAction extends BaseAction {
                 }
 
                 M05No e = FormValidator.toBean(M05No.class.getName(), row);
+
                 if (e.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "NOマスタ");
                 }

@@ -42,6 +42,7 @@ public class T12Tasho2SDeleteAction extends BaseAction {
                 }
 
                 T12Tasho2 e = FormValidator.toBean(T12Tasho2.class.getName(), row);
+
                 if (e.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "他生２");
                 }

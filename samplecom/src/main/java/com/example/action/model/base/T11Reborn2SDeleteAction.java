@@ -42,6 +42,7 @@ public class T11Reborn2SDeleteAction extends BaseAction {
                 }
 
                 T11Reborn2 e = FormValidator.toBean(T11Reborn2.class.getName(), row);
+
                 if (e.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "転生２");
                 }

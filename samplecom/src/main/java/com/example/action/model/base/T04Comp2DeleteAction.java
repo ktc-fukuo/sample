@@ -53,6 +53,7 @@ public class T04Comp2DeleteAction extends BaseAction {
         }
 
         T04Comp2 e = FormValidator.toBean(T04Comp2.class.getName(), form);
+
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "複合２");
         }

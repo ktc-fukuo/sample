@@ -45,6 +45,7 @@ public class T14JissekiSDeleteAction extends BaseAction {
                 }
 
                 T14Jisseki e = FormValidator.toBean(T14Jisseki.class.getName(), row);
+
                 if (e.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "実績");
                 }

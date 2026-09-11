@@ -45,6 +45,7 @@ public class MsyKbnValSDeleteAction extends BaseAction {
                 }
 
                 MsyKbnVal e = FormValidator.toBean(MsyKbnVal.class.getName(), row);
+
                 if (e.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "区分値マスタ");
                 }

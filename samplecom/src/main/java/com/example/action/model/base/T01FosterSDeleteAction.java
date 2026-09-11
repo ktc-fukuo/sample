@@ -42,6 +42,7 @@ public class T01FosterSDeleteAction extends BaseAction {
                 }
 
                 T01Foster e = FormValidator.toBean(T01Foster.class.getName(), row);
+
                 if (e.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "里子");
                 }

@@ -456,4 +456,9 @@ public class T06Reborn implements IEntity {
         }
         return new java.util.ArrayList<T06RebornDet>();
     }
+
+    /** 転生明細を再帰 */
+    public void nestT06RebornDets() {
+        this.t06RebornDets = T06Reborn.referT06RebornDets(this.rebornId);
+    }
 }

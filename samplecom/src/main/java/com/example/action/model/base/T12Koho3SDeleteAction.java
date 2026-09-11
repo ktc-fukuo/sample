@@ -42,6 +42,7 @@ public class T12Koho3SDeleteAction extends BaseAction {
                 }
 
                 T12Koho3 e = FormValidator.toBean(T12Koho3.class.getName(), row);
+
                 if (e.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "候補３");
                 }

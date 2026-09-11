@@ -42,6 +42,7 @@ public class MhrUserSDeleteAction extends BaseAction {
                 }
 
                 MhrUser e = FormValidator.toBean(MhrUser.class.getName(), row);
+
                 if (e.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "ユーザマスタ");
                 }

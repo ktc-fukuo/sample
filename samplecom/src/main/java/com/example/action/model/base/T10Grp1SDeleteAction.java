@@ -42,6 +42,7 @@ public class T10Grp1SDeleteAction extends BaseAction {
                 }
 
                 T10Grp1 e = FormValidator.toBean(T10Grp1.class.getName(), row);
+
                 if (e.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "集団１");
                 }

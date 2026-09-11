@@ -39,6 +39,7 @@ public class T06PrevDetDeleteAction extends BaseAction {
         }
 
         T06PrevDet e = FormValidator.toBean(T06PrevDet.class.getName(), form);
+
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "前世明細");
         }

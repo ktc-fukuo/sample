@@ -42,6 +42,7 @@ public class M05SaikiSDeleteAction extends BaseAction {
                 }
 
                 M05Saiki e = FormValidator.toBean(M05Saiki.class.getName(), row);
+
                 if (e.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "再帰");
                 }

@@ -33,15 +33,10 @@ public class T07Derive2DeleteAction extends BaseAction {
 
         T07Derive2 e = FormValidator.toBean(T07Derive2.class.getName(), form);
 
-        // 子：派生２明細の削除
-        java.util.List<com.example.entity.T07Derive2Det> t07Derive2Dets = e.referT07Derive2Dets();
-        if (t07Derive2Dets != null) {
-            for (com.example.entity.T07Derive2Det t07Derive2Det : t07Derive2Dets) {
-
-                if (t07Derive2Det.delete() != 1) {
-                    throw new OptLockError("error.cant.delete", "派生２明細");
-                }
-            }
+        // 子：派生２明細を全て指定済みか確認
+        int orgT07Derive2DetsSize = e.getT07Derive2Dets().size();
+        if (e.referT07Derive2Dets().size() != orgT07Derive2DetsSize) {
+            throw new OptLockError("error.cant.delete", "派生２明細");
         }
 
         if (e.delete() != 1) {

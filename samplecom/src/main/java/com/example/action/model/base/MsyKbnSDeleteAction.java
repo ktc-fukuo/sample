@@ -43,15 +43,10 @@ public class MsyKbnSDeleteAction extends BaseAction {
 
                 MsyKbn e = FormValidator.toBean(MsyKbn.class.getName(), row);
 
-                // 子：区分値マスタの削除
-                java.util.List<com.example.entity.MsyKbnVal> msyKbnVals = e.referMsyKbnVals();
-                if (msyKbnVals != null) {
-                    for (com.example.entity.MsyKbnVal msyKbnVal : msyKbnVals) {
-
-                        if (msyKbnVal.delete() != 1) {
-                            throw new OptLockError("error.cant.delete", "区分値マスタ");
-                        }
-                    }
+                // 子：区分値マスタを全て指定済みか確認
+                int orgMsyKbnValsSize = e.getMsyKbnVals().size();
+                if (e.referMsyKbnVals().size() != orgMsyKbnValsSize) {
+                    throw new OptLockError("error.cant.delete", "区分値マスタ");
                 }
 
                 if (e.delete() != 1) {

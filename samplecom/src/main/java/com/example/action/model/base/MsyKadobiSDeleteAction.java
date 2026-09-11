@@ -45,6 +45,7 @@ public class MsyKadobiSDeleteAction extends BaseAction {
                 }
 
                 MsyKadobi e = FormValidator.toBean(MsyKadobi.class.getName(), row);
+
                 if (e.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "稼働日マスタ");
                 }

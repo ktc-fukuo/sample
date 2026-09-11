@@ -32,6 +32,7 @@ public class T01YoungestDeleteAction extends BaseAction {
         }
 
         T01Youngest e = FormValidator.toBean(T01Youngest.class.getName(), form);
+
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "末弟");
         }

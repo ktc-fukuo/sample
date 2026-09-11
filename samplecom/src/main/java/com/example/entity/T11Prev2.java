@@ -390,4 +390,9 @@ public class T11Prev2 implements IEntity {
         }
         return new java.util.ArrayList<T11Reborn2>();
     }
+
+    /** 転生２を再帰 */
+    public void nestT11Reborn2s() {
+        this.t11Reborn2s = T11Prev2.referT11Reborn2s(this.prev2Id);
+    }
 }

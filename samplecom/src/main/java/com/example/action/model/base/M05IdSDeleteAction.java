@@ -43,15 +43,10 @@ public class M05IdSDeleteAction extends BaseAction {
 
                 M05Id e = FormValidator.toBean(M05Id.class.getName(), row);
 
-                // 子：ID連番マスタの削除
-                java.util.List<com.example.entity.M05Idbn> m05Idbns = e.referM05Idbns();
-                if (m05Idbns != null) {
-                    for (com.example.entity.M05Idbn m05Idbn : m05Idbns) {
-
-                        if (m05Idbn.delete() != 1) {
-                            throw new OptLockError("error.cant.delete", "ID連番マスタ");
-                        }
-                    }
+                // 子：ID連番マスタを全て指定済みか確認
+                int orgM05IdbnsSize = e.getM05Idbns().size();
+                if (e.referM05Idbns().size() != orgM05IdbnsSize) {
+                    throw new OptLockError("error.cant.delete", "ID連番マスタ");
                 }
 
                 if (e.delete() != 1) {

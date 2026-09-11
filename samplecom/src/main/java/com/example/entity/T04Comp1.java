@@ -495,4 +495,9 @@ public class T04Comp1 implements IEntity {
         }
         return new java.util.ArrayList<T04Comp2>();
     }
+
+    /** 複合２を再帰 */
+    public void nestT04Comp2s() {
+        this.t04Comp2s = T04Comp1.referT04Comp2s(this.ref1Id, this.ref2Id);
+    }
 }

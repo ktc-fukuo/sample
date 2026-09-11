@@ -43,15 +43,10 @@ public class T06RebornSDeleteAction extends BaseAction {
 
                 T06Reborn e = FormValidator.toBean(T06Reborn.class.getName(), row);
 
-                // 子：転生明細の削除
-                java.util.List<com.example.entity.T06RebornDet> t06RebornDets = e.referT06RebornDets();
-                if (t06RebornDets != null) {
-                    for (com.example.entity.T06RebornDet t06RebornDet : t06RebornDets) {
-
-                        if (t06RebornDet.delete() != 1) {
-                            throw new OptLockError("error.cant.delete", "転生明細");
-                        }
-                    }
+                // 子：転生明細を全て指定済みか確認
+                int orgT06RebornDetsSize = e.getT06RebornDets().size();
+                if (e.referT06RebornDets().size() != orgT06RebornDetsSize) {
+                    throw new OptLockError("error.cant.delete", "転生明細");
                 }
 
                 if (e.delete() != 1) {

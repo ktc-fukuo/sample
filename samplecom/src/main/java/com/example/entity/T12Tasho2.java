@@ -389,4 +389,9 @@ public class T12Tasho2 implements IEntity {
         }
         return new java.util.ArrayList<T12Reborn3>();
     }
+
+    /** 転生３を再帰 */
+    public void nestT12Reborn3s() {
+        this.t12Reborn3s = T12Tasho2.referT12Reborn3s(this.tasho2Id);
+    }
 }

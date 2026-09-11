@@ -456,4 +456,9 @@ public class T07Derive1 implements IEntity {
         }
         return new java.util.ArrayList<T07Derive1Det>();
     }
+
+    /** 派生１明細を再帰 */
+    public void nestT07Derive1Dets() {
+        this.t07Derive1Dets = T07Derive1.referT07Derive1Dets(this.derive1Id);
+    }
 }

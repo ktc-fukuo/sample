@@ -39,6 +39,7 @@ public class T02DinksDeleteAction extends BaseAction {
         }
 
         T02Dinks e = FormValidator.toBean(T02Dinks.class.getName(), form);
+
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "子なし");
         }

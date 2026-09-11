@@ -32,6 +32,7 @@ public class T08KyoseiDeleteAction extends BaseAction {
         }
 
         T08Kyosei e = FormValidator.toBean(T08Kyosei.class.getName(), form);
+
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "共生");
         }

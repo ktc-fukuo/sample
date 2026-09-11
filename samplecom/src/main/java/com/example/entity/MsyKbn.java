@@ -421,4 +421,9 @@ public class MsyKbn implements IEntity {
         }
         return new java.util.ArrayList<MsyKbnVal>();
     }
+
+    /** 区分値マスタを再帰 */
+    public void nestMsyKbnVals() {
+        this.msyKbnVals = MsyKbn.referMsyKbnVals(this.kbnNm);
+    }
 }

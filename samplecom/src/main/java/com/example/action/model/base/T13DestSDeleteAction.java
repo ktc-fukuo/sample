@@ -42,6 +42,7 @@ public class T13DestSDeleteAction extends BaseAction {
                 }
 
                 T13Dest e = FormValidator.toBean(T13Dest.class.getName(), row);
+
                 if (e.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "変換先");
                 }

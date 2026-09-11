@@ -33,15 +33,10 @@ public class T07OrgDeleteAction extends BaseAction {
 
         T07Org e = FormValidator.toBean(T07Org.class.getName(), form);
 
-        // 子：起源明細の削除
-        java.util.List<com.example.entity.T07OrgDet> t07OrgDets = e.referT07OrgDets();
-        if (t07OrgDets != null) {
-            for (com.example.entity.T07OrgDet t07OrgDet : t07OrgDets) {
-
-                if (t07OrgDet.delete() != 1) {
-                    throw new OptLockError("error.cant.delete", "起源明細");
-                }
-            }
+        // 子：起源明細を全て指定済みか確認
+        int orgT07OrgDetsSize = e.getT07OrgDets().size();
+        if (e.referT07OrgDets().size() != orgT07OrgDetsSize) {
+            throw new OptLockError("error.cant.delete", "起源明細");
         }
 
         if (e.delete() != 1) {

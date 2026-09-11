@@ -33,15 +33,10 @@ public class T06PrevDeleteAction extends BaseAction {
 
         T06Prev e = FormValidator.toBean(T06Prev.class.getName(), form);
 
-        // 子：前世明細の削除
-        java.util.List<com.example.entity.T06PrevDet> t06PrevDets = e.referT06PrevDets();
-        if (t06PrevDets != null) {
-            for (com.example.entity.T06PrevDet t06PrevDet : t06PrevDets) {
-
-                if (t06PrevDet.delete() != 1) {
-                    throw new OptLockError("error.cant.delete", "前世明細");
-                }
-            }
+        // 子：前世明細を全て指定済みか確認
+        int orgT06PrevDetsSize = e.getT06PrevDets().size();
+        if (e.referT06PrevDets().size() != orgT06PrevDetsSize) {
+            throw new OptLockError("error.cant.delete", "前世明細");
         }
 
         if (e.delete() != 1) {

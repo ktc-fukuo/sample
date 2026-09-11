@@ -46,6 +46,7 @@ public class MhrShokuiNinkaDeleteAction extends BaseAction {
         }
 
         MhrShokuiNinka e = FormValidator.toBean(MhrShokuiNinka.class.getName(), form);
+
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "認可マスタ");
         }

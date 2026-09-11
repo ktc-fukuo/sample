@@ -32,6 +32,7 @@ public class T10SumDeleteAction extends BaseAction {
         }
 
         T10Sum e = FormValidator.toBean(T10Sum.class.getName(), form);
+
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "集約");
         }

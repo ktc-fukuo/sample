@@ -42,6 +42,7 @@ public class T03TransSDeleteAction extends BaseAction {
                 }
 
                 T03Trans e = FormValidator.toBean(T03Trans.class.getName(), row);
+
                 if (e.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "変遷");
                 }

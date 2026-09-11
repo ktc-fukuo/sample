@@ -40,7 +40,10 @@ public class T02KoDeleteAction extends BaseAction {
 
         T02Ko e = FormValidator.toBean(T02Ko.class.getName(), form);
 
-        // child:T02Mago, parents:2
+        // 子：孫の親が複数存在するため、孫の指定があるならエラーにする
+        if (e.getT02Magos().size() > 0) {
+            throw new OptLockError("error.cant.delete.prior", "孫");
+        }
 
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "子");

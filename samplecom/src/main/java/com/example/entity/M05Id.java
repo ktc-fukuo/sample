@@ -434,4 +434,9 @@ public class M05Id implements IEntity {
         }
         return new java.util.ArrayList<M05Idbn>();
     }
+
+    /** ID連番マスタを再帰 */
+    public void nestM05Idbns() {
+        this.m05Idbns = M05Id.referM05Idbns(this.idrefId);
+    }
 }

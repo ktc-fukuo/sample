@@ -42,6 +42,7 @@ public class T11Prev2SDeleteAction extends BaseAction {
                 }
 
                 T11Prev2 e = FormValidator.toBean(T11Prev2.class.getName(), row);
+
                 if (e.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "前世２");
                 }

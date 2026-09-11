@@ -42,6 +42,7 @@ public class T11Tasho1SDeleteAction extends BaseAction {
                 }
 
                 T11Tasho1 e = FormValidator.toBean(T11Tasho1.class.getName(), row);
+
                 if (e.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "他生１");
                 }

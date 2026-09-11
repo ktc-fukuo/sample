@@ -46,6 +46,7 @@ public class T02MagoDeleteAction extends BaseAction {
         }
 
         T02Mago e = FormValidator.toBean(T02Mago.class.getName(), form);
+
         if (e.delete() != 1) {
             throw new OptLockError("error.cant.delete", "孫");
         }

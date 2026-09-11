@@ -42,6 +42,7 @@ public class T01EldestSDeleteAction extends BaseAction {
                 }
 
                 T01Eldest e = FormValidator.toBean(T01Eldest.class.getName(), row);
+
                 if (e.delete() != 1) {
                     throw new OptLockError("error.cant.delete", "長兄");
                 }
