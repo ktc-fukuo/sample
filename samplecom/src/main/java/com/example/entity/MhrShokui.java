@@ -355,7 +355,7 @@ public class MhrShokui implements IEntity {
      */
     public int update(final java.time.LocalDateTime at, final String by) {
         String sql = "UPDATE MHR_SHOKUI\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toValueMap(at, by));
     }
 
     /** @return update用のset句 */
@@ -374,7 +374,7 @@ public class MhrShokui implements IEntity {
     /** @return 削除件数 */
     public int delete() {
         String sql = "DELETE FROM MHR_SHOKUI WHERE " + getWhere();
-        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toValueMap(null, null));
     }
 
     /** @return 削除件数 */
@@ -395,6 +395,35 @@ public class MhrShokui implements IEntity {
         map.put("shokui_on", this.shokuiOn);
         map.put("tekiyo_bi", this.tekiyoBi);
         map.put("haishi_bi", this.haishiBi);
+        map.put("insert_ts", at);
+        map.put("insert_user_id", by);
+        map.put("update_ts", at);
+        map.put("update_user_id", by);
+        return map;
+    }
+
+    /**
+     * @param at システム日時
+     * @param by 実行ID
+     * @return マップ化したエンティティ
+     */
+    private java.util.Map<String, Object> toValueMap(final java.time.LocalDateTime at, final String by) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+        if (this.shokuiId != null) {
+            map.put("shokui_id", this.shokuiId);
+        }
+        if (this.shokuiMei != null) {
+            map.put("shokui_mei", this.shokuiMei);
+        }
+        if (this.shokuiOn != null) {
+            map.put("shokui_on", this.shokuiOn);
+        }
+        if (this.tekiyoBi != null) {
+            map.put("tekiyo_bi", this.tekiyoBi);
+        }
+        if (this.haishiBi != null) {
+            map.put("haishi_bi", this.haishiBi);
+        }
         map.put("insert_ts", at);
         map.put("insert_user_id", by);
         map.put("update_ts", at);

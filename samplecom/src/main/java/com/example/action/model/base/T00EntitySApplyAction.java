@@ -44,11 +44,13 @@ public class T00EntitySApplyAction extends BaseAction {
                     throw new OptLockError("error.cant.apply", "エンティティ");
                 }
 
+                // ステータスを変更
                 if (e.getStatusKb() != null && !e.getStatusKb().equals("")) {
                     throw new jp.co.golorp.emarf.exception.AppError("error.notmatch",
                             Messages.get("common.selectedRow"), Messages.get("common.notapply"));
                 }
                 e.setStatusKb(0);
+
                 if (e.update(at, by) != 1) {
                     throw new OptLockError("error.cant.apply", "エンティティ");
                 }

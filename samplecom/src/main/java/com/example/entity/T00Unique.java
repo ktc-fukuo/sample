@@ -334,7 +334,7 @@ public class T00Unique implements IEntity {
      */
     public int update(final java.time.LocalDateTime at, final String by) {
         String sql = "UPDATE T00_UNIQUE\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toValueMap(at, by));
     }
 
     /** @return update用のset句 */
@@ -353,7 +353,7 @@ public class T00Unique implements IEntity {
     /** @return 削除件数 */
     public int delete() {
         String sql = "DELETE FROM T00_UNIQUE WHERE " + getWhere();
-        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toValueMap(null, null));
     }
 
     /** @return 削除件数 */
@@ -374,6 +374,35 @@ public class T00Unique implements IEntity {
         map.put("c_mei", this.cMei);
         map.put("d_mei", this.dMei);
         map.put("e_mei", this.eMei);
+        map.put("insert_ts", at);
+        map.put("insert_user_id", by);
+        map.put("update_ts", at);
+        map.put("update_user_id", by);
+        return map;
+    }
+
+    /**
+     * @param at システム日時
+     * @param by 実行ID
+     * @return マップ化したエンティティ
+     */
+    private java.util.Map<String, Object> toValueMap(final java.time.LocalDateTime at, final String by) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+        if (this.aMei != null) {
+            map.put("a_mei", this.aMei);
+        }
+        if (this.bMei != null) {
+            map.put("b_mei", this.bMei);
+        }
+        if (this.cMei != null) {
+            map.put("c_mei", this.cMei);
+        }
+        if (this.dMei != null) {
+            map.put("d_mei", this.dMei);
+        }
+        if (this.eMei != null) {
+            map.put("e_mei", this.eMei);
+        }
         map.put("insert_ts", at);
         map.put("insert_user_id", by);
         map.put("update_ts", at);

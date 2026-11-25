@@ -33,11 +33,13 @@ public class T03TransForbidAction extends BaseAction {
 
         T03Trans e = FormValidator.toBean(T03Trans.class.getName(), form);
 
+        // ステータスを変更
         if (!e.getStatusKb().equals("0") && !e.getStatusKb().equals("1")) {
             throw new jp.co.golorp.emarf.exception.AppError("error.notmatch",
                     Messages.get("T03Trans.statusKb"), Messages.get("common.apply.permit"));
         }
         e.setStatusKb(-1);
+
         if (e.update(at, by) != 1) {
             throw new OptLockError("error.cant.forbid", "変遷");
         }

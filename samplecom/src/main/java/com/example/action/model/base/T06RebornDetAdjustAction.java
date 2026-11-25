@@ -1,0 +1,51 @@
+package com.example.action.model.base;
+
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
+
+import com.example.entity.T06RebornDet;
+
+import jp.co.golorp.emarf.action.BaseAction;
+import jp.co.golorp.emarf.exception.OptLockError;
+import jp.co.golorp.emarf.util.Messages;
+import jp.co.golorp.emarf.validation.FormValidator;
+
+/**
+ * 転生明細更新
+ *
+ * @author emarfkrow
+ */
+public class T06RebornDetAdjustAction extends BaseAction {
+
+    /** 転生明細更新処理 */
+    @Override
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
+
+        // 主キーが不足していたらエラー
+        Object rebornId = form.get("rebornId");
+        if (rebornId == null) {
+            rebornId = form.get("T06RebornDet.rebornId");
+        }
+        if (rebornId == null) {
+            throw new OptLockError("error.cant.adjust", "転生明細");
+        }
+        Object rebornBn = form.get("rebornBn");
+        if (rebornBn == null) {
+            rebornBn = form.get("T06RebornDet.rebornBn");
+        }
+        if (rebornBn == null) {
+            throw new OptLockError("error.cant.adjust", "転生明細");
+        }
+
+        T06RebornDet e = FormValidator.toBean(T06RebornDet.class.getName(), form);
+        if (e.update(at, by) != 1) {
+            throw new OptLockError("error.cant.adjust", "転生明細");
+        }
+
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("INFO", Messages.get("info.adjust"));
+        return map;
+    }
+
+}

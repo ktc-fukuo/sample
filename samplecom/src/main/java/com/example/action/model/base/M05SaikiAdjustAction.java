@@ -1,0 +1,44 @@
+package com.example.action.model.base;
+
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
+
+import com.example.entity.M05Saiki;
+
+import jp.co.golorp.emarf.action.BaseAction;
+import jp.co.golorp.emarf.exception.OptLockError;
+import jp.co.golorp.emarf.util.Messages;
+import jp.co.golorp.emarf.validation.FormValidator;
+
+/**
+ * 再帰更新
+ *
+ * @author emarfkrow
+ */
+public class M05SaikiAdjustAction extends BaseAction {
+
+    /** 再帰更新処理 */
+    @Override
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
+
+        // 主キーが不足していたらエラー
+        Object saikiId = form.get("saikiId");
+        if (saikiId == null) {
+            saikiId = form.get("M05Saiki.saikiId");
+        }
+        if (saikiId == null) {
+            throw new OptLockError("error.cant.adjust", "再帰");
+        }
+
+        M05Saiki e = FormValidator.toBean(M05Saiki.class.getName(), form);
+        if (e.update(at, by) != 1) {
+            throw new OptLockError("error.cant.adjust", "再帰");
+        }
+
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("INFO", Messages.get("info.adjust"));
+        return map;
+    }
+
+}

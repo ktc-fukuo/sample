@@ -13,6 +13,7 @@ import jp.co.golorp.emarf.validation.IForm;
 public class MsyKbnValRegistForm implements IForm {
 
     /** 区分名称 */
+    @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Delete.class)
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([ -~]+)?")
     @jakarta.validation.constraints.Size(groups = jp.co.golorp.emarf.validation.Regist.class, max = 20)
     @jp.co.golorp.emarf.validation.PrimaryKeys
@@ -92,6 +93,7 @@ public class MsyKbnValRegistForm implements IForm {
     }
 
     /** 更新タイムスタンプ */
+    @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Delete.class)
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{13}|[0-9]{1,4}(\\/|\\-)[0-9]{1,2}(\\/|\\-)[0-9]{1,2}(T| )[0-9]{1,2}:[0-9]{1,2}(:[0-9]{1,2}(\\.[0-9]{3}(\\+\\d{2}:\\d{2})?)?)?)?")
     @jp.co.golorp.emarf.validation.OptLock
     private String updateTs;

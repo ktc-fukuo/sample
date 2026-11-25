@@ -13,6 +13,7 @@ import jp.co.golorp.emarf.validation.IForm;
 public class T04Comp1RegistForm implements IForm {
 
     /** 参照１ID */
+    @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Delete.class)
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "(-?[0-9]{0,10}\\.?[0-9]{0,0}?)?")
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private String ref1Id;
@@ -62,6 +63,7 @@ public class T04Comp1RegistForm implements IForm {
     }
 
     /** 更新タイムスタンプ */
+    @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Delete.class)
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{13}|[0-9]{1,4}(\\/|\\-)[0-9]{1,2}(\\/|\\-)[0-9]{1,2}(T| )[0-9]{1,2}:[0-9]{1,2}(:[0-9]{1,2}(\\.[0-9]{3}(\\+\\d{2}:\\d{2})?)?)?)?")
     @jp.co.golorp.emarf.validation.OptLock
     private String updateTs;

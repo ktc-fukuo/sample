@@ -939,7 +939,7 @@ public class T00Entity implements IEntity {
         }
 
         String sql = "UPDATE T00_ENTITY\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toValueMap(at, by));
     }
 
     /** @return update用のset句 */
@@ -1027,6 +1027,116 @@ public class T00Entity implements IEntity {
         map.put("hacchu_am", this.hacchuAm);
         map.put("delete_f", this.deleteF);
         map.put("status_kb", this.statusKb);
+        map.put("insert_ts", at);
+        map.put("insert_user_id", by);
+        map.put("update_ts", at);
+        map.put("update_user_id", by);
+        return map;
+    }
+
+    /**
+     * @param at システム日時
+     * @param by 実行ID
+     * @return マップ化したエンティティ
+     */
+    private java.util.Map<String, Object> toValueMap(final java.time.LocalDateTime at, final String by) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+        if (this.entityId != null) {
+            map.put("entity_id", this.entityId);
+        }
+        if (this.entityNm != null) {
+            map.put("entity_nm", this.entityNm);
+        }
+        if (this.entityMei != null) {
+            map.put("entity_mei", this.entityMei);
+        }
+        if (this.bitB != null) {
+            map.put("bit_b", this.bitB);
+        }
+        if (this.checkF != null) {
+            map.put("check_f", this.checkF);
+        }
+        if (this.radioKb != null) {
+            map.put("radio_kb", this.radioKb);
+        }
+        if (this.pulldownKb != null) {
+            map.put("pulldown_kb", this.pulldownKb);
+        }
+        if (this.pulldownSb != null) {
+            map.put("pulldown_sb", this.pulldownSb);
+        }
+        if (this.memoTx != null) {
+            map.put("memo_tx", this.memoTx);
+        }
+        if (this.memo != null) {
+            map.put("memo", this.memo);
+        }
+        if (this.tenpuFile != null) {
+            map.put("tenpu_file", this.tenpuFile);
+        }
+        if (this.nenY != null) {
+            map.put("nen_y", this.nenY);
+        }
+        if (this.tsukiM != null) {
+            map.put("tsuki_m", this.tsukiM);
+        }
+        if (this.hiD != null) {
+            map.put("hi_d", this.hiD);
+        }
+        if (this.nengetsuYm != null) {
+            map.put("nengetsu_ym", this.nengetsuYm);
+        }
+        if (this.nengappiYmd != null) {
+            map.put("nengappi_ymd", this.nengappiYmd);
+        }
+        if (this.timestampTs != null) {
+            map.put("timestamp_ts", this.timestampTs);
+        }
+        if (this.nichijiDt != null) {
+            map.put("nichiji_dt", this.nichijiDt);
+        }
+        if (this.hidukeBi != null) {
+            map.put("hiduke_bi", this.hidukeBi);
+        }
+        if (this.jikokuHm != null) {
+            map.put("jikoku_hm", this.jikokuHm);
+        }
+        if (this.jikokuHms != null) {
+            map.put("jikoku_hms", this.jikokuHms);
+        }
+        if (this.jikanTm != null) {
+            map.put("jikan_tm", this.jikanTm);
+        }
+        if (this.jikanTms != null) {
+            map.put("jikan_tms", this.jikanTms);
+        }
+        if (this.tsukaKb != null) {
+            map.put("tsuka_kb", this.tsukaKb);
+        }
+        if (this.juchuQt != null) {
+            map.put("juchu_qt", this.juchuQt);
+        }
+        if (this.juchuPr != null) {
+            map.put("juchu_pr", this.juchuPr);
+        }
+        if (this.juchuAm != null) {
+            map.put("juchu_am", this.juchuAm);
+        }
+        if (this.hacchuQt != null) {
+            map.put("hacchu_qt", this.hacchuQt);
+        }
+        if (this.hacchuPr != null) {
+            map.put("hacchu_pr", this.hacchuPr);
+        }
+        if (this.hacchuAm != null) {
+            map.put("hacchu_am", this.hacchuAm);
+        }
+        if (this.deleteF != null) {
+            map.put("delete_f", this.deleteF);
+        }
+        if (this.statusKb != null) {
+            map.put("status_kb", this.statusKb);
+        }
         map.put("insert_ts", at);
         map.put("insert_user_id", by);
         map.put("update_ts", at);

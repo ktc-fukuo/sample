@@ -378,7 +378,7 @@ public class T02Orphan implements IEntity {
         }
 
         String sql = "UPDATE T02_ORPHAN\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toValueMap(at, by));
     }
 
     /** @return update用のset句 */
@@ -419,7 +419,7 @@ public class T02Orphan implements IEntity {
         }
 
         String sql = "DELETE FROM T02_ORPHAN WHERE " + getWhere();
-        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toValueMap(null, null));
     }
 
     /** @return 削除件数 */
@@ -444,6 +444,29 @@ public class T02Orphan implements IEntity {
         map.put("oya_id", this.oyaId);
         map.put("ko_bn", this.koBn);
         map.put("orphan_info", this.orphanInfo);
+        map.put("insert_ts", at);
+        map.put("insert_user_id", by);
+        map.put("update_ts", at);
+        map.put("update_user_id", by);
+        return map;
+    }
+
+    /**
+     * @param at システム日時
+     * @param by 実行ID
+     * @return マップ化したエンティティ
+     */
+    private java.util.Map<String, Object> toValueMap(final java.time.LocalDateTime at, final String by) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+        if (this.oyaId != null) {
+            map.put("oya_id", this.oyaId);
+        }
+        if (this.koBn != null) {
+            map.put("ko_bn", this.koBn);
+        }
+        if (this.orphanInfo != null) {
+            map.put("orphan_info", this.orphanInfo);
+        }
         map.put("insert_ts", at);
         map.put("insert_user_id", by);
         map.put("update_ts", at);

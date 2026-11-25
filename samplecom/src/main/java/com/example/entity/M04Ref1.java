@@ -354,7 +354,7 @@ public class M04Ref1 implements IEntity {
      */
     public int update(final java.time.LocalDateTime at, final String by) {
         String sql = "UPDATE M04_REF1\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toValueMap(at, by));
     }
 
     /** @return update用のset句 */
@@ -388,6 +388,35 @@ public class M04Ref1 implements IEntity {
         map.put("delete_f", this.deleteF);
         map.put("tekiyo_bi", this.tekiyoBi);
         map.put("haishi_bi", this.haishiBi);
+        map.put("insert_ts", at);
+        map.put("insert_user_id", by);
+        map.put("update_ts", at);
+        map.put("update_user_id", by);
+        return map;
+    }
+
+    /**
+     * @param at システム日時
+     * @param by 実行ID
+     * @return マップ化したエンティティ
+     */
+    private java.util.Map<String, Object> toValueMap(final java.time.LocalDateTime at, final String by) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+        if (this.ref1Id != null) {
+            map.put("ref_1_id", this.ref1Id);
+        }
+        if (this.ref1Mei != null) {
+            map.put("ref_1_mei", this.ref1Mei);
+        }
+        if (this.deleteF != null) {
+            map.put("delete_f", this.deleteF);
+        }
+        if (this.tekiyoBi != null) {
+            map.put("tekiyo_bi", this.tekiyoBi);
+        }
+        if (this.haishiBi != null) {
+            map.put("haishi_bi", this.haishiBi);
+        }
         map.put("insert_ts", at);
         map.put("insert_user_id", by);
         map.put("update_ts", at);

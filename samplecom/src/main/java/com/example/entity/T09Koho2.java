@@ -283,7 +283,7 @@ public class T09Koho2 implements IEntity {
      */
     public int update(final java.time.LocalDateTime at, final String by) {
         String sql = "UPDATE T09_KOHO2\r\nSET\r\n      " + getSet() + "\r\nWHERE\r\n    " + getWhere();
-        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(at, by));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toValueMap(at, by));
     }
 
     /** @return update用のset句 */
@@ -299,7 +299,7 @@ public class T09Koho2 implements IEntity {
     /** @return 削除件数 */
     public int delete() {
         String sql = "DELETE FROM T09_KOHO2 WHERE " + getWhere();
-        return jp.co.golorp.emarf.sql.Queries.regist(sql, toMap(null, null));
+        return jp.co.golorp.emarf.sql.Queries.regist(sql, toValueMap(null, null));
     }
 
     /** @return 削除件数 */
@@ -317,6 +317,26 @@ public class T09Koho2 implements IEntity {
         java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
         map.put("koho_2_id", this.koho2Id);
         map.put("koho_2_info", this.koho2Info);
+        map.put("insert_ts", at);
+        map.put("insert_user_id", by);
+        map.put("update_ts", at);
+        map.put("update_user_id", by);
+        return map;
+    }
+
+    /**
+     * @param at システム日時
+     * @param by 実行ID
+     * @return マップ化したエンティティ
+     */
+    private java.util.Map<String, Object> toValueMap(final java.time.LocalDateTime at, final String by) {
+        java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+        if (this.koho2Id != null) {
+            map.put("koho_2_id", this.koho2Id);
+        }
+        if (this.koho2Info != null) {
+            map.put("koho_2_info", this.koho2Info);
+        }
         map.put("insert_ts", at);
         map.put("insert_user_id", by);
         map.put("update_ts", at);

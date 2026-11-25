@@ -44,11 +44,13 @@ public class T03TransSCancelAction extends BaseAction {
                     throw new OptLockError("error.cant.cancel", "変遷");
                 }
 
+                // ステータスを変更
                 if (!e.getStatusKb().equals("0") && !e.getStatusKb().equals("-1")) {
                     throw new jp.co.golorp.emarf.exception.AppError("error.notmatch",
                             Messages.get("common.selectedRow"), Messages.get("common.apply.forbid"));
                 }
                 e.setStatusKb(null);
+
                 if (e.update(at, by) != 1) {
                     throw new OptLockError("error.cant.cancel", "変遷");
                 }

@@ -33,11 +33,13 @@ public class T00EntityApplyAction extends BaseAction {
 
         T00Entity e = FormValidator.toBean(T00Entity.class.getName(), form);
 
+        // ステータスを変更
         if (e.getStatusKb() != null && !e.getStatusKb().equals("")) {
             throw new jp.co.golorp.emarf.exception.AppError("error.notmatch",
                     Messages.get("T00Entity.statusKb"), Messages.get("common.notapply"));
         }
         e.setStatusKb(0);
+
         if (e.update(at, by) != 1) {
             throw new OptLockError("error.cant.apply", "エンティティ");
         }

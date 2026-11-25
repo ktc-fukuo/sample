@@ -13,6 +13,7 @@ import jp.co.golorp.emarf.validation.IForm;
 public class T07Derive1DetRegistForm implements IForm {
 
     /** 派生１ID */
+    @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Delete.class)
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "(-?[0-9]{0,10}\\.?[0-9]{0,0}?)?")
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private String derive1Id;
@@ -30,6 +31,7 @@ public class T07Derive1DetRegistForm implements IForm {
     }
 
     /** 派生１枝番 */
+    @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Delete.class)
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "(-?[0-9]{0,10}\\.?[0-9]{0,0}?)?")
     @jp.co.golorp.emarf.validation.PrimaryKeys
     private String derive1Bn;
@@ -61,6 +63,7 @@ public class T07Derive1DetRegistForm implements IForm {
     }
 
     /** 更新タイムスタンプ */
+    @jakarta.validation.constraints.NotBlank(groups = jp.co.golorp.emarf.validation.Delete.class)
     @jakarta.validation.constraints.Pattern(groups = jp.co.golorp.emarf.validation.Regist.class, regexp = "([0-9]{13}|[0-9]{1,4}(\\/|\\-)[0-9]{1,2}(\\/|\\-)[0-9]{1,2}(T| )[0-9]{1,2}:[0-9]{1,2}(:[0-9]{1,2}(\\.[0-9]{3}(\\+\\d{2}:\\d{2})?)?)?)?")
     @jp.co.golorp.emarf.validation.OptLock
     private String updateTs;

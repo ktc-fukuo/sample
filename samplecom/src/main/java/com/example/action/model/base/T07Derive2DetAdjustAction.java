@@ -1,0 +1,51 @@
+package com.example.action.model.base;
+
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
+
+import com.example.entity.T07Derive2Det;
+
+import jp.co.golorp.emarf.action.BaseAction;
+import jp.co.golorp.emarf.exception.OptLockError;
+import jp.co.golorp.emarf.util.Messages;
+import jp.co.golorp.emarf.validation.FormValidator;
+
+/**
+ * 派生２明細更新
+ *
+ * @author emarfkrow
+ */
+public class T07Derive2DetAdjustAction extends BaseAction {
+
+    /** 派生２明細更新処理 */
+    @Override
+    public Map<String, Object> running(final LocalDateTime at, final String by, final Map<String, Object> form) {
+
+        // 主キーが不足していたらエラー
+        Object derive2Id = form.get("derive2Id");
+        if (derive2Id == null) {
+            derive2Id = form.get("T07Derive2Det.derive2Id");
+        }
+        if (derive2Id == null) {
+            throw new OptLockError("error.cant.adjust", "派生２明細");
+        }
+        Object derive2Bn = form.get("derive2Bn");
+        if (derive2Bn == null) {
+            derive2Bn = form.get("T07Derive2Det.derive2Bn");
+        }
+        if (derive2Bn == null) {
+            throw new OptLockError("error.cant.adjust", "派生２明細");
+        }
+
+        T07Derive2Det e = FormValidator.toBean(T07Derive2Det.class.getName(), form);
+        if (e.update(at, by) != 1) {
+            throw new OptLockError("error.cant.adjust", "派生２明細");
+        }
+
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("INFO", Messages.get("info.adjust"));
+        return map;
+    }
+
+}
